@@ -13,19 +13,19 @@
 
 //-----------------------------
 
-Route::get('/', ['uses' =>'IndexController@Index', 'as' => 'start']);
-Route::get('/home', ['uses' =>'HomeController@index', 'as' => 'home']);
-Route::get('public/login', ['uses' =>'IndexController@login', 'as' => 'login']);
+Route::get('/', ['uses' => 'IndexController@Index', 'as' => 'start']);
+Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'home']);
+Route::get('public/login', ['uses' => 'IndexController@login', 'as' => 'login']);
 
 Route::get('google', ['uses' => 'GoogleController@redirectToProvider', 'as' => 'google']);
 Route::get('google/callback', 'GoogleController@handleProviderCallback');
 
-Route::get('/redirect', ['uses'=>'SocialAuthFacebookController@redirect', 'as' => 'facebook']);
+Route::get('/redirect', ['uses' => 'SocialAuthFacebookController@redirect', 'as' => 'facebook']);
 Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 Auth::routes();
 
-                                       //Страницы без авторизации
+//Страницы без авторизации
 
 
 Route::group(['prefix' => 'users', 'middleware' => ['web']], function () {
@@ -36,29 +36,49 @@ Route::group(['prefix' => 'users', 'middleware' => ['web']], function () {
 });
 
 
-
-                                          //Админка
+                                                        //Админка
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], function () {
     //просмотр существующего списка квестов:
     Route::get('show/quest/', ['uses' => 'Admin\AdminQuestController@show', 'as' => 'showQuests']);
-    //редактирование квеста:
-    Route::get('edit/quest/{id?}', ['uses' => 'Admin\AdminQuestController@edit', 'as' => 'editQuest'])->where('id','[0-9]+');
-    //после нажатия кнопки - обновление квеста:
-    Route::post('/update/Quest/{id?}', ['uses' => 'Admin\AdminQuestController@update', 'as' => 'edit']);
-    //переадресация к форме добавления нового квеста:
+   //переадресация к форме добавления нового квеста:
     Route::get('/add/quest', ['uses' => 'Admin\AdminQuestController@add', 'as' => 'admin_add_quest']);
-    //после нажатия кнопки - добавление нового квеста в БД и переадресация на страницу заданий квеста:
+    //после нажатия кнопки - добавление нового квеста в БД и переадресация на страницу адзаний квеста:
     Route::post('/create/quest', ['uses' => 'Admin\AdminQuestController@create', 'as' => 'post']);
-    //просмотр заданий для созданного квеста + кнопка добавления нового задания:
-    Route::get('viewTask/{idQuest}', ['uses' => 'Admin\AdminTaskController@viewTasks', 'as' => 'viewTask'])->where('idQuest','[0-9]+');
+    //редактирование квеста:
+    Route::get('edit/quest/{id?}', ['uses' => 'Admin\AdminQuestController@edit', 'as' => 'editQuest'])->where('id', '[0-9]+');
+    //обновление квеста:
+    Route::post('/update/Quest/{id?}', ['uses' => 'Admin\AdminQuestController@update', 'as' => 'edit']);
+//удаление квеста:
+    Route::get('delete/quest/{id?}', ['uses' => 'Admin\AdminQuestController@delete', 'as' => 'deleteQuest'])->where('id','[0-9]+');
+    //просмотр заданий для квеста со страницы с квестами:
+
+
+
+    Route::get('viewTask/quest/{id?}', ['uses' => 'Admin\AdminTaskController@adminViewTasks', 'as' => 'viewTasksAdmin'])->where('id', '[0-9]+');
     //роут на форму создания нового задания для квеста:
-    Route::post('createTask/{id}', ['uses' => 'Admin\AdminTaskController@add', 'as' => 'createTask'])->where('id','[0-9]+');
-    //??????
-    Route::post('/create/task/{id}', ['uses' => 'Admin\AdminTaskController@create', 'as' => 'postTask'])->where('id','[0-9]+');
+    Route::get('createTask/{id}', ['uses' => 'Admin\AdminTaskController@add', 'as' => 'createTask'])->where('id', '[0-9]+');
+    //после нажатия добавить на странице добавления задания
+    Route::post('/create/task/{id}', ['uses' => 'Admin\AdminTaskController@create', 'as' => 'postTask'])->where('id', '[0-9]+');
+    Route::get('edit/task/{id?}/{idQuest?}', ['uses' => 'Admin\AdminTaskController@edit', 'as' => 'editTask'])->where('id', '[0-9]+');
+    //обновление квеста:
+    Route::post('/update/Task/{id}', ['uses' => 'Admin\AdminTaskController@update', 'as' => 'updateTask']);
+//удаление квеста:
+    Route::get('delete/Task/{id?}/{idQuest?}', ['uses' => 'Admin\AdminTaskController@delete', 'as' => 'deleteTask'])->where('id','[0-9]+');
+    //просмотр заданий для квеста со страницы с квестами:
+
+
+    //просмотр существующего списка пользователей:
+    Route::get('show/users/', ['uses' => 'Admin\AdminUsersController@show', 'as' => 'showUsers']);
+    //просмотр существующего списка всех заданий для квестов:
+    Route::get('show/tasks/', ['uses' => 'Admin\AdminTaskController@showAllTasks', 'as' => 'showTasks']);
+
+
+
+
 });
 
-                                           //для залогиненного пользователя
+//для залогиненного пользователя
 
 Route::group(['prefix' => 'users', 'middleware' => ['web', 'auth']], function () {
     //планируемый маршрут при выборе user-ом квеста на выполнение(надо делать)

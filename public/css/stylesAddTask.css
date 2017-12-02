@@ -1,0 +1,21 @@
+
+body{
+    background: gainsboro;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-content: space-between;
+
+}
+
+
+
+/*table {
+    width: 90%;
+}
+th, tr {
+    margin: 10px;
+}
+

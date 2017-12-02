@@ -1,27 +1,30 @@
-@extends('header')
-<link href={{ asset('css/stylesVQ.css') }} rel="stylesheet">
+@extends('layouts.dashboard')
+@section('style')
+    {!!HTML::style('css/stylesUserViewQuests.css')!!}
+@stop
+@section('content')
 
-</head>
-<body>
-    <div class="container">
-
+    <header>
         <nav>
-            <ul class="nav masthead-nav">
+            <ul class="nav">
                 <li class="active"><a href="/public/">Home</a></li>
                 <li><a href="/public/login">Login</a></li>
                 <li><a href="">Contacts</a></li>
             </ul>
         </nav>
+    </header>
 
-    <div class="row ">
-    @foreach($quests as $q)
-        <div class="quest">
-            <h3 class="text-center">{!! $q->name !!}</h3>
-            <h3 class="text-center">{!! $q->date !!}</h3>
-            <button class="btn btn-default btn-lg active"><a href="{{route('more')}}">More...</a></button>
+    <main>
+        <div class="row">
+            @foreach($quests as $q)
+                <div class="quest">
+                    <h3 class="text-center">{!! $q->name !!}</h3>
+                    <h3 class="text-center">{!! $q->date !!}</h3>
+                    <button class="btn btn-link"><a href="{{route('more')}}">More</a></button>
+                </div>
+            @endforeach
         </div>
-       @endforeach
-    </div>
-    </div>
-</body>
-</html>
+    </main>
+
+    <footer></footer>
+@stop

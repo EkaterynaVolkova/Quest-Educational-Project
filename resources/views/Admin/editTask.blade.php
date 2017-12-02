@@ -1,16 +1,13 @@
-@extends('layouts.dashboard')
-@section('style')
-    {!!HTML::style('css/stylesAddTask.css')!!}
-    {!!HTML::style('css/forms.css')!!}
-@stop
-
-@section('content')
-
-    <h2>Новaя Задача!</h2>
+@extends('header')
+<link href={{ asset('css/stylesAT.css') }} rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <h2>Редактирование Задачи!</h2>
 
     <?php
     echo "<br>";
-    echo Form::open(array('url' => route('postTask', $idQuest), 'method' => 'post', 'role' => 'form', 'class' => 'form-vertical'));
+    echo Form::open(array('url' => route('updateTask', $task), 'method' => 'post', 'role' => 'form', 'class' => 'form-vertical'));
 
     echo Form::label('name', 'Название') . Form::text('name');
     echo "<br>";
@@ -22,10 +19,14 @@
     echo "<br>";
     echo Form::label('QR', 'Текст для QR-кода:') . Form::text('QR');
     echo "<br>";
-    echo Form::submit('Добавить');
-    echo Form::hidden('idQuest', $idQuest);
+    echo Form::submit('Edit');
+   // echo Form::hidden('id', $id);
     Form::close();
 
     ?>
 
-@stop
+
+</div>
+</body>
+</html>
+

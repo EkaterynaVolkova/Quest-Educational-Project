@@ -1,0 +1,83 @@
+body {
+    width: 100%;
+    background: black;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+
+}
+
+.quest {
+    margin: 20px;
+    width: 20%;
+    height: 300px;
+    background-color: navajowhite;
+    color: #000000;
+    border-radius: 10%;
+    opacity: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-between;
+}
+
+button {
+    opacity: 0;
+}
+
+.quest:hover {
+    opacity: 1;
+    transition: all 1s ease;
+    color: black;
+}
+
+.quest:hover > button {
+    opacity: 1;
+    transition: all 1s ease;
+}
+
+/*-----------стили навигации----------------*/
+nav {
+    width: 95%;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    color: white;
+    border: 1px solid #EEEEEE;
+    background: none;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+nav a{
+    padding: 20px 30px;
+    margin: 10px 20px;
+    font-weight: 300;
+}
+
+button>a{
+    border: none;
+    color: #000000;
+    font-size: 20px;
+}
+
+button>a:hover{
+    text-decoration: none;
+    outline: none;
+    color: #a20100;
+}

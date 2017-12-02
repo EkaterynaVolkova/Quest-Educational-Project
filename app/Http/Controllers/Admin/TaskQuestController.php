@@ -14,7 +14,7 @@ class TaskQuestController extends Controller
     protected function add()
     {
         $tasks = Quest::find(1)->allTasks;
-        return view('Admin.addTask')->with('tasks',$tasks);
+        return view('Admin.addTask')->with('tasks', $tasks);
     }
 
     protected function create()
@@ -23,9 +23,7 @@ class TaskQuestController extends Controller
         $data['idQuest'] = Quest::find(1)->id;
         $task = Task::create($data);
         $task->save();
-        // $id=$quest->id;
-        // view();
-        return TaskQuestController::add(); //view('Admin.addTask');
+        return TaskQuestController::add();
 
     }
 

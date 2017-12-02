@@ -11,21 +11,18 @@ use Illuminate\Support\Facades\DB;
 
 class AdminTaskController extends Controller
 {
-    //сюда пока что поступают id нового созданного квеста (роут с
-    //Route::post('/create/quest', ['uses' => 'Admin\AdminQuestController@create', 'as' => 'post']);
-
-    //просмотр  существующих заданий для квеста
-    protected function viewTasks($idQuest)
+    //просмотр  существующих заданий для квеста с админки со страницы списка квестов
+    protected function adminViewTasks(Request $request)
     {
-
+        $idQuest = $request->input('id');
         $tasks = Quest::find($idQuest)->allTasks;
-        return view('Admin.viewTasks')->with(['tasks' => $tasks, 'idQuest' => $idQuest]);
+        return view('Admin.adminViewTasks', ['idQuest' => $idQuest])->with(['tasks' => $tasks]);
     }
 
     //переадресация на форму добавления нового задания
     protected function add($idQuest)
     {
-        return view('Admin.addTask')->with(['idQuest' => $idQuest]);
+        return view('Admin.addTask', ['idQuest' => $idQuest]);
     }
 
     //добавление задания в таблицу Tasks и роут на просмотр  существующих заданий для квеста (смотреть выше)
@@ -35,8 +32,43 @@ class AdminTaskController extends Controller
         $data['idQuest'] = $idQuest;
         $task = Task::create($data);
         $task->save();
-        return redirect()->route('viewTask', $idQuest);
+        $tasks = Quest::find($idQuest)->allTasks;
+        return view('Admin.adminViewTasks', ['idQuest' => $idQuest])->with(['tasks' => $tasks]);
+    }
+
+// редактирование квестов
+    protected function edit($id)
+    {
+        //$id = $request->input('id');
+        $task = Task::find($id);
+        return view('Admin.editTask', ['task' => $task]);
+    }
+
+    // Обновление задания
+    protected function update($id)
+    {
+        $data = Input::all();
+        $task = Task::find($id);
+        $task->name = $data['name'];
+        $task->description = $data['description'];
+        $task->duration = $data['duration'];
+        $task->weight = $data['weight'];
+        $task->QR = $data['QR'];
+        $task->save();
+        $idQuest = $task->idQuest;
+        $tasks = Quest::find($idQuest)->allTasks;
+        return view('Admin.adminViewTasks', ['idQuest' => $idQuest])->with(['tasks' => $tasks]);
 
     }
+
+    // Удаление квеста
+    protected function delete($id, $idQuest)
+    {
+        $task = Task::find($id);
+        $task->delete();
+        $tasks = Quest::find($idQuest)->allTasks;
+        return view('Admin.adminViewTasks', ['idQuest' => $idQuest])->with(['tasks' => $tasks]);
+    }
+
 
 }

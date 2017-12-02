@@ -9,12 +9,12 @@ class Task extends Model
     protected $table = 'tasks';
 
     protected $fillable = [
-        'idQuest', 'name', 'description', 'duration', 'weight', 'QR', 'dependancy'
+        'idQuest', 'name', 'description', 'duration', 'weight', 'QR', 'dependancy','id', 'created_at', 'updated_at'
     ];
 
 
     protected $guarded = array(
-        'id', 'created_at', 'updated_at'
+
 
     );
 

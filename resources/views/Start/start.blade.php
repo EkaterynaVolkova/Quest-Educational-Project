@@ -1,10 +1,10 @@
 @extends('layouts.dashboard')
 @section('style')
-    <link href={{ asset('css/stylesStart.css') }} rel="stylesheet">
+    {!!HTML::style('css/stylesStart.css')!!}
 @stop
 @section('content')
 
-    <div class="container">
+
         <header>
             <nav>
                 <ul class="nav masthead-nav">
@@ -20,7 +20,7 @@
             <h1 class="cover-heading">Cover your page.</h1>
             <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download,
                 edit the text, and add your own fullscreen background photo to make it your own.</p>
-            <p class="lead">
+            <p class="lead button">
                 <a href="users/view" class="btn btn-lg btn-default">GET STARTED</a>
             </p>
         </main>
@@ -29,6 +29,6 @@
             <p class="footer">C© 2017. Все права защищены</p>
         </footer>
 
-    </div>
+
 
 @stop
