@@ -1,8 +1,10 @@
-@extends('header')
-<link href={{ asset('css/stylesCQ.css') }} rel="stylesheet">
-</head>
-<body>
-<div class="container">
+@extends('layouts.dashboard')
+@section('style')
+    {!!HTML::style('css/stylesCreateQuest.css')!!}
+    {!!HTML::style('css/forms.css')!!}
+@stop
+@section('content')
+
     <h2>Новый Квест!</h2>
 
     <?php
@@ -23,6 +25,4 @@
     echo  Form::close();
 
     ?>
-</div>
-</body>
-</html>
+@stop

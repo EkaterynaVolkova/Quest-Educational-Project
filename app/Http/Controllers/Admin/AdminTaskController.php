@@ -11,13 +11,26 @@ use Illuminate\Support\Facades\DB;
 
 class AdminTaskController extends Controller
 {
-    //просмотр  существующих заданий для квеста с админки со страницы списка квестов
-    protected function adminViewTasks(Request $request)
+    //просмотр всех существующих заданий
+    protected function show()
     {
-        $idQuest = $request->input('id');
+        $tasks = Task::all();
+        return view('Admin.showAllTasks', ['tasks' => $tasks]);
+    }
+
+    //просмотр  существующих заданий для определённого квеста
+    protected function showByOne(Request $request)
+    {
+        $idQuest = $request->input('idQuest');
         $tasks = Quest::find($idQuest)->allTasks;
         return view('Admin.adminViewTasks', ['idQuest' => $idQuest])->with(['tasks' => $tasks]);
     }
+
+
+
+
+
+
 
     //переадресация на форму добавления нового задания
     protected function add($idQuest)
@@ -61,7 +74,7 @@ class AdminTaskController extends Controller
 
     }
 
-    // Удаление квеста
+    // Удаление задания определённого квеста
     protected function delete($id, $idQuest)
     {
         $task = Task::find($id);
@@ -69,6 +82,19 @@ class AdminTaskController extends Controller
         $tasks = Quest::find($idQuest)->allTasks;
         return view('Admin.adminViewTasks', ['idQuest' => $idQuest])->with(['tasks' => $tasks]);
     }
+// Удаление задания
+    protected function deleteTask($id)
+    {
+        $tasks = Task::find($id);
+        $tasks->delete();
+        //$tasks = Task::all();
+        //return view('Admin.showAllTasks', ['tasks' => $tasks]);
+        return redirect()->action(
+            'Admin\AdminTaskController@showAllTasks'
+        );
+    }
+
+
 
 
 }

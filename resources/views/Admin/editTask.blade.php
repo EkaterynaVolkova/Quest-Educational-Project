@@ -1,8 +1,10 @@
-@extends('header')
-<link href={{ asset('css/stylesAT.css') }} rel="stylesheet">
-</head>
-<body>
-<div class="container">
+@extends('layouts.dashboard')
+@section('style')
+    {!!HTML::style('css/stylesEditTask.css')!!}
+    {!!HTML::style('css/forms.css')!!}
+@stop
+@section('content')
+
     <h2>Редактирование Задачи!</h2>
 
     <?php
@@ -25,8 +27,4 @@
 
     ?>
 
-
-</div>
-</body>
-</html>
-
+@stop

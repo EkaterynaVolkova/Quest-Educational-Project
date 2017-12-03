@@ -1,8 +1,10 @@
-@extends('header')
-<link href={{ asset('css/stylesCQ.css') }} rel="stylesheet">
-</head>
-<body>
-<div class="container">
+@extends('layouts.dashboard')
+@section('style')
+    {!!HTML::style('css/stylesEditQuest.css')!!}
+    {!!HTML::style('css/forms.css')!!}
+@stop
+@section('content')
+
     <h2>Редактирование</h2>
 
     <?php
@@ -18,14 +20,12 @@
     echo Form::label('time', 'Время начала:') . Form::time('time', $quest->time);
     echo "<br>";
 
-    echo Form::submit('Добавить');
+    echo Form::submit('Edit');
 
     echo Form::token() . Form::close();
 
     ?>
-</div>
-</body>
-</html>
 
+    @stop
 
 

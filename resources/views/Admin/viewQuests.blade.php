@@ -8,10 +8,9 @@
     <header></header>
     <div class="row">
         <nav>
-            <a href="/html/">HTML</a>
-            <a href="/css/">CSS</a>
-            <a href="/js/">JavaScript</a>
-            <a href="/jquery/">jQuery</a>
+            <a href="{{route('showUsers')}}">Users</a>
+            <a href="{{route('showQuests')}}">Quests</a>
+            <a href="{{route('showTasks')}}">Tasks</a>
         </nav>
 
         <main>
@@ -42,7 +41,7 @@
                 echo Form::close();
                 echo Form::open(array('url' => route('viewTasksAdmin'), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
                 echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list"></span></button>';
-                echo Form::hidden('id', $value->id);
+                echo Form::hidden('idQuest', $value->id);
                 echo Form::close();
                 echo " </td>";
                 echo "</tr>";
