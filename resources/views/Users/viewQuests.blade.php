@@ -20,7 +20,7 @@
                 <div class="quest">
                     <h3 class="text-center">{!! $q->name !!}</h3>
                     <h3 class="text-center">{!! $q->date !!}</h3>
-                    <button class="btn btn-link"><a href="{{route('more')}}">More</a></button>
+                    <button class="btn btn-link"><a href="{{route('more', ['id'=>$q->id])}}">More</a></button>
                 </div>
             @endforeach
         </div>

@@ -1,0 +1,63 @@
+form {
+    z-index: 1;
+    margin: 0 auto;
+    background: #FFFFFF;
+    min-width: 300px;
+    padding: 45px;
+    text-align: center;
+    width: 60%;
+}
+
+form label {
+    font-family: "Roboto", sans-serif;
+    text-align: left;
+    width: 100%;
+    color: #000000;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 0 #000;
+    text-indent: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+ input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: white;
+    width: 100%;
+    border:  2px solid black;
+    margin: 0 0 15px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+
+form input:focus {
+    background: #e0ebff;
+    color: black;
+}
+
+
+/* Стили для кнопки */
+input[type=submit] {
+
+    width: 138px;
+    height: 44px;
+    float:right;
+    color: black;
+    border: 1px solid black;
+    background: none;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    margin-top: 20px;
+    letter-spacing: 2px;
+}
+input[type=submit]:hover {
+    border: 1px solid #000000;
+    text-shadow: #333333 0 1px 0;
+    background: #000000;
+    background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#98b2a4));
+    color: #fff;
+}

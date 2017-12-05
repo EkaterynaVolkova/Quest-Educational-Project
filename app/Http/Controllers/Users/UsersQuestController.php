@@ -14,9 +14,10 @@ class UsersQuestController extends Controller
         return view('Users.viewQuests', ['quests' => $quests]);
     }
 
-    public function more()
+    public function more($id)
     {
-        return view('Users.moreQuest');
+        $quest = Quest::find($id);
+        return view('Users.moreQuest', ['quest' => $quest]);
     }
 
 

@@ -32,17 +32,17 @@ Route::group(['prefix' => 'users', 'middleware' => ['web']], function () {
     //страничка с квестами (надо сделать только с доступными квестами)
     Route::get('/view', ['uses' => 'Users\UsersQuestController@view', 'as' => 'user_view_quest']);
     //Подробная информация о квесте (после нажатия на кнопку more)
-    Route::get('/more/quest', ['uses' => 'User\UsersQuestController@more', 'as' => 'more']);
+    Route::get('/more/quest/{id?}', ['uses' => 'Users\UsersQuestController@more', 'as' => 'more'])->where('id', '[0-9]+');
 });
 
 
-                                                        //Админка
+//Админка
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], function () {
     //КВЕСТЫ
     //просмотр существующего списка квестов:
     Route::get('show/quest/', ['uses' => 'Admin\AdminQuestController@show', 'as' => 'showQuests']);
-   //переадресация к форме добавления нового квеста:
+    //переадресация к форме добавления нового квеста:
     Route::get('/add/quest', ['uses' => 'Admin\AdminQuestController@add', 'as' => 'admin_add_quest']);
     //после нажатия кнопки - добавление нового квеста в БД и переадресация на страницу адзаний квеста:
     Route::post('/create/quest', ['uses' => 'Admin\AdminQuestController@create', 'as' => 'post']);
@@ -51,7 +51,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], fu
     //обновление квеста:
     Route::post('/update/Quest/{id?}', ['uses' => 'Admin\AdminQuestController@update', 'as' => 'edit']);
     //удаление квеста:
-    Route::get('delete/quest/{id?}', ['uses' => 'Admin\AdminQuestController@delete', 'as' => 'deleteQuest'])->where('id','[0-9]+');
+    Route::get('delete/quest/{id?}', ['uses' => 'Admin\AdminQuestController@delete', 'as' => 'deleteQuest'])->where('id', '[0-9]+');
 
     //ЗАДАНИЯ
     //*просмотр заданий для определённого квеста:
@@ -65,28 +65,41 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], fu
     //обновление задания в таблице после редактирования
     Route::post('/update/tasks/{id}', ['uses' => 'Admin\AdminTaskController@update', 'as' => 'updateTask']);
     //удаление задания:
-    Route::get('delete/tasks/{id?}', ['uses' => 'Admin\AdminTaskController@delete', 'as' => 'deleteTask'])->where('id','[0-9]+');
+    Route::get('delete/tasks/{id?}', ['uses' => 'Admin\AdminTaskController@delete', 'as' => 'deleteTask'])->where('id', '[0-9]+');
 
     //*просмотр всех существующих заданий:
     Route::get('show/all/tasks/', ['uses' => 'Admin\AdminTaskController@show', 'as' => 'showTasks']);
     //удаление любого задания:
-    Route::get('delete/task/{id?}', ['uses' => 'Admin\AdminTaskController@deleteTask', 'as' => 'deleteOneTask'])->where('id','[0-9]+');
+    Route::get('delete/task/{id?}', ['uses' => 'Admin\AdminTaskController@deleteTask', 'as' => 'deleteOneTask'])->where('id', '[0-9]+');
     //редактирование любого задания:
-    Route::get('edit/task/{id?}', ['uses' => 'Admin\AdminTaskController@editTask', 'as' => 'editOneTask'])->where('id','[0-9]+');
+    Route::get('edit/task/{id?}', ['uses' => 'Admin\AdminTaskController@editTask', 'as' => 'editOneTask'])->where('id', '[0-9]+');
     //обновление задания в таблице после редактирования
     Route::post('/update/task/{id}', ['uses' => 'Admin\AdminTaskController@updateTask', 'as' => 'updateOneTask']);
 
     //ПОЛЬЗОВАТЕЛИ
     //просмотр существующего списка пользователей:
-    Route::get('show/users/', ['uses' => 'Admin\AdminUsersController@show', 'as' => 'showUsers']);
+    // Route::get('show/users/', ['uses' => 'Admin\AdminUsersController@show', 'as' => 'showUsers']);
     //просмотр существующего списка пользователей:
-    Route::get('edit/users/{id?}', ['uses' => 'Admin\AdminUsersController@edit', 'as' => 'editUsers'])->where('id','[0-9]+');
+    //  Route::get('edit/users/{id?}', ['uses' => 'Admin\AdminUsersController@edit', 'as' => 'editUsers'])->where('id','[0-9]+');
     //просмотр существующего списка пользователей:
-    Route::get('delete/users/{id?}', ['uses' => 'Admin\AdminUsersController@delete', 'as' => 'deleteUsers'])->where('id','[0-9]+');
+    // Route::get('delete/users/{id?}', ['uses' => 'Admin\AdminUsersController@delete', 'as' => 'deleteUsers'])->where('id','[0-9]+');
 
-
-
+    //КОМАНДЫ
+    //просмотр существующего списка команд:
+    Route::get('show/teams/', ['uses' => 'Admin\AdminTeamsController@show', 'as' => 'showTeams']);
+    //редактирование команды:
+    Route::get('edit/team/{id?}', ['uses' => 'Admin\AdminTeamsController@edit', 'as' => 'editTeam'])->where('id', '[0-9]+');
+    //удаление команды:
+    Route::get('delete/team/{id?}', ['uses' => 'Admin\AdminTeamsController@delete', 'as' => 'deleteTeam'])->where('id', '[0-9]+');
+    //обновление команды в таблице после редактирования
+    Route::post('/update/task/{id}', ['uses' => 'Admin\AdminTeamsController@update', 'as' => 'updateTeam']);
+    //роут на форму создания новой команды:
+    Route::get('addTeam/', ['uses' => 'Admin\AdminTeamsController@add', 'as' => 'createTeam'])->where('id', '[0-9]+');
+    //занесение команды в таблицу
+    Route::post('/create/team/{id}', ['uses' => 'Admin\AdminTeamsController@create', 'as' => 'postTeam'])->where('id', '[0-9]+');
 });
+
+
 
 //для залогиненного пользователя
 
