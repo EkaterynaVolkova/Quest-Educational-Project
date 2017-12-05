@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('style')
-    {!!HTML::style('css/stylesCreateQuest.css')!!}
-    {!!HTML::style('css/forms.css')!!}
+    {!!HTML::style('css/Quests/CreateQuest.css')!!}
+    {!!HTML::style('css/AdminGeneral/forms.css')!!}
 @stop
 @section('content')
 

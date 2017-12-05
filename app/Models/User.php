@@ -24,7 +24,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-
+    'id'
     ];
 
     public function isAdmin() //1 - возвращает, если админ (указано в таблице поле role = 1

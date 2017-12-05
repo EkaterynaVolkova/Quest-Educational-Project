@@ -4,11 +4,10 @@ html, body {
 }
 
 body {
-    width: 100%;
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
 
 }
@@ -18,15 +17,18 @@ header, footer {
 }
 
 .row {
+    width: 100%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
+    justify-content: space-between;
+    padding-top: 50px;
 }
 
-
 main {
-    margin-left: 20px;
+    margin: 0 auto;
     width: 80%;
+    padding-right: 10px;
 }
 
 nav {
@@ -54,11 +56,4 @@ a, p.lead > a {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
-}
-
-table tr td:last-child {
-    border: none;
-    display: flex;
-    flex-wrap: nowrap;
-    background: white;
 }

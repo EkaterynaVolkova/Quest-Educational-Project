@@ -49,13 +49,14 @@
             <div class="masthead clearfix">
                 <div class="inner">
                     <h3 class="masthead-brand">Challenges ahead</h3>
-                    <nav>
+                   <nav>
                         <ul class="nav masthead-nav">
                             <li class="active"><a href="#">Home</a></li>
                             <li><a href="login">Login</a></li>
                             <li><a href="#">Challenges list</a></li>
                         </ul>
                     </nav>
+
                 </div>
             </div>
 

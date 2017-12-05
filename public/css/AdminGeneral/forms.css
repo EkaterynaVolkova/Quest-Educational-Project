@@ -1,19 +1,16 @@
 form {
-    position: relative;
     z-index: 1;
+    margin: 0 auto;
     background: #FFFFFF;
-    min-width: 360px;
-    margin: 0 auto 100px;
+    min-width: 300px;
     padding: 45px;
     text-align: center;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    width: 70%;
+    width: 60%;
 }
 
 form label {
     font-family: "Roboto", sans-serif;
     text-align: left;
-    margin-top: 20px;
     width: 100%;
     color: #000000;
     font-size: 12px;
@@ -24,34 +21,25 @@ form label {
     font-weight: 700;
     cursor: pointer;
 }
-
-.form input {
+ input {
     font-family: "Roboto", sans-serif;
     outline: 0;
-    background: #f2f2f2;
+    background: white;
     width: 100%;
-    border: 0;
+    border:  2px solid black;
     margin: 0 0 15px;
-    padding: 15px;
-    box-sizing: border-box;
+    padding: 10px;
     font-size: 14px;
 }
 
 
 form input:focus {
-    background: white;
+    background: #e0ebff;
     color: black;
 }
 
 
-input:focus {
-    background-color: rgba(0, 0, 0, 0.2);
-    -moz-box-shadow: 0 0 5px 1px rgba(255,255,255,.5);
-    -webkit-box-shadow: 0 0 5px 1px rgba(255,255,255,.5);
-    box-shadow: 0 0 5px 1px rgba(255,255,255,.5);
-    overflow: hidden;
-}
-/* Стили для кнопки отправить */
+/* Стили для кнопки */
 input[type=submit] {
 
     width: 138px;

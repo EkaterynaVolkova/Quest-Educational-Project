@@ -1,17 +1,18 @@
 @extends('layouts.dashboard')
 @section('style')
-    {!!HTML::style('css/stylesAdminViewQuests.css')!!}
-    {!!HTML::style('css/table.css')!!}
+    {!!HTML::style('css/Quests/adminViewQuests.css')!!}
+    {!!HTML::style('css/AdminGeneral/tables.css')!!}
+    {!!HTML::style('css/AdminGeneral/adminNav.css')!!}
 @stop
 @section('content')
 
-    <header></header>
+    <header>
+ @include('Admin.nav');
+    </header>
+
     <div class="row">
-        <nav>
-            <a href="{{route('showUsers')}}">Users</a>
-            <a href="{{route('showQuests')}}">Quests</a>
-            <a href="{{route('showTasks')}}">Tasks</a>
-        </nav>
+
+        @include('Admin.leftNav');
 
         <main>
             <h1>Список квестов</h1>
@@ -25,23 +26,20 @@
             echo "<tr><th>id</th><th>name</th><th>description</th><th>date</th><th>time</th></tr>";
             foreach ($quests as $key => $value) {
                 echo "<tr>";
-                echo "<td> " . $value->id . " </td>";
-                echo "<td> " . $value->name . " </td>";
-                echo "<td> " . $value->description . " </td>";
-                echo "<td> " . $value->date . " </td>";
-                echo "<td> " . $value->time . " </td>";
+                echo "<td> <div>" . $value->id . "</div> </td>";
+                echo "<td> <div>" . $value->name . "</div> </td>";
+                echo "<td class='description'> <div >" . $value->description . "</div> </td>";
+                echo "<td class='date'> <div>" . $value->date . "</div> </td>";
+                echo "<td> <div>" . $value->time . "</div> </td>";
                 echo "<td> ";
-                echo Form::open(array('url' => route('editQuest'), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
+                echo Form::open(array('url' => route('editQuest', $value->id), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
                 echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>';
-                echo Form::hidden('id', $value->id);
                 echo Form::close();
-                echo Form::open(array('url' => route('deleteQuest'), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
+                echo Form::open(array('url' => route('deleteQuest', $value->id), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
                 echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash"></span></button>';
-                echo Form::hidden('id', $value->id);
                 echo Form::close();
-                echo Form::open(array('url' => route('viewTasksAdmin'), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
+                echo Form::open(array('url' => route('showTasksByQuest', $value->id), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
                 echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-th-list"></span></button>';
-                echo Form::hidden('idQuest', $value->id);
                 echo Form::close();
                 echo " </td>";
                 echo "</tr>";

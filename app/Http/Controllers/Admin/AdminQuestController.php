@@ -10,17 +10,17 @@ use Illuminate\Support\Facades\DB;
 
 class AdminQuestController extends Controller
 {
-     // Открытие страницы с квестами
+    // Открытие страницы с квестами
     protected function show()
     {
         $quests = Quest::all();
-        return view('Admin.viewQuests', ['quests' => $quests]);
+        return view('Admin.Quest.viewQuests', ['quests' => $quests]);
     }
 
     // Открытие формы для создания квеста
     protected function add()
     {
-        return view('Admin.createQuest');
+        return view('Admin.Quest.createQuest');
     }
 
     protected function create()
@@ -28,16 +28,14 @@ class AdminQuestController extends Controller
         $data = Input::all();
         $quest = Quest::create($data);
         $quest->save();
-        $quests = Quest::all();
-        return view('Admin.viewQuests', ['quests' => $quests]);
+        return redirect()->action(  'Admin\AdminQuestController@show');
     }
 
 // редактирование квестов
-    protected function edit(Request $request)
+    protected function edit($id)
     {
-        $id = $request->input('id');
         $quest = Quest::find($id);
-        return view('Admin.editQuests', ['quest' => $quest]);
+        return view('Admin.Quest.editQuests', ['quest' => $quest]);
     }
 
     // Обновление квеста
@@ -50,39 +48,17 @@ class AdminQuestController extends Controller
         $quest->date = $data['date'];
         $quest->time = $data['time'];
         $quest->save();
-        return redirect()->action(
-            'Admin\AdminQuestController@show'
-        );
+        return redirect()->action('Admin\AdminQuestController@show');
     }
 
     // Удаление квеста
-    protected function delete(Request $request)
+    protected function delete($id)
     {
-        $id = $request->input('id');
         $quest = Quest::find($id);
         $quest->delete();
 
-        return redirect()->action(
-            'Admin\AdminQuestController@show'
-        );
+        return redirect()->action('Admin\AdminQuestController@show');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

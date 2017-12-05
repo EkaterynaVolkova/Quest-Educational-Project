@@ -1,12 +1,17 @@
 @extends('layouts.dashboard')
 @section('style')
-    {!!HTML::style('css/stylesAdminViewTask.css')!!}
-    {!!HTML::style('css/table.css')!!}
+    {!!HTML::style('css/Tasks/adminViewTask.css')!!}
+    {!!HTML::style('css/AdminGeneral/tables.css')!!}
+    {!!HTML::style('css/AdminGeneral/adminNav.css')!!}
 @stop
 
 @section('content')
 
-    <header></header>
+    <header>
+        @include('Admin.nav');
+    </header>
+
+
     <div class="row">
         <nav>
             <a href="{{route('showUsers')}}">Users</a>
@@ -20,22 +25,20 @@
 
         <?php
 
-
-        echo Form::open(array('url' => route('createTask',$idQuest), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
+        echo Form::open(array('url' => action('Admin\AdminTaskController@add', ['idQuest' => $idQuest]), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
         echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span></button>';
-        //echo Form::hidden('idQuest', $idQuest);
-        Form::close();
+        echo Form::close();
 
         echo "<table>";
         echo "<tr><th>id</th><th>name</th><th>description</th><th>duration</th><th>weight</th><th>QR</th></tr>";
         foreach ($tasks as $key => $value) {
             echo "<tr>";
-            echo "<td> " . $value->id . " </td>";
-            echo "<td> " . $value->name . " </td>";
-            echo "<td> " . $value->description . " </td>";
-            echo "<td> " . $value->duration . " </td>";
-            echo "<td> " . $value->weight . " </td>";
-            echo "<td> " . $value->QR . " </td>";
+            echo "<td> <div>" . $value->id . "</div> </td>";
+            echo "<td> <div class='name'>" . $value->name . "</div> </td>";
+            echo "<td> <div class='description'>" . $value->description . "</div> </td>";
+            echo "<td> <div>" . $value->duration . "</div> </td>";
+            echo "<td> <div>" . $value->weight . "</div> </td>";
+            echo "<td> <div>" . $value->QR . "</div> </td>";
 
             echo "<td> ";
             echo Form::open(array('url' => route('editTask', ['id'=>$value->id, 'idQuest'=>$idQuest]), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
