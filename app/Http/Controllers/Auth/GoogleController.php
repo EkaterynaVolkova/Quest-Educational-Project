@@ -1,34 +1,35 @@
 <?php
 
-namespace App\Http\Controllers;
 
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
-
-class SocialAuthFacebookController extends Controller
+class GoogleController extends Controller
 {
     /**
-     * Create a redirect method to facebook api.
+     * Redirect the user to the GitHub authentication page.
      *
-     * @return void
+     * @return Response
      */
-    public function redirect()
+    public function redirectToProvider()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('google')->redirect();
     }
 
     /**
-     * Return a callback method from facebook api.
+     * Obtain the user information from GitHub.
      *
-     * @return callback URL from facebook
+     * @return Response
      */
-    public function callback()
+    public function handleProviderCallback()
     {
-        $SocialUser = Socialite::driver('facebook')->stateless()->user();
+        $SocialUser = Socialite::driver('google')->stateless()->user();
 
         $data = [
             'social_id' => $SocialUser->id,
@@ -46,6 +47,6 @@ class SocialAuthFacebookController extends Controller
         }
 
         Auth::login($user, true);
-        return redirect()->back();
+        return redirect('/');
     }
 }
