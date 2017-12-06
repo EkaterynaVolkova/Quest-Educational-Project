@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Quest;
+use App\Models\Task;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 
@@ -28,7 +29,7 @@ class AdminQuestController extends Controller
         $data = Input::all();
         $quest = Quest::create($data);
         $quest->save();
-        return redirect()->action(  'Admin\AdminQuestController@show');
+        return redirect()->action('Admin\AdminQuestController@show');
     }
 
 // редактирование квестов
@@ -51,12 +52,13 @@ class AdminQuestController extends Controller
         return redirect()->action('Admin\AdminQuestController@show');
     }
 
-    // Удаление квеста
+    // Удаление квеста и его заданий
     protected function delete($id)
     {
-        $quest = Quest::find($id);
+        $quest = Quest::where('id', $id);
         $quest->delete();
-
+        $tasks = Task::where('idQuest', '=', $id);
+        $tasks->delete();
         return redirect()->action('Admin\AdminQuestController@show');
     }
 
