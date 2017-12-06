@@ -9,7 +9,7 @@
 
     <?php
     echo "<br>";
-    echo Form::open(array('url' => route('updateOneTask', $task), 'method' => 'post', 'role' => 'form', 'class' => 'form-vertical'));
+    echo Form::open(array('url' => route('updateTask', $task), 'method' => 'post', 'role' => 'form', 'class' => 'form-vertical'));
 
     echo Form::label('name', 'Название') . Form::text('name', $task->name);
     echo "<br>";

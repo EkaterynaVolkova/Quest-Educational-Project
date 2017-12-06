@@ -49,7 +49,7 @@ class AdminTaskController extends Controller
     }
 
     // Обновление задания  в таблице
-    protected function update($id)
+    protected function updateTask($id)
     {
         $data = Input::all();
         $task = Task::find($id);
@@ -90,7 +90,7 @@ class AdminTaskController extends Controller
     }
 
     // Обновление задания  в таблице
-    protected function updateTask($id)
+    protected function update($id)
     {
         $data = Input::all();
         $task = Task::find($id);

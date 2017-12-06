@@ -96,7 +96,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], fu
     //роут на форму создания новой команды:
     Route::get('addTeam/', ['uses' => 'Admin\AdminTeamsController@add', 'as' => 'createTeam'])->where('id', '[0-9]+');
     //занесение команды в таблицу
-    Route::post('/create/team/{id}', ['uses' => 'Admin\AdminTeamsController@create', 'as' => 'postTeam'])->where('id', '[0-9]+');
+    Route::post('/create/team/', ['uses' => 'Admin\AdminTeamsController@create', 'as' => 'postTeam'])->where('id', '[0-9]+');
 });
 
 

@@ -5,15 +5,17 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Team;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class AdminTeamsController extends Controller
 {
+    //просмотр всех существующих команд
     public function show()
     {
         $teams = Team::all();
         return view('Admin.Teams.viewTeams', ['teams' => $teams]);
     }
-
 
     //переадресация на форму добавления новой команды
     protected function add()
@@ -21,17 +23,15 @@ class AdminTeamsController extends Controller
         return view('Admin.Teams.addTeam');
     }
 
-
-
-
-    //добавление задания для квеста в таблицу tasks
-    protected function create($idQuest)
+    //добавление команды в таблицу teams
+    protected function create()
     {
         $data = Input::all();
-        $data['idQuest'] = $idQuest;
-        $task = Task::create($data);
+        $task = Team::create($data);
         $task->save();
-        return redirect()->action('Admin\AdminTaskController@showByOne', ['idQuest' => $idQuest]);
+        return redirect()->action('Admin\AdminTeamsController@show');
     }
+
+
 
 }
