@@ -1,17 +1,17 @@
 @extends('layouts.dashboard')
 @section('style')
-    {!!HTML::style('css/Teams/showTeams.css')!!}
+    {!!HTML::style('css/Admin/adminShowTeams.css')!!}
     {!!HTML::style('css/AdminGeneral/tables.css')!!}
     {!!HTML::style('css/AdminGeneral/adminNav.css')!!}
 @stop
 
 @section('content')
 
-    <header>
-        @include('Admin.nav');
-    </header>
+        <header>
+            @include('Admin.nav');
+        </header>
 
-    <div class="row">
+        <div class="row">
 
         @include('Admin.leftNav');
 

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('style')
-    {!!HTML::style('css/Quests/userViewQuests.css')!!}
-    {!!HTML::style('css/User/headerNav.css')!!}
+    {!!HTML::style('css/User/userViewQuests.css')!!}
+    {!!HTML::style('css/UserGeneral/headerNav.css')!!}
 @stop
 @section('content')
 

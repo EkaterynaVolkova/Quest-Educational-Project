@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('style')
-    {!!HTML::style('css/Quests/adminViewQuests.css')!!}
+    {!!HTML::style('css/Admin/adminViewQuests.css')!!}
     {!!HTML::style('css/AdminGeneral/tables.css')!!}
     {!!HTML::style('css/AdminGeneral/adminNav.css')!!}
 @stop
