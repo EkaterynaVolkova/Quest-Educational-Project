@@ -8,7 +8,8 @@ use App\Models\User;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
 
-class AdminUsersController extends Controller{
+class AdminUsersController extends Controller
+{
 
     // Открытие страницы с пользователями
     protected function show()
@@ -17,4 +18,13 @@ class AdminUsersController extends Controller{
         return view('Admin.User.viewUsers', ['users' => $users]);
     }
 
+    protected function admin($id)
+    {
+        $user = User::find($id);
+        if ($user->role == 0) {
+            $user->role = 1;
+        } else  $user->role = 0;
+        $user->save();
+        return redirect()->action('Admin\AdminUsersController@show');
+    }
 }

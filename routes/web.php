@@ -78,11 +78,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], fu
 
     //ПОЛЬЗОВАТЕЛИ
     //просмотр существующего списка пользователей:
-    // Route::get('show/users/', ['uses' => 'Admin\AdminUsersController@show', 'as' => 'showUsers']);
-    //просмотр существующего списка пользователей:
-    //  Route::get('edit/users/{id?}', ['uses' => 'Admin\AdminUsersController@edit', 'as' => 'editUsers'])->where('id','[0-9]+');
-    //просмотр существующего списка пользователей:
-    // Route::get('delete/users/{id?}', ['uses' => 'Admin\AdminUsersController@delete', 'as' => 'deleteUsers'])->where('id','[0-9]+');
+     Route::get('show/users/', ['uses' => 'Admin\AdminUsersController@show', 'as' => 'showUsers']);
+    //назначение админа:
+      Route::get('edit/users/{id?}', ['uses' => 'Admin\AdminUsersController@admin', 'as' => 'isAdmin'])->where('id','[0-9]+');
+
 
     //КОМАНДЫ
     //просмотр существующего списка команд:

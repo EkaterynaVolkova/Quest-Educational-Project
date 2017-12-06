@@ -32,6 +32,28 @@ class AdminTeamsController extends Controller
         return redirect()->action('Admin\AdminTeamsController@show');
     }
 
+// редактирование команды
+    protected function edit($id)
+    {
+        $team = Team::find($id);
+        return view('Admin.Teams.editTeam', ['team' => $team]);
+    }
 
+    // Обновление команды
+    protected function update($id)
+    {
+        $data = Input::all();
+        $team  = Team::find($id);
+        $team->name = $data['name'];
+        $team->save();
+        return redirect()->action('Admin\AdminTeamsController@show');
+    }
 
+    // Удаление команды
+    protected function delete($id)
+    {
+        $team = Team::find($id);
+        $team->delete();
+        return redirect()->action('Admin\AdminTeamsController@show');
+            }
 }
