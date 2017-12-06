@@ -16,9 +16,12 @@ class UsersQuestController extends Controller
 
     public function more($id)
     {
-        $quest = Quest::find($id);
-        return view('Users.moreQuest', ['quest' => $quest]);
+        $q= Quest::find($id);
+         return view('Users.moreQuest')->with(['q' => $q]);
     }
 
+    protected function play($id){
 
+        return view('Users.usersTeamsQuest');
+    }
 }

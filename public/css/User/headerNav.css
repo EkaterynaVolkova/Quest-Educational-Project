@@ -1,0 +1,28 @@
+nav {
+    width: 95%;
+}
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    color: white;
+    border: 1px solid #EEEEEE;
+    background: none;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+nav a{
+    padding: 20px 30px;
+    margin: 10px 20px;
+    font-weight: 300;
+}
+

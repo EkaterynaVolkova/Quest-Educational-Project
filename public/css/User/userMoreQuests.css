@@ -1,0 +1,53 @@
+body {
+    width: 100%;
+    background: black;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: flex-start;
+    width: 95%;
+    margin: 0 auto;
+}
+div.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+}
+div.column1, div.column2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-between;
+    color:white;
+    border: 1px solid white;
+    width: 50%;
+    min-height: 500px;
+}
+
+
+button>a{
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    padding: 20px 30px;
+    margin: 10px 20px;
+    position: relative;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, .4);
+    background: none;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h3.name {
+    font-size: 40px;
+}
+p.date, p.time {
+    font-size: 30px;
+}
