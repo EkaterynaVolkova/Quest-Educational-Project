@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Users;
 
 use App\Models\Quest;
+use App\Models\Team;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -21,7 +22,13 @@ class UsersQuestController extends Controller
     }
 
     protected function play($id){
+       $team =Team::all();
+       return view('Users.usersTeamsQuest')->with( ['idQuest'=> $id, 'team' => $team]);
+    }
 
-        return view('Users.usersTeamsQuest');
+    protected function ok(Request $request){
+        dd($request);
+        //$team =Team::all();
+      //  return view('Users.usersTeamsQuest')->with( ['idQuest'=> $id, 'team' => $team]);
     }
 }

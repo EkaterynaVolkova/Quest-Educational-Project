@@ -29,7 +29,7 @@ div.column1, div.column2 {
 }
 
 
-button>a{
+button>span{
     text-decoration: none;
     outline: none;
     display: inline-block;

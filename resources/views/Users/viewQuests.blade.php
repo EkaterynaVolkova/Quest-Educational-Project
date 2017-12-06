@@ -2,6 +2,7 @@
 @section('style')
     {!!HTML::style('css/Quests/userViewQuests.css')!!}
     {!!HTML::style('css/User/headerNav.css')!!}
+@stop
 @section('content')
 
     <header>
