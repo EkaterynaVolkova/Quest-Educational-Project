@@ -22,7 +22,7 @@ header, footer {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
-    padding-top: 50px;
+    padding-top: 5%;
 }
 
 main {
@@ -42,14 +42,14 @@ nav {
 
 }
 
-a, p.lead > a {
+a {
+    color: black;
     text-decoration: none;
     outline: none;
     display: inline-block;
     padding: 20px 30px;
     margin: 10px 20px;
     position: relative;
-    color: white;
     border: 1px solid rgba(255, 255, 255, .4);
     background: none;
     font-weight: 300;

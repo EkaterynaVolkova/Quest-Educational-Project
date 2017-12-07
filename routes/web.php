@@ -13,9 +13,9 @@
 
 //-----------------------------
 
-Route::get('/', ['uses' => 'HomeController@start', 'as' => 'start']);
+Route::get('/', ['uses' => 'IndexController@start', 'as' => 'start']);
 Route::get('/home', ['uses' => 'HomeController@index', 'as' => 'home']);
-Route::get('public/login', ['uses' => 'HomeController@login', 'as' => 'login']);
+Route::get('public/login', ['uses' => 'IndexController@login', 'as' => 'login']);
 
 Route::get('google', ['uses' => 'Auth.GoogleController@redirectToProvider', 'as' => 'google']);
 Route::get('google/callback', 'Auth.GoogleController@handleProviderCallback');
@@ -39,6 +39,7 @@ Route::group(['prefix' => 'users', 'middleware' => ['web']], function () {
 //Админка
 
 Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], function () {
+    Route::get('/', ['uses' => 'Admin\AdminController@show', 'as' => 'admin']);
     //КВЕСТЫ
     //просмотр существующего списка квестов:
     Route::get('show/quest/', ['uses' => 'Admin\AdminQuestController@show', 'as' => 'showQuests']);

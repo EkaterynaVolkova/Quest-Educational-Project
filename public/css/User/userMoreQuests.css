@@ -23,31 +23,56 @@ div.column1, div.column2 {
     justify-content: center;
     align-content: space-between;
     color:white;
-    border: 1px solid white;
     width: 50%;
     min-height: 500px;
 }
 
+div.column1 {
+    background: url("http://quest/public/img/kvest.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-button>span{
+button{
     text-decoration: none;
-    outline: none;
-    display: inline-block;
-    padding: 20px 30px;
-    margin: 10px 20px;
-    position: relative;
+    padding: 15px;
+    margin-left: 5px;
     color: white;
-    border: 1px solid rgba(255, 255, 255, .4);
+    border: 2px solid rgba(255, 255, 255, .4);
     background: none;
     font-weight: 300;
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
-
-h3.name {
-    font-size: 40px;
+button:hover{
+    background-color:white;
+    color: #161663;
 }
-p.date, p.time {
-    font-size: 30px;
+
+.column2 div>h1 {
+    width:  auto;
+    max-width:170px;
+    height: 30px;
+    background-color: #c48866;
+    color: white;
+    margin: 10px 0 5px 15px;
+    font-size: 20px;
+  }
+.column2 div>p {
+    width: 95%;
+    margin:0 auto;
+    height: 50px;
+    max-height: 50px;
+    background-color: white;
+    color: black;
+    font-size: 20px;
+}
+
+div.description{
+    height: 150px;
+}
+
+div.description p{
+    height: 150px;
 }

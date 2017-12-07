@@ -14,7 +14,7 @@
 
     echo "<br>";
 
-    echo Form::submit('Добавить');
+    echo Form::submit('Add');
 
     echo  Form::close();
 

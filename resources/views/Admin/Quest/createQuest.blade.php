@@ -19,7 +19,7 @@
     echo Form::label('time', 'Время начала:') . Form::time('time');
     echo "<br>";
 
-    echo Form::submit('Добавить');
+    echo Form::submit('Add');
 
     echo  Form::close();
 

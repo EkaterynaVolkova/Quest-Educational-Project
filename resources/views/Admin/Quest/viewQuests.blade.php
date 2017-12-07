@@ -3,6 +3,7 @@
     {!!HTML::style('css/Admin/adminViewQuests.css')!!}
     {!!HTML::style('css/AdminGeneral/tables.css')!!}
     {!!HTML::style('css/AdminGeneral/adminNav.css')!!}
+    {!!HTML::style('css/AdminGeneral/adminBody.css')!!}
 @stop
 @section('content')
 

@@ -20,7 +20,7 @@
     echo "<br>";
     echo Form::label('QR', 'Текст для QR-кода:') . Form::text('QR', $task->QR);
     echo "<br>";
-    echo Form::submit('Применить');
+    echo Form::submit('Edit');
     Form::close();
 
     ?>

@@ -13,7 +13,7 @@
     echo Form::label('name', 'Название') . Form::text('name', $team->name);
     echo "<br>";
 
-    echo Form::submit('Применить');
+    echo Form::submit('Edit');
 
     echo Form::token().Form::close();
 

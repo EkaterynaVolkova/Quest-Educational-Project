@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('style')
-    {!!HTML::style('css/User/showUsers.css')!!}
     {!!HTML::style('css/AdminGeneral/tables.css')!!}
+    {!!HTML::style('css/AdminGeneral/adminBody.css')!!}
     {!!HTML::style('css/AdminGeneral/adminNav.css')!!}
 @stop
 
