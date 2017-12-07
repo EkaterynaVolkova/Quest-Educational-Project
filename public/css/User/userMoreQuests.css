@@ -33,23 +33,6 @@ div.column1 {
     background-size: cover;
 }
 
-button{
-    text-decoration: none;
-    padding: 15px;
-    margin-left: 5px;
-    color: white;
-    border: 2px solid rgba(255, 255, 255, .4);
-    background: none;
-    font-weight: 300;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-button:hover{
-    background-color:white;
-    color: #161663;
-}
-
 .column2 div>h1 {
     width:  auto;
     max-width:170px;
@@ -75,4 +58,10 @@ div.description{
 
 div.description p{
     height: 150px;
+}
+
+button a:hover {
+    background-color: white;
+    color: #22156c;
+    text-decoration: none
 }

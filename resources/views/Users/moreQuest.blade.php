@@ -33,14 +33,11 @@
                 </div>
 
                 <p>
-                    <?php
-                    echo Form::open(array('url' => route('play', ['id' => $q->id]), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
-                    echo '<button type="submit">Учавствовать</button>';
-                    echo Form::close();
-                    ?>
+                    <button class="btn btn-link"><a href="{{route('play', ['id'=>$q->id])}}">Play</a></button>
                 </p>
 
             </div>
+        </div>
     </main>
 
     <footer></footer>

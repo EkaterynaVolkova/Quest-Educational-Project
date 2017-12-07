@@ -4,8 +4,11 @@ namespace App\Http\Controllers\Users;
 
 use App\Models\Quest;
 use App\Models\Team;
+use App\Models\UserTeamQuest;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Auth;
 
 class UsersQuestController extends Controller
 {
@@ -26,9 +29,13 @@ class UsersQuestController extends Controller
        return view('Users.usersTeamsQuest')->with( ['idQuest'=> $id, 'team' => $team]);
     }
 
-    protected function ok(Request $request){
-        dd($request);
-        //$team =Team::all();
-      //  return view('Users.usersTeamsQuest')->with( ['idQuest'=> $id, 'team' => $team]);
+    protected function ok($id){
+        $d = Input::all();
+        $data['idTeam'] =$d['input'];
+        $data['idUser'] = Auth::user()->id;
+        $data['idQuest'] = $id;
+        $ok = UserTeamQuest::create($data);
+        $ok->save();
+        return view('Users.usersQuestProfile');
     }
 }

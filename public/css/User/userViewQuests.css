@@ -41,3 +41,8 @@ button {
     transition: all 1s ease;
 }
 
+button a:hover {
+    background-color: white;
+    color: black;
+    text-decoration: none
+}

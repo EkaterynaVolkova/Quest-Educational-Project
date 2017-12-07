@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class UserTeamQuest extends Authenticatable
 {
+    protected $table = 'userTeamQuests';
+
     use Notifiable;
 
     /**

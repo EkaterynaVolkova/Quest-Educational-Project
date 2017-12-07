@@ -14,20 +14,19 @@
         <p> Вы пользователь с id {{Auth::user()->id}}</p>
 
         <?php
-        echo Form::open(array('url' => route('ok',['idQuest' => $idQuest ]), 'method' => 'post', 'role' => 'form', 'class' => 'form-vertical'));
+        echo Form::open(array('url' => route('ok',['idQuest' => $idQuest]), 'method' => 'post', 'role' => 'form', 'class' => 'form-vertical'));
         ?>
-        <label for="select"> Выбирайте вашу команду: )))</label> <select id="select">;
+        <label for="select"> Выбирайте вашу команду: )))</label> <select id="select" onchange="document.querySelector('#input').value =this.options[this.selectedIndex].value;" >;
             @foreach($team as $value)
-                <option class="text-center">
-                    {!! $value->id !!}{!! $value->name !!}
+                <option name="option" id="option" value="{!! $value->id !!}">
+                {!! $value->name !!}
                 </option>
             @endforeach
-        </select>
-        <input type="hidden" id="input">
-        <script>document.querySelector('#input').value = document.querySelector('option').value;</script>
-
+            </select>
+        <input type="hidden" id="input" name="input">
+        <script>document.querySelector('#input').value = document.querySelector('#option').value</script>
         <button type="submit" class="btn btn-link"><span>Выбрать</span></button>
-        ;
+
         <?php
         echo Form::close();
         ?>
