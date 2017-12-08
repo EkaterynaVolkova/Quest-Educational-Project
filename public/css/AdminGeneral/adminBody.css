@@ -57,3 +57,7 @@ a {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+
+button a{
+    border: 1px solid black;
+}

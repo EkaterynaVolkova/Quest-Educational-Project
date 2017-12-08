@@ -17,11 +17,15 @@
 
         <main>
             <h1>Список квестов</h1>
+
+            <button class="btn btn-link"><a href="{{route('admin_add_quest')}}" class="glyphicon glyphicon-plus"></a></button>
+
             <?php
 
-            echo Form::open(array('url' => route('admin_add_quest'), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
-            echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span></button>';
-            echo Form::close();
+
+          //  echo Form::open(array('url' => route('admin_add_quest'), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
+         //   echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span></button>';
+         //   echo Form::close();
 
             echo "<table>";
             echo "<tr><th>id</th><th>name</th><th>description</th><th>date</th><th>time</th></tr>";
