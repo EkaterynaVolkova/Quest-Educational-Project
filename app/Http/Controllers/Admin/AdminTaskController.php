@@ -100,7 +100,7 @@ class AdminTaskController extends Controller
         $task->weight = $data['weight'];
         $task->QR = $data['QR'];
         $task->save();
-        return redirect()->action('Admin\AdminTaskController@show');
+        return redirect()->route('showTasks');
     }
 
 

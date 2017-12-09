@@ -17,7 +17,7 @@
 
         <main>
 
-            <h1>Роли Пользователей</h1>
+            <h1>Пользователи</h1>
 
             <?php
             echo "<table>";
@@ -31,10 +31,12 @@
                 echo "<td> <div>" . $value->role . "</div> </td>";
 
                 echo "<td>";
+            ?>
+            <submit class="btn btn-default btn-sm"><a
+                        href="{{route('isAdmin', ['id' => $value->id])}}"
+                        class="glyphicon glyphicon-user"></a></submit>
 
-                echo Form::open(array('url' => route('isAdmin', ['id' => $value->id]), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
-                echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-user"></span></button>';
-                echo Form::close();
+            <?php
 
                 echo " </td>";
                 echo "</tr>";

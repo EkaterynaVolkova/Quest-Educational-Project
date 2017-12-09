@@ -1,0 +1,104 @@
+body {
+    background: #000000;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-content: space-between;
+}
+form {
+
+    margin: 0 auto;
+    background: none;
+    min-width: 300px;
+    padding: 45px;
+    text-align: center;
+    width: 60%;
+}
+
+form label {
+    font-family: "Roboto", sans-serif;
+    text-align: left;
+    width: 100%;
+    color: #e0ebff;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 1px 0 #e0ebff;
+    text-indent: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+input {
+    font-family: "Roboto", sans-serif;
+    outline: 0;
+    background: #ffffff;
+    width: 100%;
+    border:  2px solid #e0ebff;
+    margin: 0 0 15px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+
+form input:focus {
+    background: #ffffff;
+    color: #000000;
+}
+
+
+/* Стили для кнопки */
+input[type=submit] {
+
+    width: 138px;
+    height: 44px;
+    float:right;
+    color: #e0ebff;
+    border: 1px solid #ffffff;
+    background: none;
+    font-weight: 300;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    margin-top: 20px;
+    letter-spacing: 2px;
+}
+input[type=submit]:hover {
+    border: 1px solid #ffffff;
+    text-shadow: #333333 0 1px 0;
+    background: #ffffff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#98b2a4));
+    color: #000000;
+}
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+
+}
+
+.contact_info{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+

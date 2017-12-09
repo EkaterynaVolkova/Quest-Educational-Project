@@ -8,11 +8,11 @@
 
 @section('content')
 
-        <header>
-            @include('Admin.nav');
-        </header>
+    <header>
+        @include('Admin.nav');
+    </header>
 
-        <div class="row">
+    <div class="row">
 
         @include('Admin.leftNav');
 
@@ -20,31 +20,32 @@
 
             <h1>Список команд</h1>
 
-            <?php
+            <submit class="btn btn-default btn-sm"><a
+                        href="{{route('createTeam')}}"
+                        class="glyphicon glyphicon-plus"></a></submit>
 
-            echo Form::open(array('url' => route('createTeam'), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
-            echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-plus"></span></button>';
-            echo Form::close();
+            <?php
 
             echo "<table>";
             echo "<tr><th>id</th><th>name</th><th>created_at</th><th>updated_at</th></tr>";
             foreach ($teams as $key => $value) {
-                echo "<tr>";
-                echo "<td> <div>" . $value->id . "</div>  </td>";
-                echo "<td> <div>" . $value->name . "</div> </td>";
-                echo "<td> <div>" . $value->created_at . "</div>  </td>";
-                echo "<td> <div>" . $value->updated_at . "</div> </td>";
-                echo "<td>";
+            echo "<tr>";
+            echo "<td> <div>" . $value->id . "</div>  </td>";
+            echo "<td> <div>" . $value->name . "</div> </td>";
+            echo "<td> <div>" . $value->created_at . "</div>  </td>";
+            echo "<td> <div>" . $value->updated_at . "</div> </td>";
+            echo "<td>";
+            ?>
+            <submit class="btn btn-default btn-sm"><a
+                        href="{{route('editTeam', ['id' => $value->id])}}"
+                        class="glyphicon glyphicon-pencil"></a></submit>
+            <submit class="btn btn-default btn-sm"><a
+                        href="{{route('deleteTeam', ['id' => $value->id])}}"
+                        class="glyphicon glyphicon-trash"></a></submit>
+            <?php
 
-                echo Form::open(array('url' => route('editTeam', ['id' => $value->id]), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
-                echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-pencil"></span></button>';
-                echo Form::close();
-
-                echo Form::open(array('url' => route('deleteTeam', ['id' => $value->id]), 'method' => 'get', 'role' => 'form', 'class' => 'form-vertical'));
-                echo '<button type="submit" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-trash"></span></button>';
-                echo Form::close();
-                echo " </td>";
-                echo "</tr>";
+            echo " </td>";
+            echo "</tr>";
             }
             echo "</table>";
             ?>

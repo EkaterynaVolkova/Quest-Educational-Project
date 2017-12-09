@@ -31,33 +31,8 @@ main {
     padding-right: 10px;
 }
 
-nav {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    color: black;
-    width: 20%;
-
-}
-
-a {
-    color: black;
+main a, main a:hover {
+    color:black;
     text-decoration: none;
-    outline: none;
-    display: inline-block;
-    padding: 20px 30px;
-    margin: 10px 20px;
-    position: relative;
-    border: 1px solid rgba(255, 255, 255, .4);
-    background: none;
-    font-weight: 300;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
 }
 
-button a{
-    border: 1px solid black;
-}

@@ -36,6 +36,10 @@ class UsersQuestController extends Controller
         $data['idQuest'] = $id;
         $ok = UserTeamQuest::create($data);
         $ok->save();
+        return action('Users.UserQuestController@showTasksFromQuest');
+    }
+
+    protected function showTasksFromQuest($idUser){
         return view('Users.usersQuestProfile');
     }
 }

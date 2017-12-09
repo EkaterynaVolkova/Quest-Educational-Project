@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('style')
-       {!!HTML::style('css/forms.css')!!}
+    {!!HTML::style('css/AdminGeneral/forms.css')!!}
 @stop
 @section('content')
 
