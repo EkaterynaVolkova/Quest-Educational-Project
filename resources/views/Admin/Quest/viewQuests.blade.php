@@ -22,12 +22,13 @@
                                                       class="glyphicon glyphicon-plus"></a></submit>
             <?php
             echo "<table>";
-            echo "<tr><th>id</th><th>name</th><th>description</th><th>date</th><th>time</th></tr>";
+            echo "<tr><th>id</th><th>name</th><th>description</th><th>fullDescription</th><th>date</th><th>time</th></tr>";
             foreach ($quests as $key => $value) {
             echo "<tr>";
             echo "<td> <div>" . $value->id . "</div> </td>";
             echo "<td> <div>" . $value->name . "</div> </td>";
             echo "<td class='description'> <div >" . $value->description . "</div> </td>";
+            echo "<td class='description'> <div >" . $value->fullDescription . "</div> </td>";
             echo "<td class='date'> <div>" . $value->date . "</div> </td>";
             echo "<td> <div>" . $value->time . "</div> </td>";
             echo "<td> ";

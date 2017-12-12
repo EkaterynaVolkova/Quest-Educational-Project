@@ -11,6 +11,18 @@ use Illuminate\Support\Facades\DB;
 
 class AdminTaskController extends Controller
 {
+
+    protected function generateCode($length = 8){
+        $chars = 'abdefhiknrstyzABDEFGHKNQRSTYZ23456789';
+        $numChars = strlen($chars);
+        $string = '';
+        for ($i = 0; $i < $length; $i++) {
+            $string .= substr($chars, rand(1, $numChars) - 1, 1);
+        }
+        return $string;
+    }
+
+
     //просмотр всех существующих заданий
     protected function show()
     {
@@ -37,6 +49,7 @@ class AdminTaskController extends Controller
         $data = Input::all();
         $data['idQuest'] = $idQuest;
         $task = Task::create($data);
+        $task->QR = $this->generateCode(8);
         $task->save();
         return redirect()->action('Admin\AdminTaskController@showByOne', ['idQuest' => $idQuest]);
     }
@@ -57,7 +70,7 @@ class AdminTaskController extends Controller
         $task->description = $data['description'];
         $task->duration = $data['duration'];
         $task->weight = $data['weight'];
-        $task->QR = $data['QR'];
+       /* $task->QR = $this->generateCode(8);*/
         $task->save();
         $idQuest = $task->idQuest;
         return redirect()->action('Admin\AdminTaskController@showByOne', ['idQuest' => $idQuest]);
@@ -98,10 +111,8 @@ class AdminTaskController extends Controller
         $task->description = $data['description'];
         $task->duration = $data['duration'];
         $task->weight = $data['weight'];
-        $task->QR = $data['QR'];
         $task->save();
         return redirect()->route('showTasks');
     }
 
-
-}
+ }

@@ -1,12 +1,13 @@
 @extends('layouts.dashboard')
 @section('style')
     {!!HTML::style('css/User/userContact.css')!!}
+    {!!HTML::style('css/UserGeneral/headerNav.css')!!}
 @stop
 
 
 @section('content')
     <header>
-        @include('Admin.nav');
+        @include('Users.General.headerNav')
     </header>
 
     <h1>ОБРАТНАЯ СВЯЗЬ</h1>

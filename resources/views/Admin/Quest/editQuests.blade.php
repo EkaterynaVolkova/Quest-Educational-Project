@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('style')
-      {!!HTML::style('css/forms.css')!!}
+      {!!HTML::style('css/AdminGeneral/forms.css')!!}
 @stop
 @section('content')
 
@@ -13,6 +13,8 @@
     echo Form::label('name', 'Название') . Form::text('name', $quest->name);
     echo "<br>";
     echo Form::label('description', 'Описание') . Form::text('description', $quest->description);
+    echo "<br>";
+    echo Form::label('fullDescription', 'Полное описание') . Form::text('fullDescription', $quest->fullDescription);
     echo "<br>";
     echo Form::label('date', 'Дата проведения:') . Form::date('date', $quest->date);
     echo "<br>";

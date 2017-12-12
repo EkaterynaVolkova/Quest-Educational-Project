@@ -7,14 +7,20 @@ body {
     justify-content: center;
     align-content: space-between;
 }
-form {
 
-    margin: 0 auto;
+header{
+    width: 100%;
+}
+
+form {
     background: none;
     min-width: 300px;
-    padding: 45px;
-    text-align: center;
-    width: 60%;
+    margin-left: 5%;
+    width: 80%;
+    color: black;
+    display: flex; 
+    flex-direction:column;
+    align-items:center;
 }
 
 form label {
@@ -31,19 +37,20 @@ form label {
     cursor: pointer;
 }
 
-input {
+input, textarea {
     font-family: "Roboto", sans-serif;
     outline: 0;
     background: #ffffff;
-    width: 100%;
+    width: 60%;
     border:  2px solid #e0ebff;
     margin: 0 0 15px;
     padding: 10px;
     font-size: 14px;
+    color: black;
 }
 
 
-form input:focus {
+form input:focus, textarea {
     background: #ffffff;
     color: #000000;
 }
@@ -89,16 +96,23 @@ body {
 }
 
 .contact_info{
+    width: 100%;
+    margin-top: 5%;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-}
+    align-items: flex-start;
+
+  }
+
 
 .detail{
+    width: 20%;
+    margin-left: 5%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: c;
 }
+
 

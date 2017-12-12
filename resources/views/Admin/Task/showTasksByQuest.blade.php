@@ -19,7 +19,7 @@
 
         <main>
 
-            <h1>Список заданий</h1>
+            <h1>Список заданий для квеста с id = {!! $idQuest !!}</h1>
             <submit class="btn btn-default btn-sm"><a
                         href="{{action('Admin\AdminTaskController@add', ['idQuest' => $idQuest])}}"
                         class="glyphicon glyphicon-plus"></a></submit>

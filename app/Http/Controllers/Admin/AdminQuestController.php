@@ -46,6 +46,7 @@ class AdminQuestController extends Controller
         $quest = Quest::find($id);
         $quest->name = $data['name'];
         $quest->description = $data['description'];
+        $quest->fullDescription = $data['fullDescription'];
         $quest->date = $data['date'];
         $quest->time = $data['time'];
         $quest->save();

@@ -12,13 +12,11 @@
 
     echo Form::label('name', 'Название') . Form::text('name', $task->name);
     echo "<br>";
-    echo Form::label('description', 'Описание') . Form::text('description', $task->name);
+    echo Form::label('description', 'Описание') . Form::text('description', $task->description);
     echo "<br>";
     echo Form::label('duration', 'Длительность:') . Form::time('duration', $task->duration);
     echo "<br>";
     echo Form::label('weight', 'Вес задачи:') . Form::number('weight', $task->weight);
-    echo "<br>";
-    echo Form::label('QR', 'Текст для QR-кода:') . Form::text('QR', $task->QR);
     echo "<br>";
     echo Form::submit('Edit');
     Form::close();

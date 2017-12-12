@@ -28,7 +28,7 @@ Auth::routes();
 
 
 Route::get('contact-form', 'Contacts\ContactsController@cf');
-Route::post('contact-form', 'Contacts\ContactsController@cfp');
+Route::post('contact-form', 'Contacts\ContactsController@cfp')->name('contacts');
 
 
 
@@ -115,7 +115,7 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'auth']], function ()
     Route::get('play/{id?}/', ['uses' => 'Users\UsersQuestController@play', 'as' => 'play']);
     //планируемый маршрут при выборе user-ом квеста на выполнение(надо делать)
     Route::post('ok/{idQuest?}/{idTeam?}', ['uses' => 'Users\UsersQuestController@ok', 'as' => 'ok']);
-
-
+   /* Route::get('tasks/', ['uses' => 'Users\UsersQuestController@showTasksFromQuest', 'as' => 'showTasksForQuest']);*/
+    Route::get('profile/', ['uses' => 'Users\UsersQuestController@userProfile', 'as' => 'userProfile']);
 });
 

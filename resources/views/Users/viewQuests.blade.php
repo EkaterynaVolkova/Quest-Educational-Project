@@ -6,7 +6,7 @@
 @section('content')
 
     <header>
-        @include('Users.General.headerNav');
+        @include('Users.General.headerNav')
     </header>
 
     <main>

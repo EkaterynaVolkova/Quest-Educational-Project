@@ -1,0 +1,30 @@
+body {
+    width: 100%;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid blue;
+}
+
+div.row span {color: white;
+    text-align: left;
+    font-size: 18px;}

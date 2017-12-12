@@ -27,13 +27,11 @@
             <?php
 
             echo "<table>";
-            echo "<tr><th>id</th><th>name</th><th>created_at</th><th>updated_at</th></tr>";
+            echo "<tr><th>id</th><th>name</th></tr>";
             foreach ($teams as $key => $value) {
             echo "<tr>";
             echo "<td> <div>" . $value->id . "</div>  </td>";
             echo "<td> <div>" . $value->name . "</div> </td>";
-            echo "<td> <div>" . $value->created_at . "</div>  </td>";
-            echo "<td> <div>" . $value->updated_at . "</div> </td>";
             echo "<td>";
             ?>
             <submit class="btn btn-default btn-sm"><a
