@@ -49,8 +49,69 @@ class AdminTaskController extends Controller
         $data = Input::all();
         $data['idQuest'] = $idQuest;
         $task = Task::create($data);
+        $t = DB::table('tasks')->where('idQuest','=',$idQuest)->max('orderBy');
+        $task->orderBy = $t+1;
         $task->QR = $this->generateCode(8);
         $task->save();
+        return redirect()->action('Admin\AdminTaskController@showByOne', ['idQuest' => $idQuest]);
+    }
+
+    //сортировка
+    protected function order($id, $sign, $idQuest)
+    {
+        $max = DB::table('tasks')->where('idQuest','=',$idQuest)->max('orderBy');
+        $task1 = Task::find($id);
+        $order = $task1->orderBy;
+
+        if (($sign == 'plus')&&($order<$max)){
+            $task2 = Task::all()->where('idQuest','=',$idQuest)->where('orderBy', '=', ($order+1));
+            $key = 0;
+            foreach ($task2 as $k => $value) {
+                $key = $k;
+            }
+            $name = $task1->name;
+            $description = $task1->description;
+            $duration = $task1->duration;
+            $weight = $task1->weight;
+            $qr = $task1->QR;
+            $task1->name =  $task2[$key]->name;
+            $task1->description =  $task2[$key]->description;
+            $task1->duration =  $task2[$key]->duration;
+            $task1->weight =  $task2[$key]->weight;
+            $task1->QR =  $task2[$key]->QR;
+            $task1->save();
+            $task2[$key]->name =  $name;
+            $task2[$key]->description =  $description;
+            $task2[$key]->duration =  $duration;
+            $task2[$key]->weight =  $weight;
+            $task2[$key]->QR =  $qr;
+            $task2[$key]->save();
+
+        } elseif (($sign == 'minus')&&($order>1)) {
+            $task2 = Task::all()->where('idQuest','=',$idQuest)->where('orderBy', '=', ($order-1));
+            $key = 0;
+            foreach ($task2 as $k => $value) {
+               $key =$k;
+            }
+            $name = $task1->name;
+            $description = $task1->description;
+            $duration = $task1->duration;
+            $weight = $task1->weight;
+            $qr = $task1->QR;
+            $task1->name =  $task2[$key]->name;
+            $task1->description =  $task2[$key]->description;
+            $task1->duration =  $task2[$key]->duration;
+            $task1->weight =  $task2[$key]->weight;
+            $task1->QR =  $task2[$key]->QR;
+            $task1->save();
+            $task2[$key]->name =  $name;
+            $task2[$key]->description =  $description;
+            $task2[$key]->duration =  $duration;
+            $task2[$key]->weight =  $weight;
+            $task2[$key]->QR =  $qr;
+            $task2[$key]->save();
+        }
+
         return redirect()->action('Admin\AdminTaskController@showByOne', ['idQuest' => $idQuest]);
     }
 

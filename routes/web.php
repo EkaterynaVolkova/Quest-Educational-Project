@@ -75,6 +75,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], fu
     Route::post('update/tasks/{id}', ['uses' => 'Admin\AdminTaskController@updateTask', 'as' => 'updateTask']);
     //удаление задания:
     Route::get('delete/tasks/{id?}', ['uses' => 'Admin\AdminTaskController@delete', 'as' => 'deleteTask'])->where('id', '[0-9]+');
+    //сортировка:
+    Route::get('order/tasks/{id?}/{sign?}/{idQuest?}', ['uses' => 'Admin\AdminTaskController@order', 'as' => 'orderTask'])->where('id', '[0-9]+');
+
 
     //*просмотр всех существующих заданий:
     Route::get('show/all/tasks/', ['uses' => 'Admin\AdminTaskController@show', 'as' => 'showTasks']);

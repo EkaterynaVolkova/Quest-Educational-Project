@@ -42,29 +42,19 @@ class UsersQuestController extends Controller
         return redirect()->action('Users\UsersQuestController@userProfile');
     }
 
-    protected function showTasksFromQuest()
-    {
-        /*   $idUser = Auth::user()->id;
-           $idQuest = UserTeamQuest::where('idUser', '=', $idUser);
-           dd($idQuest);
-           $tasks = Task::where('idQuest', '=', $idQuest)->get();
-           dd($tasks);
-           return view('Users.usersQuestProfile')->with(['tasks'=>$tasks]);*/
-    }
-
     protected function userProfile()
     {
         $idUser = Auth::user()->id;
         $quests = UserTeamQuest::where('idUser', '=', $idUser)->get();
         $quest = array();
         $tasks = array();
+        $status = array();
         foreach ($quests as $key => $value) {
             $idQuest = $value['idQuest'];
+            $status[] .= $value['status'];
             $quest[] .= Quest::find($idQuest);
             $tasks[] .= Task::where('idQuest', '=', $idQuest)->get();
         }
-         /*  $tasks = Task::where('idQuest', '=', $idQuest)->get();
-        dd($tasks);*/
-        return view('Users.usersQuestProfile')->with(['quests' => $quest, 'tasks' => $tasks]);
+        return view('Users.usersQuestProfile')->with(['quests' => $quest, 'tasks' => $tasks, 'status' => $status]);
     }
 }

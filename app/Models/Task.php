@@ -9,7 +9,7 @@ class Task extends Model
     protected $table = 'tasks';
 
     protected $fillable = [
-        'idQuest', 'name', 'description', 'duration', 'weight', 'QR', 'dependancy','id', 'created_at', 'updated_at'
+        'idQuest', 'name', 'description', 'duration', 'weight', 'QR', 'dependancy','id', 'orderBy', 'created_at', 'updated_at'
     ];
 
 

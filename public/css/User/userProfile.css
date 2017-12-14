@@ -1,12 +1,20 @@
-body {
+html, body {
     width: 100%;
     background: black;
     display: flex;
     flex-direction: column;
-    align-items: stretch;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px!important;
+    font-family: "Verdana";
+}
+
+header, main, footer{
+    width: 100%;
 }
 
 .row {
+    height: 50px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -22,9 +30,24 @@ body {
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    border: 1px solid blue;
+    border: 1px solid white;
 }
 
-div.row span {color: white;
-    text-align: left;
-    font-size: 18px;}
+.row div {
+    width: 25%;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+}
+
+#id, #id2, #id3
+{
+    display: none;
+}
+
+.quest button a {
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+

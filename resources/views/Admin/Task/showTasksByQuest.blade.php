@@ -36,9 +36,18 @@
             echo "<td> <div>" . $value->duration . "</div> </td>";
             echo "<td> <div>" . $value->weight . "</div> </td>";
             echo "<td> <div>" . $value->QR . "</div> </td>";
+            echo "<td> <div>" . $value->orderBy . "</div> </td>";
 
             echo "<td> ";
             ?>
+
+            <submit class="btn btn-default btn-sm"><a
+                        href="{{route('orderTask', ['id'=>$value->id, 'sign'=> 'plus', 'idQuest'=>$idQuest])}}"
+                        class="glyphicon glyphicon-plus"></a></submit>
+            <submit class="btn btn-default btn-sm"><a
+                        href="{{route('orderTask', ['id'=>$value->id, 'sign'=> 'minus', 'idQuest'=>$idQuest])}}"
+                        class="	glyphicon glyphicon-minus"></a></submit>
+
             <submit class="btn btn-default btn-sm"><a
                         href="{{route('editTask', ['id'=>$value->id, 'idQuest'=>$idQuest])}}"
                         class="glyphicon glyphicon-pencil"></a></submit>
