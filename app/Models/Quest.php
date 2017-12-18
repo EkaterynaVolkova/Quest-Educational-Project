@@ -9,7 +9,7 @@ class Quest extends Model
     protected $table = 'quests';
 
     protected $fillable = [
-        'name', 'description', 'fullDescription', 'date', 'time'
+        'name', 'description', 'fullDescription', 'date', 'time', 'status'
     ];
 
 
