@@ -121,7 +121,7 @@ main aside div{
     font-size: 18px;
 }
 
-#id, #id2, #id3, #idTQ, #idAQ, #idFQ
+#id, #id2, #id3, #idTQ, #idLQ, #idFQ, .task
 {
     display: none;
 }

@@ -19,12 +19,12 @@
             <p></p>
             <p></p>
             <p></p>
-            <button class="btn btn-link link"><a href="" onclick="clear('all'); openbox('idTQ'); return false">Текущий
+            <button class="btn btn-link link"><a href="" onclick="openbox('idTQ'); return false">Текущий
                     квест</a>
             </button>
             <button class="btn btn-link link"><a href="" onclick="openbox('idFQ'); return false">Грядущие квесты</a>
             </button>
-            <button class="btn btn-link link"><a href="" onclick="openbox('idAQ'); return false">Архив</a>
+            <button class="btn btn-link link"><a href="" onclick="openbox('idLQ'); return false">Архив</a>
             </button>
         </aside>
 
@@ -32,102 +32,110 @@
 
             <div id="section_inner">
 
-                <div class="column all" id="idTQ">
+                <div class="column" id="idTQ">
+
                     <div class="row">
                         <div class="text-center">Название</div>
                         <div class="text-center">Дата</div>
                         <div class="text-center">Время</div>
+                        <div class="text-center">Команда</div>
                         <div></div>
                     </div>
                     @foreach($questGeneral as $key => $q)
-                        <div class="row quest">
-                            <div class="text-center">{!! json_decode($q)->name !!}</div>
-                            <div class="text-center">{!! json_decode($q)->date !!}</div>
-                            <div class="text-center">{!! json_decode($q)->time !!}</div>
-                            <div>
-                                <button class="btn btn-link"><a href="" class="glyphicon glyphicon-th-list"
-                                                                onclick="openbox('id'); return false"></a></button>
-                            </div>
-                        </div>
-                        <div class="column task" id="id">
-                            <div class="row">
-                                <div class="text-center">Название</div>
-                                <div class="text-center">Описание</div>
-                                <div class="text-center">Длительность</div>
-                                <div class="text-center">Вес</div>
-                            </div>
-                            @foreach(json_decode($tasksGeneral[$key]) as $k => $t)
-                                <div class="row">
-                                    <div class="text-center">{!! $t->name !!}</div>
-                                    <div class="text-center">{!! $t->description !!}</div>
-                                    <div class="text-center">{!! $t->duration !!}</div>
-                                    <div class="text-center">{!! $t->weight !!}</div>
+                        @foreach(json_decode($q) as $k => $v)
+                            <div class="row quest">
+                                <div class="text-center">{!! $v->name !!}</div>
+                                <div class="text-center">{!! $v->date !!}</div>
+                                <div class="text-center">{!! $v->time !!}</div>
+                                <div class="text-center">{!! json_decode($teamGeneral) !!}</div>
+                                <div>
+                                    <button class="btn btn-link"><a href="" class="glyphicon glyphicon-play"></a>
+                                    </button>
                                 </div>
-                            @endforeach
-                        </div>
-
+                            </div>
+                        @endforeach
                     @endforeach
                 </div>
 
 
-                <div class="column all" id="idFQ">
+                <div class="column" id="idFQ">
                     <div class="row">
                         <div class="text-center">Название</div>
                         <div class="text-center">Дата</div>
                         <div class="text-center">Время</div>
+                        <div class="text-center">Команда</div>
                         <div></div>
                     </div>
                     @foreach($questFuture as $key => $q)
-                        <div class="row quest">
-                            <div class="text-center">{!! json_decode($q)->name !!}</div>
-                            <div class="text-center">{!! json_decode($q)->date !!}</div>
-                            <div class="text-center">{!! json_decode($q)->time !!}</div>
-                            <div></div>
-                        </div>
-
+                        @foreach(json_decode($q) as $k => $v)
+                            <div class="row quest">
+                                <div class="text-center">{!! $v->name !!}</div>
+                                <div class="text-center">{!! $v->date !!}</div>
+                                <div class="text-center">{!! $v->time !!}</div>
+                                <div class="text-center">{!! json_decode($teamGeneral) !!}</div>
+                                <div>
+                                    <button class="btn btn-link"><a href="" class="glyphicon glyphicon-pencil"></a>
+                                    </button>
+                                </div>
+                            </div>
+                        @endforeach
                     @endforeach
                 </div>
 
 
-                <div class="column all" id="idAQ">
+                <div class="column" id="idLQ">
                     <div class="row">
                         <div class="text-center">Название</div>
                         <div class="text-center">Дата</div>
                         <div class="text-center">Время</div>
+                        <div class="text-center">Команда</div>
                         <div></div>
                     </div>
                     @foreach($questLast as $key => $q)
+                        <div class="text-center"> <?php var_dump($key) ?> </div>
+                        @foreach(json_decode($q) as $k => $v)
 
                             <div class="row quest">
-                                <div class="text-center">{!! json_decode($q)->name !!}</div>
-                                <div class="text-center">{!! json_decode($q)->date !!}</div>
-                                <div class="text-center">{!! json_decode($q)->time !!}</div>
+                                <div class="text-center">{!! $v->name !!}</div>
+                                <div class="text-center">{!! $v->date !!}</div>
+                                <div class="text-center">{!! $v->time !!}</div>
+                                <div class="text-center">{!! json_decode($teamGeneral) !!}</div>
                                 <div>
                                     <button class="btn btn-link"><a href="" class="glyphicon glyphicon-th-list"
-                                                                    onclick="openbox('id3'); return false"></a></button>
+                                                                    onclick="openbox('id{{$key}}'); return false"></a></button>
                                 </div>
                             </div>
-                            <div class="column task" id="id3">
+
+                            <div class="column task" id="id{{$key}}">
                                 <div class="row">
                                     <div class="text-center">Название</div>
                                     <div class="text-center">Описание</div>
                                     <div class="text-center">Длительность</div>
                                     <div class="text-center">Вес</div>
                                 </div>
-                                @foreach(json_decode($tasksLast[$key]) as $t)
-                                    <div class="row">
-                                        <div class="text-center">{!! $t->name !!}</div>
-                                        <div class="text-center">{!! $t->description !!}</div>
-                                        <div class="text-center">{!! $t->duration !!}</div>
-                                        <div class="text-center">{!! $t->weight !!}</div>
-                                    </div>
+                                @foreach($tasksLast as $kk => $task)
+                                    @if($kk == $key)
+                                    @foreach(json_decode($task) as $k2 => $t)
+
+                                        <div class="row">
+                                            <div class="text-center">{!! $t->name !!}</div>
+                                            <div class="text-center">{!! $t->description !!}</div>
+                                            <div class="text-center">{!! $t->duration !!}</div>
+                                            <div class="text-center">{!! $t->weight !!}</div>
+                                        </div>
+
+                                    @endforeach
+                                    @endif
                                 @endforeach
                             </div>
 
+                        @endforeach
                     @endforeach
+
                 </div>
 
-            </div>
+
+            </div> <!-- div section inner-->
         </section>
 
     </main>
