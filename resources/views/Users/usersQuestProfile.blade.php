@@ -47,9 +47,10 @@
                                 <div class="text-center">{!! $v->name !!}</div>
                                 <div class="text-center">{!! $v->date !!}</div>
                                 <div class="text-center">{!! $v->time !!}</div>
-                                <div class="text-center">{!! json_decode($teamGeneral) !!}</div>
+                                <div class="text-center">{!! $teamGeneral !!}</div>
                                 <div>
-                                    <button class="btn btn-link"><a href="" class="glyphicon glyphicon-play"></a>
+                                    <button class="btn btn-link"><a href="{{route('playQuest', ['idQuest'=>$v->id])}}"
+                                                                    class="glyphicon glyphicon-play"></a>
                                     </button>
                                 </div>
                             </div>
@@ -72,7 +73,7 @@
                                 <div class="text-center">{!! $v->name !!}</div>
                                 <div class="text-center">{!! $v->date !!}</div>
                                 <div class="text-center">{!! $v->time !!}</div>
-                                <div class="text-center">{!! json_decode($teamGeneral) !!}</div>
+                                <div class="text-center">{!! $teamFuture[$key] !!}</div>
                                 <div>
                                     <button class="btn btn-link"><a href="" class="glyphicon glyphicon-pencil"></a>
                                     </button>
@@ -92,7 +93,6 @@
                         <div></div>
                     </div>
                     @foreach($questLast as $key => $q)
-                        <div class="text-center"> <?php var_dump($key) ?> </div>
                         @foreach(json_decode($q) as $k => $v)
 
                             <div class="row quest">
@@ -102,7 +102,8 @@
                                 <div class="text-center">{!! json_decode($teamGeneral) !!}</div>
                                 <div>
                                     <button class="btn btn-link"><a href="" class="glyphicon glyphicon-th-list"
-                                                                    onclick="openbox('id{{$key}}'); return false"></a></button>
+                                                                    onclick="openbox('id{{$key}}'); return false"></a>
+                                    </button>
                                 </div>
                             </div>
 
@@ -115,16 +116,16 @@
                                 </div>
                                 @foreach($tasksLast as $kk => $task)
                                     @if($kk == $key)
-                                    @foreach(json_decode($task) as $k2 => $t)
+                                        @foreach(json_decode($task) as $k2 => $t)
 
-                                        <div class="row">
-                                            <div class="text-center">{!! $t->name !!}</div>
-                                            <div class="text-center">{!! $t->description !!}</div>
-                                            <div class="text-center">{!! $t->duration !!}</div>
-                                            <div class="text-center">{!! $t->weight !!}</div>
-                                        </div>
+                                            <div class="row">
+                                                <div class="text-center">{!! $t->name !!}</div>
+                                                <div class="text-center">{!! $t->description !!}</div>
+                                                <div class="text-center">{!! $t->duration !!}</div>
+                                                <div class="text-center">{!! $t->weight !!}</div>
+                                            </div>
 
-                                    @endforeach
+                                        @endforeach
                                     @endif
                                 @endforeach
                             </div>
