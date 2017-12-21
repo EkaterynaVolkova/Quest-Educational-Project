@@ -9,23 +9,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'name', 'email', 'nickname', 'age', 'gender', 'remember_token',   'password'
-    ];
-
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-    'id'
-    ];
+    protected $fillable = [ 'name', 'email', 'nickname', 'age', 'gender', 'remember_token',   'password'];
+    protected $guarded = ['id', 'created_at', 'updated_at'];
 
     public function isAdmin() //1 - возвращает, если админ (указано в таблице поле role = 1
     {
@@ -35,4 +20,11 @@ class User extends Authenticatable
         return false;
     }
 
+    /**
+     * Получить все записи из тиблицы QTU по idUser
+     */
+    public function allQTU()
+    {
+        return $this->hasMany('App\Models\UserTeamQuest', 'idUser');
+    }
 }

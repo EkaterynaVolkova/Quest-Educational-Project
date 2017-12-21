@@ -8,14 +8,17 @@ class Team extends Model
 {
     protected $table = 'teams';
 
-    protected $fillable = [
-        'name'
-    ];
+    protected $fillable = ['name'];
+    public $timestamps = false;
 
+    protected $guarded = ['id'];
 
-    protected $guarded = array(
-        'id', 'created_at', 'updated_at'
-
-    );
+    /**
+     * Получить все записи к квесту из тиблицы QTU
+     */
+    public function allQTU()
+    {
+        return $this->hasMany('App\Models\UserTeamQuest', 'idTeam');
+    }
 
 }

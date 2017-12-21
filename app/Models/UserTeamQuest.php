@@ -8,26 +8,39 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class UserTeamQuest extends Authenticatable
 {
     protected $table = 'userTeamQuests';
+    public $timestamps = false;
 
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-    'idQuest', 'idTeam', 'idUser'
-    ];
+    protected $fillable = ['idQuest', 'idTeam', 'idUser'];
+    protected $guarded = ['id'];
 
     /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
+     * Получить все записи из таблицы Team по idTeam
      */
-    protected $hidden = [
-        'id'
-    ];
+    public function team()
+    {
+        return $this->belongsTo('App\Models\Team', 'idTeam');
+    }
 
+    /**
+     * Получить все записи из таблицы Quest по idQuest
+     */
+    public function quest()
+    {
+        return $this->belongsTo('App\Models\Quest', 'idQuest');
+    }
 
+    /**
+     * Получить все записи из таблицы User по idUser
+     */
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User', 'idUser');
+    }
+
+    public function scopeOfWhere($query, $name, $type)
+    {
+        return $query->where($name, $type);
+    }
 }

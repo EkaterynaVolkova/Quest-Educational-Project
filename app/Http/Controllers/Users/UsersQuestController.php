@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\DB;
 
 class UsersQuestController extends Controller
 {
-    public function view()
+        public function view()
     {
         $quests = Quest::all()->where('status', '>', 0);
         return view('Users.viewQuests', ['quests' => $quests]);
@@ -92,37 +92,50 @@ class UsersQuestController extends Controller
 
         }
         return view('Users.usersQuestProfile')->with(['questGeneral' => $questGeneral, 'questFuture' => $questFuture,
-            'questLast' => $questLast, 'teamGeneral' => $teamGeneral,'teamFuture' => $teamFuture, 'tasksGeneral' => $tasksGeneral,
+            'questLast' => $questLast, 'teamGeneral' => $teamGeneral, 'teamFuture' => $teamFuture, 'tasksGeneral' => $tasksGeneral,
             'tasksLast' => $tasksLast]);
     }
-
 
 
     protected function playQuest($idQuest)
     {
         $idUser = Auth::user()->id;
         $statusQuest = "";
-        $tasks = Task::where('idQuest', '=', $idQuest)->orderBy('orderBy', 'Asc')->get();
-        $userTeamQuest = UserTeamQuest::all()->where('idQuest', '=', $idQuest);
+        $idUTQ = "";
+        $tasks = Quest::find($idQuest)->allTasks()->orderBy('orderBy', 'Asc')->get();
+        $max = Task::where('idQuest', '=', $idQuest)->max('orderBy');
+        //$userTeamQuest = UserTeamQuest::all()->where('idQuest', '=', $idQuest);
+        $userTeamQuest = UserTeamQuest::ofWhere('idQuest', $idQuest)->get();
+
         foreach ($userTeamQuest as $v) {
             $idUTQ = $v->id;
         }
+
+
         foreach ($tasks as $key => $value) {
+
             foreach ($userTeamQuest as $v) {
                 $statusQuest = $v->statusQuest;
-                 }
+            }
             if ($statusQuest == 0) {
-              if (count(ExecuteTask::where('idTasks', '=', $value->id)->get()) == 0){
-                  $exTask = new ExecuteTask();
-                  $exTask->idTasks=$value->id;
-                  $exTask->idUserTeamQuest=$idUTQ;
-                  $exTask->status = 0;
-                  $exTask->save();
-                return view('Users.usersQuestPlay')->with(['task' => $value]);
-                            } }
+                if (count(ExecuteTask::where('idTasks', '=', $value->id)->get()) == 0) {
+                    $exTask = new ExecuteTask();
+                    $exTask->idTasks = $value->id;
+                    $exTask->idUserTeamQuest = $idUTQ;
+                    $exTask->status = 0;
+                    $exTask->save();
+                    return view('Users.usersQuestPlay')->with(['task' => $value]);
+                } elseif ((count(ExecuteTask::where('idTasks', '=', $value->id)->get()) != 0) && ($value->id == $max)) {
+                    $userTQ = UserTeamQuest::all()->where('id', '=', $idUTQ);
+                    $userTQ->statusQuest = 1;
+                    $userTQ->save();
+                }
+
+            }
+
         }
 
-        dd($tasks);
+
         return view('Users.usersQuestPlay')->with(['task' => $tasks]);
 
     }
