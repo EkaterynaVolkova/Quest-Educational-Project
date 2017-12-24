@@ -20,6 +20,9 @@
     echo "<br>";
     echo Form::label('time', 'Время начала:') . Form::time('time', $quest->time);
     echo "<br>";
+    echo Form::label('status', 'STATUS:') . Form::text('status', $quest->status);
+    echo "<br>";
+
 
     echo Form::submit('Edit');
 

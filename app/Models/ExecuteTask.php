@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ExecuteTask extends Model
 {
+
     protected $table = 'executeTasks';
     public $timestamps = false;
 
@@ -24,4 +25,5 @@ class ExecuteTask extends Model
     {
         return $this->belongsTo('App\Models\UserTeamQuest', 'idUserTeamQuest');
     }
+
 }

@@ -36,6 +36,9 @@
             echo "<td> ";
             ?>
             <submit class="btn btn-default btn-sm"><a
+                        href="{{route('printQR', ['id'=>$value->id])}}"
+                        class="glyphicon glyphicon-qrcode"></a></submit>
+            <submit class="btn btn-default btn-sm"><a
                         href="{{route('editOneTask', ['id' => $value->id])}}"
                         class="glyphicon glyphicon-pencil"></a></submit>
             <submit class="btn btn-default btn-sm"><a

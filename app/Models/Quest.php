@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Quest extends Model
 {
     protected $table = 'quests';
+
     public $timestamps = false;
 
     protected $fillable = ['name', 'description', 'fullDescription', 'date', 'time', 'status'];
@@ -20,6 +21,7 @@ class Quest extends Model
         return $this->hasMany('App\Models\Task', 'idQuest');
     }
 
+
     /**
      * Получить все записи к квесту из тиблицы QTU
      */
@@ -27,4 +29,5 @@ class Quest extends Model
     {
         return $this->hasMany('App\Models\UserTeamQuest', 'idQuest');
     }
+
 }

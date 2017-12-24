@@ -9,13 +9,13 @@
 @section('content')
 
     <header>
-        @include('Admin.nav');
+        @include('Admin.nav')
     </header>
 
 
     <div class="row">
 
-        @include('Admin.leftNav');
+        @include('Admin.leftNav')
 
         <main>
 
@@ -48,6 +48,9 @@
                         href="{{route('orderTask', ['id'=>$value->id, 'sign'=> 'minus', 'idQuest'=>$idQuest])}}"
                         class="	glyphicon glyphicon-minus"></a></submit>
 
+            <submit class="btn btn-default btn-sm"><a
+                        href="{{route('printQR', ['id'=>$value->id])}}"
+                        class="glyphicon glyphicon-qrcode"></a></submit>
             <submit class="btn btn-default btn-sm"><a
                         href="{{route('editTask', ['id'=>$value->id, 'idQuest'=>$idQuest])}}"
                         class="glyphicon glyphicon-pencil"></a></submit>

@@ -19,6 +19,7 @@
             <p></p>
             <p></p>
             <p></p>
+
             <button class="btn btn-link link"><a href="{{route('userProfile')}}" >Назад</a></button>
              </aside>
 
