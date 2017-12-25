@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class ExecuteTask extends Model
 {
 
@@ -26,4 +27,8 @@ class ExecuteTask extends Model
         return $this->belongsTo('App\Models\UserTeamQuest', 'idUserTeamQuest');
     }
 
+    public function scopeOfWhereWhere($query, $name, $type, $name2, $type2)
+    {
+        return $query->where($name, '=', $type)->where($name2,'=' , $type2)->get();
+    }
 }
