@@ -20,30 +20,32 @@
             <p></p>
             <p></p>
 
-            <button class="btn btn-link link"><a href="{{route('userProfile')}}" >Назад</a></button>
-             </aside>
+            <button class="btn btn-link link"><a href="{{route('userProfile')}}">Назад</a></button>
+        </aside>
 
         <section class="section">
             <div id="section_inner">
 
                 <div class="column">
-                        <div class="row">
+                    <div class="row">
                         <div class="text-center">Название</div>
                         <div class="text-center">Описание</div>
                         <div class="text-center">Длительность</div>
                         <div class="text-center">Вес</div>
                     </div>
-                                                <div class="row">
-                                    <div class="text-center">{!! $task->name !!}</div>
-                                    <div class="text-center">{!! $task->description !!}</div>
-                                    <div class="text-center">{!! $task->duration !!}</div>
-                                    <div class="text-center">{!! $task->weight !!}</div>
-                                </div>
-
-
-
+                    <div class="row">
+                        <div class="text-center">{!! $task->name !!}</div>
+                        <div class="text-center">{!! $task->description !!}</div>
+                        <div class="text-center">{!! $task->duration !!}</div>
+                        <div class="text-center">{!! $task->weight !!}</div>
+                    </div>
                 </div>
 
+                @if($ok)
+                    <p>Click the button to get your coordinates.</p>
+                    <button onclick="getLocation()">Try It</button>
+                    <p id="demo"></p>
+                @endif
             </div> <!-- div section inner-->
         </section>
 
@@ -59,6 +61,22 @@
             } else {
                 document.getElementById(id).style.display = 'none';
             }
+        }
+    </script>
+    <script>
+        var x = document.getElementById("demo");
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+                "<br>Longitude: " + position.coords.longitude;
         }
     </script>
 

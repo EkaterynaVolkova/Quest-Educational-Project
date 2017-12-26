@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\Response;
 
-class admin
+class Admin
 {
     /**
      * Handle an incoming request.

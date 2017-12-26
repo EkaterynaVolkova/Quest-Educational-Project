@@ -75,7 +75,7 @@
                                 <div class="text-center">{!! $v->time !!}</div>
                                 <div class="text-center">{!! $teamFuture[$key] !!}</div>
                                 <div>
-                                    <button class="btn btn-link"><a href="" class="glyphicon glyphicon-pencil"></a>
+                                    <button class="btn btn-link"><a href="{{route('editTeam', ['id'=>$v->id])}}" class="glyphicon glyphicon-pencil"></a>
                                     </button>
                                 </div>
                             </div>
