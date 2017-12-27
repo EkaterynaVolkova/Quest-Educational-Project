@@ -109,7 +109,7 @@ class UsersQuestController extends Controller
     {
         $etStatus = "";
         $statusQuest = "";
-        $idUTQ = "";
+        $idUTQ = array();
         $idTeam = "";
         $idUser = Auth::user()->id;
         $status = Quest::find($idQuest)->status;
@@ -117,9 +117,12 @@ class UsersQuestController extends Controller
         if ($status == 1) {                         // проверка текущий квест или нет
             $userTeamQuest = UserTeamQuest::ofWhereWhere('idQuest', $idQuest, 'idUser', $idUser);
             foreach ($userTeamQuest as $v) {
-                $idUTQ = $v->id;
                 $statusQuest = $v->statusQuest;
                 $idTeam = $v->idTeam;
+            }
+            $UTQ = UserTeamQuest::ofWhereWhere('idQuest', $idQuest, 'idTeam', $idTeam);
+            foreach( $UTQ as $u){
+                $idUTQ[] .= $u -> id;
             }
 
             if ($statusQuest == 0) {               // если квест активен для команды
@@ -129,6 +132,7 @@ class UsersQuestController extends Controller
                 foreach ($tasks as $key => $value) {
                     //поиск текущей задачи в таблице executeTasks
                     $et = ExecuteTask::ofWhereWhere('idTasks', $value->id, 'idUserTeamQuest', $idUTQ);
+
                     foreach ($et as $v) {
                         $etStatus = $v->status;
                     }
@@ -173,14 +177,29 @@ class UsersQuestController extends Controller
 
     protected function qrInput($qr, $idTask)
     {
-        $idUTQ = "";
+        $idUTQ = array();
         $qrCode = Task::find($idTask)->QR;
         $idQuest = Task::find($idTask)->idQuest;
         $idUser = Auth::user()->id;
-        $utq = UserTeamQuest::ofWhereWhere('idQuest', $idQuest, 'idUser', $idUser);
-        foreach ($utq as $value) {
-            $idUTQ = $value->id;
+        $idTeam = "";
+
+
+        $userTeamQuest = UserTeamQuest::ofWhereWhere('idQuest', $idQuest, 'idUser', $idUser);
+        foreach ($userTeamQuest as $v) {
+                $idTeam = $v->idTeam;
         }
+
+        $UTQ = UserTeamQuest::ofWhereWhere('idQuest', $idQuest, 'idTeam', $idTeam);
+        foreach( $UTQ as $u){
+            $idUTQ[] .= $u -> id;
+        }
+
+
+
+     //   $utq = UserTeamQuest::ofWhereWhere('idQuest', $idQuest, 'idUser', $idUser);
+    //    foreach ($utq as $value) {
+       //     $idUTQ = $value->id;
+      //  }
         if ($qr == $qrCode) {
             $execTask = ExecuteTask::ofWhereWhere('idTasks', $idTask, 'idUserTeamQuest', $idUTQ);
             if (count($execTask) > 0) {
@@ -188,8 +207,8 @@ class UsersQuestController extends Controller
                     $value->status = 1;
                     $value->save();
                 }
-
-                return redirect()->action('Users\UsersQuestController@playQuest', ['idQuest' => $idQuest, 'ok' => 1]);
+                return redirect('https://quest.challenge.php.a-level.com.ua/');
+              //  return redirect()->action('Users\UsersQuestController@playQuest', ['idQuest' => $idQuest, 'ok' => 1]);
             }
         }
         return redirect()->route('start');

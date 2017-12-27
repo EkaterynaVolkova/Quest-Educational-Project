@@ -36,8 +36,8 @@ return [
     ],
 
     'google' => [
-        'client_id' => '11374064133-7e2ue6meuldi9u2b0eodjssfnussg4ka.apps.googleusercontent.com',
-        'client_secret' => 'if43fpi0KZBI9Rv7r8mWE10E',
+        'client_id' => '11374064133-pk2qugo0khg6s3i6ttmquaqtr25ibiro.apps.googleusercontent.com',
+        'client_secret' => 'R7AgHl0fx3cqoUEx_XVZnZly',
         'redirect' => 'http://quest/public/google/callback',
     ],
 
