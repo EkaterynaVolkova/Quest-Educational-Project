@@ -20,5 +20,5 @@ class Task extends Model
     {
         return $this->belongsTo('App\Models\Quest', 'idQuest');
     }
-
+    //  pivot users, кот сделали
 }

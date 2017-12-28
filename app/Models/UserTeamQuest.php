@@ -15,6 +15,7 @@ class UserTeamQuest extends Authenticatable
     protected $fillable = ['idQuest', 'idTeam', 'idUser'];
     protected $guarded = ['id'];
 
+
     /**
      * Получить все записи из таблицы Team по idTeam
      */

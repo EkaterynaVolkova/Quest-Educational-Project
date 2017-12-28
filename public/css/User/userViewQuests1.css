@@ -1,0 +1,146 @@
+body{
+    background: #f9f9f9 url(../../img/page-bg-1.jpg);
+}
+.row{
+    text-align: center;
+}
+.quest{
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 80px;
+    list-style-type: none;
+    margin-bottom: 30px;
+    min-height: 1px;
+    background: lightgrey;
+    height: 290px;
+    width: 310px;
+    display: inline-block;
+}
+
+.gallery-hover-3col {
+    display: inline-block;
+    z-index: 10;
+    width: 100%;
+    height:290px;
+    opacity: 0;
+    transition:all 1s ease;
+}
+.gallery-hover-3col:hover {
+    background: gray;
+    opacity: 1;
+    transition:all 1s ease;
+}
+
+.gallery-icons {
+    z-index: 9;
+    position: relative;
+    top: 245px;
+    left: 170px;
+    width: 140px;
+    height: 45px;
+    display: block;
+
+}
+
+a.item-zoom-link {
+    height: 42px;
+    width: 42px;
+    background: #ffffff url(../../img/gallery-item-icons.png) no-repeat;
+    background-position: 0px 0px;
+    position: relative;
+    left: 22px;
+    top: 2px;
+    display: inline-block;
+}
+
+a.item-details-link {
+    height: 42px;
+    width: 42px;
+    background: #ffffff url(../../img/gallery-item-icons.png) no-repeat;
+    background-position: -42px 0px;
+    position: relative;
+    left: 25px;
+    top: 2px;
+    display: inline-block;
+}
+a.item-zoom-link:hover{
+    background: #d8450b url(../../img/gallery-item-icons.png) no-repeat;
+    background-position: 0px 0px;
+}
+a.item-details-link:hover{
+    background: #d8450b url(../../img/gallery-item-icons.png) no-repeat;
+    background-position: -42px 0px;
+}
+
+.project-details {
+    background: #f8f8f8;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px dotted #a9a9a9;
+    font-family: Georgia;
+    font-style: italic;
+    width: auto\9;
+    height: auto;
+    max-width: 100%;
+}
+
+.project-details a {
+    color: #333333;
+}
+.project-details a {
+    margin: 0px;
+    font-size: 12px;
+    font-style: normal;
+    text-shadow: none;
+    display: block;
+    font-family: "Oswald", sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+
+/*HEADER STYLE*/
+
+.nav1 {
+    width: 75%;
+    margin: 0 auto;
+    float: right;
+    background: #f8f8f8;
+    border-bottom: 1px dotted #a9a9a9;
+    border-top: 1px dotted #a9a9a9;
+    overflow: visible;
+    color: #777777;
+}
+
+.ul1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 0px;
+}
+
+.ul1 li{
+    list-style: none;
+}
+
+.a1 {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    background: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /*padding: 20px 30px;*/
+    margin: 0px 20px;
+    font-family: "Oswald", sans-serif;
+    font-weight: normal;
+    text-shadow: none;
+    font-size: 12px;
+    color: #777777;
+    padding: 10px 15px 10px;
+}
+.a1:hover{
+    background: #d8450b;
+    color: #FFF;
+}

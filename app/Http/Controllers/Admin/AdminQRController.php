@@ -28,7 +28,7 @@ class AdminQRController extends Controller
       //  $qr = 'http://quest.challenge.php1.a-level.com.ua/public/users/qr/' . $qr1 . '/' . $idTask;
        $qr = 'http://quest/public/users/qr/' . $qr1 . '/' . $idTask;
 
-        dd($qr);
+       // dd($qr);
         return view('Admin.QR.print')->with(['qr' => $qr]);
     }
 

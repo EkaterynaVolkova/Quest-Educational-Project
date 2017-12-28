@@ -24,6 +24,7 @@ class UsersQuestController extends Controller
 
     {
         $quests = Quest::all()->where('status', '>', 0);
+//        return view('Users.viewQuests', ['quests' => $quests]);
         return view('Users.viewQuests', ['quests' => $quests]);
     }
 

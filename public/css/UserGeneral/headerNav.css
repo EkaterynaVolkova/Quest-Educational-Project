@@ -1,15 +1,19 @@
-nav {
+.nav1 {
     width: 95%;
     margin: 0 auto;
 }
 
-ul {
+.ul1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-end;
 }
 
-a {
+.ul1 li{
+    list-style: none;
+}
+
+.a1 {
     text-decoration: none;
     outline: none;
     display: inline-block;

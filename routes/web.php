@@ -34,7 +34,6 @@ Route::post('contact-form', 'Contacts\ContactsController@cfp')->name('contacts')
 
 
 //Страницы без авторизации
-
 Route::group(['prefix' => 'users', 'middleware' => ['web']], function () {
     //страничка с квестами (надо сделать только с доступными квестами)
     Route::get('/view', ['uses' => 'Users\UsersQuestController@view', 'as' => 'user_view_quest']);
@@ -133,4 +132,5 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'auth']], function ()
     //
     Route::get('qr/{qr?}/{idTask?}', ['uses' => 'Users\UsersQuestController@qrInput', 'as' => 'inputQR']);
 });
+
 

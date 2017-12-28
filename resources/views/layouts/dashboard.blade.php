@@ -8,7 +8,7 @@
 </head>
 <body>
     @yield('content')
-    {!!HTML::script('../bootstrap/bootstrap/js/bootstrap.js/bootstrap.min.js')!!}
+    {!!HTML::script('../bootstrap/bootstrap/js/bootstrap.js')!!}
 
 </body>
 </html>
