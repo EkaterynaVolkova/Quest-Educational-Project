@@ -59,6 +59,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], fu
     Route::post('update/Quest/{id?}', ['uses' => 'Admin\AdminQuestController@update', 'as' => 'edit']);
     //удаление квеста:
     Route::get('delete/quest/{id?}', ['uses' => 'Admin\AdminQuestController@delete', 'as' => 'deleteQuest'])->where('id', '[0-9]+');
+    //завершение квеста:
+    Route::get('finish/quest/{id?}', ['uses' => 'Admin\AdminQuestController@finish', 'as' => 'finishQuest'])->where('id', '[0-9]+');
 
     //ЗАДАНИЯ
     //*просмотр заданий для определённого квеста:
@@ -106,14 +108,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], fu
     //занесение команды в таблицу
     Route::post('create/team/', ['uses' => 'Admin\AdminTeamsController@create', 'as' => 'postTeam'])->where('id', '[0-9]+');
 
+
     //QR-код
     //
     Route::get('printQR/{idTask?}', ['uses' => 'Admin\AdminQRController@print', 'as' => 'printQR']);
 
+
     // Результат квеста просчёт
-    Route::get('result/', ['uses' => 'Admin\AdminQuestController@result', 'as' => 'resultQuest']);
+    Route::get('result/', ['uses' => 'Admin\AdminResultController@result', 'as' => 'resultQuest']);
     // Результат квеста вывод
-    Route::get('result/show/', ['uses' => 'Admin\AdminQuestController@showResult', 'as' => 'showResult']);
+    Route::get('result/show/{idQuest}', ['uses' => 'Admin\AdminResultController@showResult', 'as' => 'showResult']);
+    Route::get('result/selectPosition/{idResult}', ['uses' => 'Admin\AdminResultController@selectPosition', 'as' => 'selectPosition']);
     });
 
 
@@ -129,6 +134,7 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'auth']], function ()
     Route::get('profile/', ['uses' => 'Users\UsersQuestController@userProfile', 'as' => 'userProfile']);
     Route::get('playQuest/{idQuest}/{ok?}', ['uses' => 'Users\UsersQuestController@playQuest', 'as' => 'playQuest']);
     Route::get('editTeam/{id?}', ['uses' => 'Users\UsersQuestController@editTeam', 'as' => 'editTeam']);
+    Route::get('outQuest/{id?}', ['uses' => 'Users\UsersQuestController@outQuest', 'as' => 'outQuest']);
     //
     Route::get('qr/{qr?}/{idTask?}', ['uses' => 'Users\UsersQuestController@qrInput', 'as' => 'inputQR']);
 });

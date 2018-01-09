@@ -1,67 +1,305 @@
-body {
+html, body {
+    font-size: 12px !important;
+    line-height: 18px !important;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #f9f9f9 url(../../img/page-bg-1.jpg);
+}
+#main-container {
+    min-height: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+}
+@media only screen and (max-width: 767px) {
+    #main-container {
+        width: auto;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+    #main-container {
+        padding: 0;
+        width: 724px;
+    }
+}
+@media only screen and (min-width: 980px) and (max-width: 1199px) {
+    #main-container {
+        padding: 0;
+        width: 940px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    #main-container {
+        width: 1170px;
+    }
+}
+#row {
+    margin-bottom: 40px;
+}
+@media only screen and (max-width: 767px) {
+    #row {
+        margin-left: 0;
+        margin-right: -5px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+    #row {
+        margin-left: -20px;
+    }
+}
+@media only screen and (min-width: 980px) and (max-width: 1199px) {
+    #row {
+        margin-left: -20px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    #row {
+        margin-left: -30px;
+    }
+}
+.moreQuest {
+    float: left;
+}
+@media only screen and (max-width: 767px) {
+    .moreQuest {
+        width: 100%;
+        box-sizing: border-box;
+        display: block;
+        float: none;
+        margin-left: 0;
+        min-height: 1px;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+    .moreQuest {
+        width: 724px;
+        margin-left: 20px;
+        min-height: 1px;
+    }
+}
+@media only screen and (min-width: 980px) and (max-width: 1199px) {
+    .moreQuest {
+        width: 940px;
+        margin-left: 20px;
+        min-height: 1px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .moreQuest {
+        width: 1170px;
+        margin-left: 30px;
+        min-height: 1px;
+    }
+}
+.moreQuestPicture {
+    float: left;
+    min-height: 1px;
+}
+@media only screen and (max-width: 767px) {
+    .moreQuestPicture {
+        display: block;
+        float: none;
+        width: 100%;
+        margin-left: 0;
+        box-sizing: border-box;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+    .moreQuestPicture {
+        width: 352px;
+        margin-left: 20px;
+    }
+}
+@media only screen and (min-width: 980px) and (max-width: 1199px) {
+    .moreQuestPicture {
+        width: 460px;
+        margin-left: 20px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .moreQuestPicture {
+        width: 570px;
+        margin-left: 30px;
+    }
+}
+.thum {
+    display: block;
+    padding: 4px;
+    line-height: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+    transition: all 0.2s ease-in-out;
+}
+img {
+    height: auto;
     width: 100%;
-    background: black;
+    vertical-align: middle;
 }
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: flex-start;
-    width: 95%;
-    margin: 0 auto;
+.moreQuestAbout {
+    float: left;
+    min-height: 1px;
 }
-div.row {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
+@media only screen and (max-width: 767px) {
+    .moreQuestAbout {
+        display: block;
+        float: none;
+        width: 100%;
+        margin-left: 0;
+        box-sizing: border-box;
+    }
 }
-div.column1, div.column2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-content: space-between;
-    color:white;
-    width: 50%;
-    min-height: 500px;
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+    .moreQuestAbout {
+        width: 352px;
+        margin-left: 20px;
+    }
 }
-
-div.column1 {
-    background: url("http://quest/public/img/kvest.jpeg");
+@media only screen and (min-width: 980px) and (max-width: 1199px) {
+    .moreQuestAbout {
+        width: 460px;
+        margin-left: 20px;
+    }
+}
+@media only screen and (min-width: 1200px) {
+    .moreQuestAbout {
+        width: 570px;
+        margin-left: 30px;
+    }
+}
+.moreQuestAbout h2 {
+    text-shadow: 1px 1px 0 #fdfdfd, 2px 2px 0 rgba(81, 81, 81, 0.5), 0 0 1px #fdfdfd;
+    font-family: "Oswald", sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 30px;
+    line-height: 40px;
+    margin: 10px 0;
+}
+.lead-m {
+    line-height: 28px;
+    margin: 20px 0px 30px 0px;
+    font-size: 21px;
+    font-weight: 200;
+}
+.description {
+    margin-bottom: 20px;
+    margin: 0 0 10px;
+    font-size: 12px;
+    line-height: 18px;
+}
+.project-info {
+    margin: 0 0 40px 0;
+    padding: 0;
+    display: block;
+    list-style: none;
+}
+.project-info li {
+    list-style: none;
+    border-bottom: 1px dashed #a9a9a9;
+    padding: 10px;
+    line-height: 20px;
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+.project-info li h6 {
+    display: inline;
+    font-family: "Oswald", sans-serif;
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 20px;
+    margin: 10px 0;
+    color: inherit;
+    text-rendering: optimizelegibility;
+    margin-right: 5px;
+}
+.moreQuestAbout .pull-left{
+    /*display: inline-block;*/
+    float: left;
+    margin-bottom: 20px;
+    color: #f1ffdd;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    background-color: #363636;
+    background-image: linear-gradient(to bottom, #444444, #222222);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    box-shadow: 1px -1px 1px 0px #0f0f0f;
+    font-size: 14px;
+    padding: 4px 14px;
+    text-decoration: none;
+}
+.moreQuestAbout .pull-left:hover {
+    background-image: linear-gradient(to bottom, #111111, #333555);
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    text-shadow: 5px -1px 0 rgba(0, 0, 0, 0.25);
+    color: #ffffff;
+}
+.pull-right {
+    float: right;
+    text-decoration: none;
+    cursor: pointer;
+    color: #d8450b;
+}
+.pull-right:hover{
+    color: #d8450b;
+}
+.icon-arrow-left {
+    background-position: -240px -96px;
+    margin-right: 3px;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 1px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url(../../img/glyphicons-halflings.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    font-style: italic;
 }
-
-.column2 div>h1 {
-    width:  auto;
-    max-width:170px;
-    height: 30px;
-    background-color: #c48866;
-    color: white;
-    margin: 10px 0 5px 15px;
-    font-size: 20px;
-  }
-.column2 div>p {
-    width: 95%;
-    margin:0 auto;
-    height: 50px;
-    max-height: 50px;
-    background-color: white;
-    color: black;
-    font-size: 20px;
+/*HEADER STYLE*/
+.nav1 {
+    width: 75%;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    float: right;
+    background: #f8f8f8;
+    border-bottom: 1px dotted #a9a9a9;
+    border-top: 1px dotted #a9a9a9;
+    overflow: visible;
+    color: #777777;
 }
-
-div.description{
-    height: 150px;
+.ul1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    margin: 0px;
 }
-
-div.description p{
-    height: 150px;
+.ul1 li{
+    list-style: none;
 }
-
-button a:hover {
-    background-color: white;
-    color: #22156c;
-    text-decoration: none
+.a1 {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    background: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    /*padding: 20px 30px;*/
+    margin: 0px 20px;
+    font-family: "Oswald", sans-serif;
+    font-weight: normal;
+    text-shadow: none;
+    font-size: 12px;
+    color: #777777;
+    padding: 10px 15px 10px;
+}
+.a1:hover{
+    background: #d8450b;
+    color: #FFF;
 }

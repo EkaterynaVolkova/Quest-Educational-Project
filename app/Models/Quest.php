@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class Quest extends Model
 {
@@ -14,20 +16,30 @@ class Quest extends Model
     protected $guarded = ['id'];
 
     /**
+     * Получить всех пользователей, участвующих в квесте
+     */
+    public function users()
+    {
+        return $this->belongsToMany('App\Models\User', 'UserQuests' , 'idQuest', 'idUser');
+    }
+
+    /**
+     * Получить все команды, участвующие в квесте
+     */
+    public function teams()
+    {
+        return $this->belongsToMany('App\Models\Team', 'UserQuests' , 'idQuest', 'idTeam');
+    }
+
+
+    /**
      * Получить задания к квесту
      */
-    public function allTasks()
+    public function tasks()
     {
         return $this->hasMany('App\Models\Task', 'idQuest');
     }
 
 
-    /**
-     * Получить все записи к квесту из тиблицы QTU
-     */
-    public function allQTU()
-    {
-        return $this->hasMany('App\Models\UserTeamQuest', 'idQuest');
-    }
 
 }

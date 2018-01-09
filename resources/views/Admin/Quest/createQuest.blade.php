@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('style')
-       {{HTML::style('css/AdminGeneral/forms.css'), array(), true}}
+       {{HTML::style('css/AdminGeneral/forms.css')}}
 @stop
 @section('content')
 
@@ -23,9 +23,8 @@
     echo Form::label('status', 'Status:') . Form::text('status');
     echo "<br>";
 
-    echo Form::submit('Add');
+    echo Form::submit('Добавить');
 
     echo  Form::close();
-
     ?>
 @stop

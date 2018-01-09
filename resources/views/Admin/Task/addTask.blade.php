@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('style')
-       {!!HTML::style('css/AdminGeneral/forms.css')!!}
+       {{HTML::style('css/AdminGeneral/forms.css')}}
 @stop
 
 @section('content')
@@ -15,11 +15,9 @@
     echo "<br>";
     echo Form::label('description', 'Описание') . Form::text('description');
     echo "<br>";
-    echo Form::label('duration', 'Длительность:') . Form::time('duration');
-    echo "<br>";
     echo Form::label('weight', 'Вес задачи:') . Form::number('weight');
     echo "<br>";
-    echo Form::submit('Add');
+    echo Form::submit('Добавить');
     Form::close();
 
     ?>

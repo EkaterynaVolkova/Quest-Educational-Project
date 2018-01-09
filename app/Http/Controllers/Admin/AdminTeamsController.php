@@ -43,7 +43,7 @@ class AdminTeamsController extends Controller
     protected function update($id)
     {
         $data = Input::all();
-        $team  = Team::find($id);
+        $team = Team::find($id);
         $team->name = $data['name'];
         $team->save();
         return redirect()->action('Admin\AdminTeamsController@show');
@@ -55,5 +55,5 @@ class AdminTeamsController extends Controller
         $team = Team::find($id);
         $team->delete();
         return redirect()->action('Admin\AdminTeamsController@show');
-            }
+    }
 }

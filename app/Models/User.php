@@ -21,10 +21,36 @@ class User extends Authenticatable
     }
 
     /**
-     * Получить все записи из тиблицы QTU по idUser
+     * Получить все квесты в которых учавствует пользователь
      */
-    public function allQTU()
+    public function quests()
     {
-        return $this->hasMany('App\Models\UserTeamQuest', 'idUser');
+        return $this->belongsToMany('App\Models\Quest', 'UserQuests' , 'idUser', 'idQuest');
     }
+
+    /**
+     * Получить квест в котором учавствует пользователь по id
+     */
+    public function quest($idQuest)
+    {
+        return $this->belongsToMany('App\Models\Quest', 'UserQuests' , 'idUser', 'idQuest')->wherePivot('idQuest', $idQuest)->get();
+    }
+
+    /**
+     * Получить команду, в которой участвовал пользователь, в квесте
+     */
+    public function teams($idQuest)
+    {
+        return $this->belongsToMany('App\Models\Team', 'UserQuests' , 'idUser', 'idTeam')->wherePivot('idQuest', $idQuest);
+    }
+
+    /**
+     * Получить все задания, выполненные пользователем в квесте
+     */
+    public function tasks($idQuest)
+    {
+        return $this->belongsToMany('App\Models\Task', 'executeTasks' , $idUserQuest, 'idTask')->wherePivot('idQuest', $idQuest);
+    }
+
+
 }

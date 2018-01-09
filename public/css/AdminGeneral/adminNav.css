@@ -21,7 +21,7 @@ header a, nav a {
     letter-spacing: 2px;
 }
 
-nav {
+.leftNav {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -29,9 +29,6 @@ nav {
     align-items: center;
     color: black;
     width: 20%;
-
 }
 
-#now, #old {display: none;}
 
-.leftNav #result:hover #now, .leftNav #result:hover #old {display: block;}

@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
 
-    {!!HTML::style('../bootstrap/bootstrap/css/bootstrap.css')!!}
+    {{HTML::style('../bootstrap/bootstrap/css/bootstrap.css')}}
     @yield('style')
 </head>
 <body>
     @yield('content')
-    {!!HTML::script('../bootstrap/bootstrap/js/bootstrap.js')!!}
+    {{HTML::script('../bootstrap/bootstrap/js/bootstrap.js')}}
 
 </body>
 </html>

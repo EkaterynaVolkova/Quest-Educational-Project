@@ -10,14 +10,18 @@ use Illuminate\Support\Facades\DB;
 
 class AdminUsersController extends Controller
 {
-
-    // Открытие страницы с пользователями
+    /**
+     *   Открытие страницы с пользователями
+     **/
     protected function show()
     {
         $users = User::all();
         return view('Admin.User.viewUsers', ['users' => $users]);
     }
 
+    /**
+     *   Назначение роли администратора
+     **/
     protected function admin($id)
     {
         $user = User::find($id);

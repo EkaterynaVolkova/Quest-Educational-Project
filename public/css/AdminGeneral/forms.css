@@ -1,20 +1,18 @@
 body {
     background: white;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: center;
-    align-content: space-between;
 }
-form {
 
+form {
     margin: 0 auto;
     background: none;
     min-width: 300px;
     padding: 45px;
     text-align: center;
-    width: 60%;
+    width: 50%;
 }
 
 form label {
@@ -30,7 +28,9 @@ form label {
     font-weight: 700;
     cursor: pointer;
 }
+
 input {
+    height: 50px;
     font-family: "Roboto", sans-serif;
     outline: 0;
     background: white;
@@ -48,14 +48,13 @@ form input:focus {
 }
 
 
-/* Стили для кнопки */
+/* Ð¡Ñ‚Ð¸Ð»Ð¸ Ð´Ð»Ñ ÐºÐ½Ð¾Ð¿ÐºÐ¸ */
 input[type=submit] {
-
-    width: 138px;
-    height: 44px;
+    width: 130px;
+    height: 40px;
     float:right;
     color: black;
-    border: 1px solid black;
+    border: 3px solid black;
     background: none;
     font-weight: 300;
     font-family: 'Montserrat', sans-serif;
@@ -67,6 +66,10 @@ input[type=submit]:hover {
     border: 1px solid #000000;
     text-shadow: #333333 0 1px 0;
     background: #000000;
-    background: -webkit-gradient(linear, left top, left bottom, from(#000000), to(#98b2a4));
     color: #fff;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
 }

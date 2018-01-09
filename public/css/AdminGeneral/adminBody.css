@@ -9,7 +9,8 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-
+   /* background: url("../../img/black.jpg") no-repeat;
+    background-size: 100%;*/
 }
 
 header, footer {
@@ -21,14 +22,13 @@ header, footer {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: center;
     padding-top: 5%;
 }
 
 main {
     margin: 0 auto;
     width: 80%;
-    padding-right: 10px;
 }
 
 main a, main a:hover {

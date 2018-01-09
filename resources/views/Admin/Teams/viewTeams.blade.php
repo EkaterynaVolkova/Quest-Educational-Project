@@ -1,20 +1,9 @@
-@extends('layouts.dashboard')
+@extends('layouts.adminLayouts')
 @section('style')
-    {!!HTML::style('css/Admin/adminShowTeams.css')!!}
-    {!!HTML::style('css/AdminGeneral/tables.css')!!}
-    {!!HTML::style('css/AdminGeneral/adminNav.css')!!}
-    {!!HTML::style('css/AdminGeneral/adminBody.css')!!}
+    {{HTML::style('css/Admin/adminShowTeams.css')}}
 @stop
 
 @section('content')
-
-    <header>
-        @include('Admin.nav');
-    </header>
-
-    <div class="row">
-
-        @include('Admin.leftNav');
 
         <main>
 
@@ -48,6 +37,5 @@
             echo "</table>";
             ?>
         </main>
-    </div>
-    <footer></footer>
+
 @stop

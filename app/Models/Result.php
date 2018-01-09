@@ -12,4 +12,9 @@ class Result extends Model
 
     protected $fillable = ['idQuest', 'idTeam', 'result', 'position'];
     protected $guarded = ['id'];
+
+    public function scopeOfWhereWhere($query, $name, $type, $name2, $type2)
+    {
+        return $query->where($name, '=', $type)->where($name2,'=' , $type2)->get();
+    }
 }

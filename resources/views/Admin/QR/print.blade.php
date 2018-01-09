@@ -1,9 +1,9 @@
 @extends('layouts.dashboard')
 @section('style')
-    {{HTML::style('css/Admin/adminQR.css'), array(), true}}
-    {{HTML::style('css/AdminGeneral/tables.css'), array(), true}}
-    {{HTML::style('css/AdminGeneral/adminNav.css'), array(), true}}
-    {{HTML::style('css/AdminGeneral/adminBody.css'), array(), true}}
+    {!!HTML::style('css/Admin/adminQR.css')!!}
+    {!!HTML::style('css/AdminGeneral/tables.css')!!}
+    {!!HTML::style('css/AdminGeneral/adminNav.css')!!}
+    {!!HTML::style('css/AdminGeneral/adminBody.css')!!}
 @stop
 @section('content')
 
