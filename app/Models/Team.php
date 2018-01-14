@@ -15,16 +15,7 @@ class Team extends Model
 
     public function users($idQuest)
     {
-        return $this->belongsToMany('App\Models\User', 'UserQuests' , 'idTeam', 'idUser')->wherePivot('idQuest', $idQuest);
+        return $this->belongsToMany('App\Models\User', 'userQuests' , 'idTeam', 'idUser')->wherePivot('idQuest', $idQuest);
     }
-
-
-    /**
-     * Получить все записи к квесту из тиблицы QTU
-     */
-   /* public function allQTU()
-    {
-        return $this->hasMany('App\Models\UserQuest', 'idTeam');
-    }*/
 
 }

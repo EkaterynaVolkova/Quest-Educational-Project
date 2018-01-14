@@ -25,7 +25,7 @@ class User extends Authenticatable
      */
     public function quests()
     {
-        return $this->belongsToMany('App\Models\Quest', 'UserQuests' , 'idUser', 'idQuest');
+        return $this->belongsToMany('App\Models\Quest', 'userQuests' , 'idUser', 'idQuest');
     }
 
     /**
@@ -33,7 +33,7 @@ class User extends Authenticatable
      */
     public function quest($idQuest)
     {
-        return $this->belongsToMany('App\Models\Quest', 'UserQuests' , 'idUser', 'idQuest')->wherePivot('idQuest', $idQuest)->get();
+        return $this->belongsToMany('App\Models\Quest', 'userQuests' , 'idUser', 'idQuest')->wherePivot('idQuest', $idQuest)->get();
     }
 
     /**
@@ -41,7 +41,7 @@ class User extends Authenticatable
      */
     public function teams($idQuest)
     {
-        return $this->belongsToMany('App\Models\Team', 'UserQuests' , 'idUser', 'idTeam')->wherePivot('idQuest', $idQuest);
+        return $this->belongsToMany('App\Models\Team', 'userQuests' , 'idUser', 'idTeam')->wherePivot('idQuest', $idQuest);
     }
 
     /**

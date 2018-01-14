@@ -20,7 +20,7 @@ class Quest extends Model
      */
     public function users()
     {
-        return $this->belongsToMany('App\Models\User', 'UserQuests' , 'idQuest', 'idUser');
+        return $this->belongsToMany('App\Models\User', 'userQuests' , 'idQuest', 'idUser');
     }
 
     /**
@@ -28,7 +28,7 @@ class Quest extends Model
      */
     public function teams()
     {
-        return $this->belongsToMany('App\Models\Team', 'UserQuests' , 'idQuest', 'idTeam');
+        return $this->belongsToMany('App\Models\Team', 'userQuests' , 'idQuest', 'idTeam');
     }
 
 

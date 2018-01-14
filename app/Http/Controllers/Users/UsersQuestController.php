@@ -150,7 +150,7 @@ class UsersQuestController extends Controller
     }
 
 
-    protected function playQuest($idQuest, $ok = 0)
+    protected function playQuest($idQuest)
     {
         $etStatus = "";
         $statusQuest = "";
@@ -179,7 +179,7 @@ class UsersQuestController extends Controller
             foreach ($users as $u) {
                 $idUQ = UserQuest::ofWhereWhere('idQuest', $idQuest, 'idUser', $u->id);
                 foreach ($idUQ as $v) {
-                    $idUserQuest[] .= $v->id; // массив id UserQuest для всех пользователей
+                    $idUserQuest[] .= $v->id; // массив idUserQuest для всех участников квеста
                 }
             }
 
@@ -216,7 +216,7 @@ class UsersQuestController extends Controller
                                 return redirect()->route('start');
                             }
                         } else {
-                            return view('Users.usersQuestPlay')->with(['task' => $value, 'ok' => $ok]);
+                            return view('Users.usersQuestPlay')->with(['task' => $value]);
                         }
                     } elseif (empty($eT)) {
                         $exTask = new ExecuteTask();// делаем новую запись в табл. executeTasks
@@ -224,7 +224,7 @@ class UsersQuestController extends Controller
                         $exTask->idUserQuest = $idUserQuestOne;
                         $exTask->status = 0;
                         $exTask->save();
-                        return view('Users.usersQuestPlay')->with(['task' => $value, 'ok' => $ok]); //выводим страничку с этим заданием
+                        return view('Users.usersQuestPlay')->with(['task' => $value]); //выводим страничку с этим заданием
 
                     }
                 }
@@ -254,23 +254,68 @@ class UsersQuestController extends Controller
 
         if ($qr == $qrCode) {
             foreach ($idUserQuest as $v) {
-                $eT = ExecuteTask::ofWhereWhere('idTask', $idTask, 'idUserQuest', $v);
-                if (count($eT) != 0) {
-                    $execTask = ExecuteTask::ofWhereWhere('idTask', $idTask, 'idUserQuest', $v);
+                $execTask = ExecuteTask::ofWhereWhere('idTask', $idTask, 'idUserQuest', $v);
+                if (count($execTask)) {
+                    $idTask = $execTask[0]->id;
+                    break;
+                } else {
+                    continue;
                 }
             }
 
-            if (count($execTask) > 0) {
-                foreach ($execTask as $value) {
-                    $value->status = 1;
-                    $value->save();
-                }
-                return redirect('https://quest.challenge.php.a-level.com.ua/');
-                //  return redirect()->action('Users\UsersQuestController@playQuest', ['idQuest' => $idQuest, 'ok' => 1]);
+            if ($execTask[0]->status == 0) {
+                $execTask[0]->status = 1;
+                $execTask[0]->save();
+
+            } elseif (($execTask[0]->status) && ($execTask[0]->coordX != 0) && ($execTask[0]->coordY != 0)) {
+                return redirect()->action('Users\UsersQuestController@playQuest', ['idQuest' => $idQuest]);
             }
         }
-        return redirect()->route('start');
 
+        return view('Users.usersLocation')->with(['idExecuteTask' => $idTask]);
     }
 
+
+    public function savePosition($id)
+    {
+        $data = Input::all();
+        $execTask = ExecuteTask::find($id);
+        $execTask->coordX = $data['coordX'];
+        $execTask->coordY = $data['coordY'];
+        $execTask->date = date("Y-m-d");
+        $execTask->time = date("H:i:s");
+        // dd(date("d.m.Y H:i:s"));
+        $execTask->save();
+        return redirect()->route('userProfile');
+    }
+
+    public function maps($idQuest)
+    {
+        $coord = array();
+        $exTask = array();
+        $coord = array();
+
+        $idUser = Auth::user()->id;
+        $team = User::find($idUser)->teams($idQuest)->get();
+        $idTeam = $team[0]->id;
+        $userQuests = UserQuest::ofWhereWhere('idQuest', $idQuest, 'idTeam', $idTeam);
+        foreach ($userQuests as $value) {
+            $userQuest = $value->id;
+            $executeTask = ExecuteTask::ofWhereWhere('idUserQuest', $userQuest, 'status', 1)->sortBy('time');
+            if(count($executeTask)) {
+                foreach ($executeTask as $v) {
+                    $exTask[] = $v;
+                    $coord[] = [$v->coordX, $v->coordY];
+                }
+            }
+        }
+        $datetime =array();
+        foreach ($exTask as $key => $value){
+            $datetime[$key] =  "[Дата: ".strval($value->date)."  Время: ".strval($value->time)."]";
+        }
+        $datetime = implode(',', $datetime);
+        $coord = json_encode($coord);
+
+        return view('Users.markers')->with(['coord' => $coord, 'dateTime' => $datetime]);
+    }
 }

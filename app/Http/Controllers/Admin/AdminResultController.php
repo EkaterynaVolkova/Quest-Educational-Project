@@ -67,7 +67,7 @@ class AdminResultController extends Controller
     protected function showResult($idQuest)
     {
         $resultQuests = Result::where('idQuest', $idQuest)->get();
-        return view('Admin\Quest\resultQuest')->with(['results' => $resultQuests]);
+        return view('Admin.Quest.resultQuest')->with(['results' => $resultQuests]);
     }
 
     protected function selectPosition($idResult){

@@ -143,3 +143,7 @@ main button.link a{
     color: blue;
     text-decoration: underline;
 }
+
+#map{
+    height: 600px;
+}

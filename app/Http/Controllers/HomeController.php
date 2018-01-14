@@ -28,4 +28,9 @@ class HomeController extends Controller
 
     }
 
+    public function info($idLink)
+    {
+        return view('Start.startManual')->with(['link'=>$idLink]);
+    }
+
 }

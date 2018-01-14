@@ -26,6 +26,8 @@
         <section class="section">
             <div id="section_inner">
 
+
+                <h1>Задание на выполнение</h1>
                 <div class="column">
                     <div class="row">
                         <div class="text-center">Название</div>
@@ -41,11 +43,7 @@
                     </div>
                 </div>
 
-                @if($ok)
-                    <p>Click the button to get your coordinates.</p>
-                    <button onclick="getLocation()">Try It</button>
-                    <p id="demo"></p>
-                @endif
+
             </div> <!-- div section inner-->
         </section>
 
@@ -63,21 +61,4 @@
             }
         }
     </script>
-    <script>
-        var x = document.getElementById("demo");
-
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(showPosition);
-            } else {
-                x.innerHTML = "Geolocation is not supported by this browser.";
-            }
-        }
-
-        function showPosition(position) {
-            x.innerHTML = "Latitude: " + position.coords.latitude +
-                "<br>Longitude: " + position.coords.longitude;
-        }
-    </script>
-
 @stop

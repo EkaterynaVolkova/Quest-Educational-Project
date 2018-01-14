@@ -107,7 +107,7 @@
                                 <button class="btn btn-link"><a href="" class="glyphicon glyphicon-th-list"
                                                                 onclick="openboxt('id{{$key}}'); return false"></a>
                                 </button>
-                                <button class="btn btn-link"><a href="#" class="glyphicon glyphicon-map-marker"></a>
+                                <button class="btn btn-link"><a href="{{route('maps', ['id'=>json_decode($q)->id])}}" class="glyphicon glyphicon-map-marker"></a>
                                 </button>
                             </div>
                         </div>
