@@ -54,6 +54,7 @@
         };
 
         var map;
+        var t = 0;
         var startDestination;
         var endDestination;
         var centerDestination = [];
@@ -98,21 +99,22 @@
 
             clearMarkers();
             for (var i = 0; i < b.length; i++) {
-                addMarkerWithTimeout(b[i], i * 300);
+                addMarkerWithTimeout(b[i], i*300, arr);
             }
+            window.setTimeout(function () {  getDirections(map, b);}, b.length*300);
+
+       }
 
 
-            getDirections(map, b);
-        }
+        function addMarkerWithTimeout(position, timeout, arr) {
 
-
-        function addMarkerWithTimeout(position, timeout) {
             window.setTimeout(function () {
                 markers.push(new google.maps.Marker({
                     position: {lat: position[0], lng: position[1]},
                     label: labels[labelIndex++ % labels.length],
                     map: map,
-                    animation: google.maps.Animation.DROP
+                    animation: google.maps.Animation.DROP,
+                    title: arr[t++ % arr.length]
                 }));
             }, timeout);
         }
@@ -123,8 +125,10 @@
 
             }
             markers = [];
-
+            pos = [];
+            t = 0;
             labelIndex = 0;
+            center = [];
         }
 
         function moveMarker(map, marker, latlng) {
@@ -189,7 +193,6 @@
 
             var directionsService = new google.maps.DirectionsService();
             var start = new google.maps.LatLng(b[0][0], b[0][1]);
-            centerDestination = [];
             for (var k = 1; k <= (b.length - 2); k++) {
                 center.push(new google.maps.LatLng(b[k][0], b[k][1]));
             }
