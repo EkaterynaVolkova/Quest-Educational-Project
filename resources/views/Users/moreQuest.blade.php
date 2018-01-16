@@ -2,8 +2,10 @@
 @section('style')
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>MoreQuests</title>
     {{HTML::style('css/User/userMoreQuests.css')}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 @stop
 @section('content')
@@ -32,7 +34,8 @@
                                 <li><h6>Автор Квеста:</h6> Сидоров Мойша</li>
                             </ul>
                             <a class="btn btn-inverse pull-left" href="{{route('play', ['id'=>$q->id])}}">Играть</a>
-                            <a href="{{ route('user_view_quest') }}" class="pull-right"><i class="icon-arrow-left"></i>Back to Gallery</a>
+                            <a href="{{ route('user_view_quest') }}" class="pull-right"><i class="icon-arrow-left"></i>Back
+                                to Gallery</a>
                         </div>
                     </div>
                 </div><!-- End gallery-single-->
@@ -40,5 +43,36 @@
         </div> <!-- End Container -->
 
     </main>
-    <footer></footer>
+    <footer>
+         <div id="res"></div>
+        <label for="select"> Выбирайте вашу команду: </label>
+        <select id="msg">;
+            @foreach($team as $value)
+                <option name="option" id="option" value="{!! $value->id !!}">
+                    {!! $value->name !!}
+                </option>
+            @endforeach
+        </select>
+        <script>
+            function getMessage() {
+
+                $.ajax({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    type: 'POST',
+                    url: '/public/users/selectTeam',
+                    data: {"team": $('#msg').val()},
+                    success: function (data) {
+                        $("#res").html(data.msg);
+                    }
+                });
+            }
+        </script>
+
+
+        <?php
+        echo Form::button('Выбрать', ['onClick' => 'getMessage()']);
+        ?>
+    </footer>
 @stop

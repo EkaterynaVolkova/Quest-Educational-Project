@@ -6,6 +6,7 @@
         <h1>Пользователи</h1>
 
         <?php
+        echo "<div class='table'>";
         echo "<table>";
         echo "<tr><th>id</th><th>name</th><th>nickname</th><th>email</th><th>role</th></tr>";
         foreach ($users as $key => $value) {
@@ -26,6 +27,7 @@
         echo "</tr>";
         }
         echo "</table>";
+        echo "</div>";
         ?>
     </main>
 @stop

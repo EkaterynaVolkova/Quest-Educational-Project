@@ -14,7 +14,7 @@
                         class="glyphicon glyphicon-plus"></a></submit>
 
             <?php
-
+            echo "<div class='table'>";
             echo "<table>";
             echo "<tr><th>id</th><th>name</th></tr>";
             foreach ($teams as $key => $value) {
@@ -35,6 +35,7 @@
             echo "</tr>";
             }
             echo "</table>";
+            echo "</div>";
             ?>
         </main>
 

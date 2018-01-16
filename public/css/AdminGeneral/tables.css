@@ -1,5 +1,5 @@
 div.table{
-    width: 100%;
+    width: 95%;
     height: 400px;
     max-height: 400px;
     overflow-x: auto;
@@ -30,6 +30,7 @@ td, th {
     text-align: center;
     max-height: 50px;
     max-width: 100px;
+    min-width: 60px;
     overflow-x: auto;
     overflow-y: auto;
 }

@@ -32,7 +32,8 @@ class UsersQuestController extends Controller
     protected function more($id)
     {
         $q = Quest::find($id);
-        return view('Users.moreQuest')->with(['q' => $q]);
+        $team = Team::all();
+        return view('Users.moreQuest')->with(['q' => $q, 'team' => $team]);
     }
 
     protected function play($id)
@@ -317,5 +318,11 @@ class UsersQuestController extends Controller
         $coord = json_encode($coord);
 
         return view('Users.markers')->with(['coord' => $coord, 'dateTime' => $datetime]);
+    }
+
+    public function selectTeam(){
+        $data = Input::all();
+
+        return response()->json(array('msg'=> 'Все ок)'), 200);
     }
 }

@@ -13,10 +13,10 @@
 <body>
 
 <header>
-    @include('Admin.nav');
+    @include('Admin.nav')
 </header>
 <div class="row">
-    @include('Admin.leftNav');
+    @include('Admin.leftNav')
     @yield('content')
 </div>
 <footer></footer>

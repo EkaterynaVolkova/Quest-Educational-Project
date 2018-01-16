@@ -64,16 +64,6 @@ a.splash-arrow:hover {
     bottom: 50px;
 }
 
-
-/*@media all and (max-width: 690px) {
-    header nav { float: none; display: inline-block; margin: 0 auto; }
-    .splash-title {font-size: 2em;}
-}
-
-@media all and (max-width: 480px) {
-    .splash-title {font-size: 1.5em;}
-}*/
-
 div.cont{
     max-width: 1200px;
     width: 100%;
@@ -199,14 +189,13 @@ footer{
 .footer{
     position: relative;
     top: 70px;
-    margin-top: 20px;
+    margin: 20px 5px 5px 5px;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    margin: 5px;
-}
+   }
 
 .rows {
     width: 100%;

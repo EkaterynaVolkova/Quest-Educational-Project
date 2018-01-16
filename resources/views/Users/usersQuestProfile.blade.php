@@ -1,39 +1,30 @@
 @extends('layouts.dashboard')
 @section('style')
     {{HTML::style('css/User/userProfile.css')}}
-    {{HTML::style('css/UserGeneral/headerNav.css')}}
+    {{HTML::style('css/User/userProfile2.css')}}
 @stop
 @section('content')
-
     <header>
         @include('Users.General.headerNav')
     </header>
-
     <main>
-        <aside>
-            <div class="avatar"></div>
-            <p class="name">Имя: {{Auth::user()->name}}</p>
-            <p class="name">Возраст: {{Auth::user()->age}}</p>
-            <p class="name">Пол: {{Auth::user()->gender}}</p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <button class="btn btn-link link"><a href="" onclick="openbox('idTQ'); return false">Текущий
-                    квест</a>
-            </button>
-            <button class="btn btn-link link"><a href="" onclick="openbox('idFQ'); return false">Грядущие квесты</a>
-            </button>
-            <button class="btn btn-link link"><a href="" onclick="openbox('idLQ'); return false">Архив</a>
-            </button>
-        </aside>
-
-        <section class="section">
-
-            <div id="section_inner">
-
+        <div class="wrapper">
+            <div class="menu-container">
+                <div id="logo-container">
+                    <div id="logo-container-pict"></div>
+                </div>
+                <div class="menu-main-container">
+                    <ul class="menu">
+                        <li><a class="about"> {{Auth::user()->name}}  <span>Возраст:{{Auth::user()->age}} &nbsp; Пол:{{Auth::user()->gender}}</span></a></li>
+                        <li><a href="#" onclick="openbox('idTQ'); return false">Текущий Квест <span>Информация о квесте.</span></a></li>
+                        <li><a href="#" onclick="openbox('idFQ'); return false">Грядущий квест <span>Предстоящие квесты.</span></a></li>
+                        <li><a href="#" onclick="openbox('idLQ'); return false">Архив <span>Архив квестов.</span></a></li>
+                    </ul>
+                </div>s
+            </div>
+            <div id="container">
+                {{--<div id="main-header">Documentain</div>--}}
                 <div class="column" id="idTQ">
-
                     <div class="row">
                         <div class="text-center">Название</div>
                         <div class="text-center">Дата</div>
@@ -56,8 +47,6 @@
                         </div>
                     @endforeach
                 </div>
-
-
                 <div class="column" id="idFQ">
                     <div class="row">
                         <div class="text-center">Название</div>
@@ -85,8 +74,6 @@
                         </div>
                     @endforeach
                 </div>
-
-
                 <div class="column" id="idLQ">
                     <div class="row">
                         <div class="text-center">Название</div>
@@ -111,19 +98,16 @@
                                 </button>
                             </div>
                         </div>
-
                         <div class="column task" id="id{{$key}}">
                             <div class="row">
                                 <div class="text-center">Название</div>
                                 <div class="text-center">Описание</div>
                                 <div class="text-center">Очки</div>
                                 <div class="text-center">Выполнение</div>
-
                             </div>
                             @foreach($tasksLast as $kk => $task)
                                 @if($kk == $key)
                                     @foreach(json_decode($task) as $k => $t)
-
                                         <div class="row">
                                             <div class="text-center">{!! $t->name !!}</div>
                                             <div class="text-center">{!! $t->description !!}</div>
@@ -135,24 +119,15 @@
                                             @endif
                                         </div>
                                     @endforeach
-
                                 @endif
                             @endforeach
-
                         </div>
-
                     @endforeach
-
                 </div>
-
-
-            </div> <!-- div section inner-->
-        </section>
-
+            </div>
+        </div>
     </main>
-
     <footer></footer>
-
     <script type="text/javascript">
         function openbox(id) {
             if (id == 'idTQ') {
@@ -169,7 +144,6 @@
                 document.getElementById('idLQ').style.display = 'none';
             }
         }
-
         function openboxt(id) {
             display = document.getElementById(id).style.display;
             if (display == 'none') {
@@ -178,7 +152,5 @@
                 document.getElementById(id).style.display = 'none';
             }
         }
-
     </script>
-
 @stop

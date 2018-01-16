@@ -8,6 +8,7 @@
         <h1>Список заданий</h1>
 
         <?php
+        echo "<div class='table'>";
         echo "<table>";
         echo "<tr><th>id</th><th>idQuest</th><th>name</th><th>description</th><th>weight</th><th>QR</th></tr>";
         foreach ($tasks as $key => $value) {
@@ -35,6 +36,7 @@
         echo "</tr>";
         }
         echo "</table>";
+        echo "</div>";
         ?>
     </main>
 @stop

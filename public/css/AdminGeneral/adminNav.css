@@ -22,6 +22,7 @@ header a, nav a {
 }
 
 .leftNav {
+    max-width: 200px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -29,6 +30,37 @@ header a, nav a {
     align-items: center;
     color: black;
     width: 20%;
+}
+
+@media screen and (max-width: 700px) {
+    .leftNav{
+        position: absolute;
+        background-color: white;
+        left: -220px;
+        transition: 0.3s;
+        width: 250px!important;
+        max-width: 300px!important;
+        align-items: flex-start;
+
+    }
+
+    .leftNav>a{
+        width: 100%;
+        text-align: center;
+    }
+    
+    .leftNav>a:nth-child(3){
+        background: url("http://quest/public/img/right-arrow.jpg") no-repeat;
+        background-size:  30px 30px;
+        background-position: center right;
+    }
+
+    .leftNav:hover{
+        left: 0;
+
+    }
+
+
 }
 
 

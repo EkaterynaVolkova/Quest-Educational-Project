@@ -34,7 +34,7 @@
 
                 {{--<p onclick="initMap($coord)">xxx</p>--}}
                 <div id="floating-panel">
-                    <button id="drop" onclick="drop()">Drop Markers</button>
+                <button id="drop" onclick="drop()">Drop Markers</button>
                 </div>
                 <div id="map"></div>
 
@@ -49,97 +49,171 @@
 
     <script type="text/javascript">
 
-
-        var map, marker;
-        var startPos = [42.42679066670903, -83.29210638999939];
-        var speed = 50;
-
-        var delay = 100;
-
-        function animateMarker(marker, coords, km_h)
-        {
-            var target = 0;
-            var km_h = km_h || 50;
-            coords.push([startPos[0], startPos[1]]);
-
-            function goToPoint()
-            {
-                var lat = marker.position.lat();
-                var lng = marker.position.lng();
-                var step = (km_h * 1000 * delay) / 3600000; // in meters
-
-                var dest = new google.maps.LatLng(
-                    coords[target][0], coords[target][2]);
-
-                var distance = 100;
-                  //  google.maps.geometry.spherical.computeDistanceBetween(
-                  //      dest, marker.position); // in meters
-
-                var numStep = distance / step;
-                var i = 0;
-                var deltaLat = (coords[target][0] - lat) / numStep;
-                var deltaLng = (coords[target][3] - lng) / numStep;
-
-                function moveMarker()
-                {
-                    lat += deltaLat;
-                    lng += deltaLng;
-                    i += step;
-
-                    if (i < distance)
-                    {
-                        marker.setPosition(new google.maps.LatLng(lat, lng));
-                        setTimeout(moveMarker, delay);
-                    }
-                    else
-                    {   marker.setPosition(dest);
-                        target++;
-                        if (target == coords.length){ target = 0; }
-
-                        setTimeout(goToPoint, delay);
-                    }
-                }
-                moveMarker();
-            }
-            goToPoint();
-        }
-
-        function initMap()
-        {
-            var myOptions = {
-                zoom: 16,
-                center: new google.maps.LatLng(42.425175091823974, -83.2943058013916),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-
-            map = new google.maps.Map(document.getElementById("map"), myOptions);
-
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(startPos[0], startPos[1]),
-                map: map
-            });
-
-            google.maps.event.addListenerOnce(map, 'idle', function()
-            {
-                animateMarker(marker, [
-                    // The coordinates of each point you want the marker to go to.
-                    // You don't need to specify the starting position again.
-                    [42.42666395645802, -83.29694509506226],
-                    [42.42300508749226, -83.29679489135742],
-                    [42.42304468678425, -83.29434871673584],
-                    [42.424882066428424, -83.2944130897522],
-                    [42.42495334300206, -83.29203128814697]
-                ], speed);
-            });
-        }
-
         window.onload = function () {
             initMap();
         };
 
+        var map;
+        var startDestination;
+        var endDestination;
+        var centerDestination = [];
+        var center = [];
+        var b;
+        var pos = [];
+        var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var labelIndex = 0;
+        var markers = [];
 
 
-            function openbox(id) {
+        function initMap($coord, $dateTime) {
+
+            var a = "<? echo $coord ?>";
+            var dt = "<? echo $dateTime ?>";
+            arr = dt.split(',');
+
+            b = JSON.parse(a);
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {lat: b[0][0], lng: b[0][1]},
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.RoadMap
+            });
+
+
+        }
+
+        function drop($coord, $dateTime) {
+
+            var a = "<? echo $coord ?>";
+            var dt = "<? echo $dateTime ?>";
+            arr = dt.split(',');
+
+            b = JSON.parse(a);
+
+            map = new google.maps.Map(document.getElementById("map"), {
+                center: {lat: b[0][0], lng: b[0][1]},
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.RoadMap
+            });
+
+            clearMarkers();
+            for (var i = 0; i < b.length; i++) {
+                addMarkerWithTimeout(b[i], i * 300);
+            }
+
+
+            getDirections(map, b);
+        }
+
+
+        function addMarkerWithTimeout(position, timeout) {
+            window.setTimeout(function () {
+                markers.push(new google.maps.Marker({
+                    position: {lat: position[0], lng: position[1]},
+                    label: labels[labelIndex++ % labels.length],
+                    map: map,
+                    animation: google.maps.Animation.DROP
+                }));
+            }, timeout);
+        }
+
+        function clearMarkers() {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(null);
+
+            }
+            markers = [];
+
+            labelIndex = 0;
+        }
+
+        function moveMarker(map, marker, latlng) {
+            marker.setPosition(latlng);
+            map.panTo(latlng);
+        }
+
+        function autoRefresh(map, pathCoords) {
+            var i, route, marker;
+
+            route = new google.maps.Polyline({
+                path: [],
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: .5,
+                strokeWeight: 2,
+                editable: false,
+                map: map
+            });
+
+            marker = new google.maps.Marker({map: map, icon: "http://maps.google.com/mapfiles/ms/micons/blue.png"});
+
+
+            interpolatePathBetween(pathCoords, 10);
+
+            var timeout = 1 * 10; // seconds
+            for (i = 0; i < pathCoords.length; i++) {
+                setTimeout(function (coords) {
+                    route.getPath().push(coords);
+                    moveMarker(map, marker, coords);
+                }, timeout * i, pathCoords[i]);
+            }
+        }
+
+
+        function interpolatePathBetween(path, step, curIndex) {
+            var curIndex = curIndex || 0;
+            //verify path contains at least 2 coordinates
+            if (path.length == 0 || path.length == 1) {
+                return;
+            }
+            step = Math.max(step, 10); //ensure the step at least 10 meters
+
+            var start = path[curIndex];
+            var end = path[curIndex + 1];
+            var dist = google.maps.geometry.spherical.computeDistanceBetween(start, end);
+
+            if (dist > step) {
+                var intCoord = google.maps.geometry.spherical.interpolate(start, end, .5);
+                path.splice(curIndex + 1, 0, intCoord);
+                interpolatePathBetween(path, step, curIndex);
+            }
+
+
+            if (curIndex < path.length - 2) {
+                interpolatePathBetween(path, step, curIndex + 1);
+            }
+
+        }
+
+        function getDirections(map, b) {
+
+            var directionsService = new google.maps.DirectionsService();
+            var start = new google.maps.LatLng(b[0][0], b[0][1]);
+            centerDestination = [];
+            for (var k = 1; k <= (b.length - 2); k++) {
+                center.push(new google.maps.LatLng(b[k][0], b[k][1]));
+            }
+
+            for (var l=0; l<center.length-1; l++){
+                pos[l] = { location: center[l], stopover: false};
+            }
+            var end = new google.maps.LatLng(b[b.length - 1][0], b[b.length - 1][1]);
+            var request = {
+                origin: start,
+                destination: end,
+                travelMode: google.maps.TravelMode.WALKING,
+                waypoints:  pos
+            };
+
+            directionsService.route(request, function (result, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    autoRefresh(map, result.routes[0].overview_path);
+                }
+            });
+        }
+
+
+        function openbox(id) {
             if (id == 'idTQ') {
                 document.getElementById('idTQ').style.display = 'block';
                 document.getElementById('idLQ').style.display = 'none';
@@ -168,7 +242,11 @@
     </script>
 
 
-    <script async defer type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyDL1sGQvZosVlgfL5TqdXvMqpeXa_YBgxg&v=3&libraries=geometry,places&callback=initMap"> </script>
+    <script async defer type="text/javascript"
+            src="https://maps.google.com/maps/api/js?key=AIzaSyDL1sGQvZosVlgfL5TqdXvMqpeXa_YBgxg&v=3&libraries=geometry,places&callback=initMap"></script>
 
 
 @stop
+
+
+
