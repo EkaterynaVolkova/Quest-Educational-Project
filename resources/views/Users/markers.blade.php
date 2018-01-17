@@ -197,7 +197,7 @@
                 center.push(new google.maps.LatLng(b[k][0], b[k][1]));
             }
 
-            for (var l=0; l<center.length-1; l++){
+            for (var l=0; l<center.length; l++){
                 pos[l] = { location: center[l], stopover: false};
             }
             var end = new google.maps.LatLng(b[b.length - 1][0], b[b.length - 1][1]);
