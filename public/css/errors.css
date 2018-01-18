@@ -1,0 +1,89 @@
+html, body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font: normal 1em/1.5em 'Arial', sans-serif;
+    color: #333;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+}
+
+div.cont{
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    min-height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url('http://quest/public/img/main.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+
+.copyrite{
+    position: relative;
+    top: 100px;
+    margin: 10px;
+    text-align: center;
+}
+
+main.errors{
+    position: relative;
+    top: 100px;
+    background: white;
+    opacity: 0.7;
+    max-width: 1200px;
+    width: 100%;
+    position: relative;
+    top: 70px;
+    min-height: 900px;
+    height: 100%;
+}
+
+header {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 70px;
+    background: white;
+    min-width: 300px;
+}
+
+header nav {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+}
+
+
+.cont a {
+    text-decoration: none;
+    outline: none;
+    display: inline-block;
+    padding: 10px 20px;
+    position: relative;
+    color: black!important;
+    border: none;
+    background: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.cont a:hover{
+
+    text-decoration: none!important;
+}
+
+h1{
+    text-align: center;
+    margin-top: 50px;
+}

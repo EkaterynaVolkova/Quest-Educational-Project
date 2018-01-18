@@ -77,4 +77,6 @@ class AdminQuestController extends Controller
         return redirect()->action('Admin\AdminQuestController@show');
     }
 
+
+
 }

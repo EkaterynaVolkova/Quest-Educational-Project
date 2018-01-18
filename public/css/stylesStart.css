@@ -272,10 +272,11 @@ footer{
     padding: 0!important;
 }
 
-.copyrite{
+.copyrite {
     position: relative;
     top: 100px;
     margin: 10px;
+    text-align: center;
 }
 
 @media screen and (max-width: 500px) {
