@@ -23,6 +23,7 @@ class AdminResultController extends Controller
         $idQuest = "";
 
         $quests = Quest::where('status', 1)->get();  // текущий квест
+        if (count($quests)){
         foreach ($quests as $quest) {
             // команды учавствующие в квесте
             $idQuest = $quest->id;
@@ -62,6 +63,10 @@ class AdminResultController extends Controller
 
         }
         return redirect()->action('Admin\AdminResultController@showResult', ['idQuest' => $idQuest]);
+    } else {
+            return view('Admin.startAdminka')->with(['msg' => 'Нет новых завершённых квестов']);
+        }
+
     }
 
     protected function showResult($idQuest)

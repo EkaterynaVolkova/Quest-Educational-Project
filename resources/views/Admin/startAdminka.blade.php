@@ -14,7 +14,12 @@
         @include('Admin.leftNav');
 
         <main>
-        <h1>Ура! Ты - админ!</h1>
+            @if ($msg)
+                <h1>{{$msg}}</h1>
+                <?php $msg = 0; ?>
+            @else
+                <h1>Ура! Ты - админ!</h1>
+            @endif
         </main>
 
     </div>

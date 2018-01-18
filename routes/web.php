@@ -37,10 +37,8 @@ Route::post('contact-form', 'Contacts\ContactsController@cfp')->name('contacts')
 //Страницы без авторизации
 Route::group(['prefix' => 'users', 'middleware' => ['web']], function () {
     //страничка с квестами (надо сделать только с доступными квестами)
-    Route::get('/view', ['uses' => 'Users\UsersQuestController@view', 'as' => 'user_view_quest']);
-    //Подробная информация о квесте (после нажатия на кнопку more)
-    Route::get('/more/quest/{id?}', ['uses' => 'Users\UsersQuestController@more', 'as' => 'more'])->where('id', '[0-9]+');
-});
+    Route::get('/view', ['uses' => 'Users\UsersQuestController@view', 'as' => 'view quest']);
+    });
 
 
 //Админка
@@ -127,6 +125,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['web', 'auth', 'admin']], fu
 //для залогиненного пользователя
 
 Route::group(['prefix' => 'users', 'middleware' => ['web', 'auth']], function () {
+    //Подробная информация о квесте (после нажатия на кнопку more)
+    Route::get('/more/quest/{id?}', ['uses' => 'Users\UsersQuestController@more', 'as' => 'more'])->where('id', '[0-9]+');
+
     //планируемый маршрут при выборе user-ом квеста на выполнение(надо делать)
     Route::get('play/{id?}/', ['uses' => 'Users\UsersQuestController@play', 'as' => 'play']);
     //планируемый маршрут при выборе user-ом квеста на выполнение(надо делать)

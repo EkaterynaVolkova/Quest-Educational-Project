@@ -35,7 +35,8 @@ class AdminTaskController extends Controller
     protected function showByOne($idQuest)
     {
         $tasks = Quest::find($idQuest)->tasks;
-        return view('Admin.Task.showTasksByQuest', ['idQuest' => $idQuest])->with(['tasks' => $tasks]);
+        $name = Quest::find($idQuest)->name;
+        return view('Admin.Task.showTasksByQuest', ['idQuest' => $idQuest])->with(['tasks' => $tasks, 'nameQuest' => $name]);
     }
 
     //переадресация на форму добавления нового задания

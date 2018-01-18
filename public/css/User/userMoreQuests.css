@@ -10,6 +10,15 @@ html, body {
     margin-left: auto;
     padding: 0;
 }
+
+#sel-team{
+    display: none;
+}
+
+.moreQuestAbout>h2{
+    padding-left: 10px;
+}
+
 @media only screen and (max-width: 767px) {
     #main-container {
         width: auto;
@@ -230,6 +239,7 @@ img {
     box-shadow: 1px -1px 1px 0px #0f0f0f;
     font-size: 14px;
     padding: 4px 14px;
+    margin-left: 10px;
     text-decoration: none;
 }
 .moreQuestAbout .pull-left:hover {

@@ -77,5 +77,12 @@
 
     </div>
 
+    <script>
+        window.onload(function(){
+           document.keydown(function(){
+               alert('down');
+           });
+        });
+    </script>
 
 @stop

@@ -8,6 +8,6 @@ use App\Http\Controllers\Controller;
 class AdminController extends Controller
 {
     public function show(){
-        return view('Admin.startAdminka');
+        return view('Admin.startAdminka')->with(['msg' => null]);
     }
 }

@@ -7,10 +7,15 @@
     <div class="cont"></div>
     <header>
         <nav>
-            <a href="{{route('start')}}" class="active">Home</a>
-            <a href="/public/login">Login</a>
+            <a href="/public/" class="active">Home</a>
+            @if (!(Auth::check()))
+                <a href="/public/login">Login</a>
+            @else
+                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"> Logout </a>
+            @endif
             <a href="contact-form">Contacts</a>
         </nav>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
         <div class="shadow"></div>
     </header>
 

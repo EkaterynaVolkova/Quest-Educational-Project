@@ -20,8 +20,6 @@
     echo "<br>";
     echo Form::label('time', 'Время начала:') . Form::time('time');
     echo "<br>";
-    echo Form::label('status', 'Status:') . Form::text('status');
-    echo "<br>";
 
     echo Form::submit('Добавить');
 

@@ -9,6 +9,7 @@ use Faker\Provider\Image;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+use Closure;
 
 class GoogleController extends Controller
 {
@@ -47,6 +48,6 @@ class GoogleController extends Controller
         }
 
         Auth::login($user, true);
-        return redirect('/');
+        return redirect()->route('view quest');
     }
 }

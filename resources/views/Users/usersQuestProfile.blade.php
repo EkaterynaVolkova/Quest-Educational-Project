@@ -63,7 +63,7 @@
                             <div class="text-center">{!! $teamFuture[$key] !!}</div>
                             <div>
                                 <button class="btn btn-link"><a
-                                            href="{{route('editTeam', ['id'=>json_decode($q)->id])}}"
+                                            href="{{route('more', ['id'=>json_decode($q)->id])}}"
                                             class="glyphicon glyphicon-pencil"></a>
                                 </button>
                                 <button class="btn btn-link"><a
