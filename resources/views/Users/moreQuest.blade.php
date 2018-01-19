@@ -5,6 +5,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>MoreQuests</title>
     {{HTML::style('css/User/userMoreQuests.css')}}
+    {{HTML::style('css/UserGeneral/headerNav.css')}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
 @stop
@@ -23,14 +24,15 @@
                             <img src="../../../img/moreQuest/cowboy.jpg" class="thum" alt="image">
                         </div>
                         <div class="moreQuestInfo">
-
-                                <a class="btn btn-inverse pull-left" href="#" onclick="play()">Играть</a>
-                                <a href="{{ route('user_view_quest') }}" class="pull-right"><i
+                               <div class="links">
+                                <a class="icon-arrow-left right" href="#" onclick="play()">Играть</a>
+                                <a href="{{ route('view quest') }}" class=""><i
                                             class="icon-arrow-left"></i>Back
                                     to Gallery</a>
+                               </div>
 
-                            <div class="select">
-                                    <label for="msg"> Выбирайте вашу команду: </label>
+                            <div class="select" id="sel-team">
+                                    <label for="msg"> Выбирите команду: </label>
                                     <select id="msg" onchange="getMessage()">;
                                         @foreach($team as $value)
                                             <option name="option" id="option" value="{!! $value->id !!}">
@@ -43,14 +45,14 @@
                             <div class="moreQuestAbout">
                                 <h2>{!! $q->name !!}</h2>
                                 <p class="lead-m">{!! $q->description !!}</p>
-                                {{--<p class="description">{!! $q->fullDescription !!}</p>--}}
-                                <ul class="project-info">
+                                 <ul class="project-info">
                                     <li><h6>Дата Старта:</h6> {!! $q->date !!}</li>
                                     <li><h6>Время Старта:</h6> {!! $q->time !!}</li>
-                                    <li><h6>Конец Квеста:</h6> Дата</li>
-                                    <li><h6>Сложность:</h6> Хард Басс</li>
-                                    <li><h6>Автор Квеста:</h6> Сидоров Мойша</li>
+                                    <li><h6>Сложность:</h6> {!! $q->hard !!}</li>
+                                    <li><h6>Автор Квеста:</h6> {!! $q->autor !!}</li>
+                                    <li><h6>Описание:</h6>{!!$q->fullDescription !!}</li>
                                 </ul>
+
                             </div>
                         </div>
 
@@ -66,7 +68,7 @@
     <script>
 
         function play() {
-            document.getElementById('sel-team').style.display = 'block';
+            document.getElementById('sel-team').style.visibility = 'visible';
         }
 
         function getMessage($q) {

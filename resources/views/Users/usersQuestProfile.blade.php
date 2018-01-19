@@ -1,7 +1,8 @@
 @extends('layouts.dashboard')
 @section('style')
     {{HTML::style('css/User/userProfile.css')}}
-    {{HTML::style('css/User/userProfile2.css')}}
+    {{HTML::style('css/UserGeneral/headerNav.css')}}
+
 @stop
 @section('content')
     <header>
@@ -15,12 +16,21 @@
                 </div>
                 <div class="menu-main-container">
                     <ul class="menu">
-                        <li><a class="about"> {{Auth::user()->name}}  <span>Возраст:{{Auth::user()->age}} &nbsp; Пол:{{Auth::user()->gender}}</span></a></li>
-                        <li><a href="#" onclick="openbox('idTQ'); return false">Текущий Квест <span>Информация о квесте.</span></a></li>
-                        <li><a href="#" onclick="openbox('idFQ'); return false">Грядущий квест <span>Предстоящие квесты.</span></a></li>
-                        <li><a href="#" onclick="openbox('idLQ'); return false">Архив <span>Архив квестов.</span></a></li>
+                        <li>
+                            <div class="about">
+                                <p>{{Auth::user()->name}}</p>
+                                <p>Возраст: {{Auth::user()->age}}</p>
+                                <p> Пол: {{Auth::user()->gender}}</p>
+                            </div>
+                        </li>
+                        <li><a href="#" onclick="openbox('idTQ'); return false">Текущий Квест
+                                <span>Информация о квесте.</span></a></li>
+                        <li><a href="#" onclick="openbox('idFQ'); return false">Грядущий квест
+                                <span>Предстоящие квесты.</span></a></li>
+                        <li><a href="#" onclick="openbox('idLQ'); return false">Архив <span>Архив квестов.</span></a>
+                        </li>
                     </ul>
-                </div>s
+                </div>
             </div>
             <div id="container">
                 {{--<div id="main-header">Documentain</div>--}}
@@ -94,7 +104,8 @@
                                 <button class="btn btn-link"><a href="" class="glyphicon glyphicon-th-list"
                                                                 onclick="openboxt('id{{$key}}'); return false"></a>
                                 </button>
-                                <button class="btn btn-link"><a href="{{route('maps', ['id'=>json_decode($q)->id])}}" class="glyphicon glyphicon-map-marker"></a>
+                                <button class="btn btn-link"><a href="{{route('maps', ['id'=>json_decode($q)->id])}}"
+                                                                class="glyphicon glyphicon-map-marker"></a>
                                 </button>
                             </div>
                         </div>
@@ -144,6 +155,7 @@
                 document.getElementById('idLQ').style.display = 'none';
             }
         }
+
         function openboxt(id) {
             display = document.getElementById(id).style.display;
             if (display == 'none') {

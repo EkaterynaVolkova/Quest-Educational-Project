@@ -16,6 +16,10 @@
     echo "<br>";
     echo Form::label('fullDescription', 'Полное описание') . Form::text('fullDescription');
     echo "<br>";
+    echo Form::label('hard', 'Сложность:') . Form::text('hard');
+    echo "<br>";
+    echo Form::label('author', 'Автор:') . Form::text('author');
+    echo "<br>";
     echo Form::label('date', 'Дата проведения:') . Form::date('date');
     echo "<br>";
     echo Form::label('time', 'Время начала:') . Form::time('time');

@@ -54,7 +54,8 @@ class AdminQuestController extends Controller
         $quest->fullDescription = $data['fullDescription'];
         $quest->date = $data['date'];
         $quest->time = $data['time'];
-        $quest->status = $data['status'];
+        $quest->hard = $data['hard'];
+        $quest->author = $data['author'];
 
         $quest->save();
         return redirect()->action('Admin\AdminQuestController@show');

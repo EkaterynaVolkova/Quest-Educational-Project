@@ -1,9 +1,136 @@
 html, body {
-    font-size: 12px !important;
-    line-height: 18px !important;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px!important;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     background: #f9f9f9 url(../../img/page-bg-1.jpg);
 }
+header, main, footer{
+    width: 100%;
+    background: #f9f9f9 url(../../img/page-bg-1.jpg);
+}
+.row {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    align-items: center;
+}
+.column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid white;
+    background: white;
+}
+.row div {
+    width: 25%;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+}
+#id, #id2, #id3
+{
+    display: none;
+}
+.quest button a {
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+/*html, body {*/
+/*width: 100%;*/
+/*background: black;*/
+/*display: flex;*/
+/*flex-direction: column;*/
+/*justify-content: space-between;*/
+/*align-items: center;*/
+/*font-size: 14px!important;*/
+/*}*/
+header, main, footer{
+    width: 100%;
+}
+main{
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    align-items: stretch;
+}
+main aside {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+main section{
+    width: 75%;
+}
+main aside div{
+    height:250px;
+    width: 50%;
+    background: url("http://quest/public/img/user.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.row {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    align-items: center;
+}
+.column {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid white;
+}
+.row div {
+    width: 25%;
+    text-align: center;
+    color: black;
+    font-size: 18px;
+}
+#id, #id2, #id3, #idTQ, #idLQ, #idFQ, .task
+{
+    display: none;
+}
+.quest button a {
+    border: none;
+    width: 30px;
+    height: 30px;
+}
+p.name{
+    text-align: center;
+    width: 100%;
+}
+main button.link a{
+    border: none;
+    font-size: 28px;
+    color: blue;
+    text-decoration: underline;
+}
+#map{
+    height: 600px;
+}
+
 .wrapper {
     margin: 20px auto;
     width: 1000px;
@@ -142,46 +269,4 @@ html, body {
     background: #fff;
     padding: 20px;
     box-shadow: 1px 1px 1px 1px rgba(5, 5, 5, 0.1);
-}
-/*HEADER STYLE*/
-.nav1 {
-    width: 75%;
-    margin-bottom: 60px;
-    margin-left: auto;
-    margin-right: auto;
-    float: right;
-    background: #f8f8f8;
-    border-bottom: 1px dotted #a9a9a9;
-    border-top: 1px dotted #a9a9a9;
-    overflow: visible;
-    color: #777777;
-}
-.ul1 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    margin: 0px;
-}
-.ul1 li{
-    list-style: none;
-}
-.a1 {
-    text-decoration: none;
-    outline: none;
-    display: inline-block;
-    background: none;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    /*padding: 20px 30px;*/
-    margin: 0px 20px;
-    font-family: "Oswald", sans-serif;
-    font-weight: normal;
-    text-shadow: none;
-    font-size: 12px;
-    color: #777777;
-    padding: 10px 15px 10px;
-}
-.a1:hover{
-    background: #d8450b;
-    color: #FFF;
 }

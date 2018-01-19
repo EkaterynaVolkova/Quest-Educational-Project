@@ -11,13 +11,15 @@
         <?php
         echo "<div class='table'>";
         echo "<table>";
-        echo "<tr><th>id</th><th>name</th><th>description</th><th>fullDescription</th><th>date</th><th>time</th><th>sts</th></tr>";
+        echo "<tr><th>id</th><th>name</th><th>description</th><th>fullDescription</th><th>hard</th><th>author</th><th>date</th><th>time</th><th>sts</th></tr>";
         foreach ($quests as $key => $value) {
         echo "<tr>";
         echo "<td> <div>" . $value->id . "</div> </td>";
         echo "<td> <div>" . $value->name . "</div> </td>";
         echo "<td class='description'> <div >" . $value->description . "</div> </td>";
         echo "<td class='description'> <div >" . $value->fullDescription . "</div> </td>";
+        echo "<td> <div>" . $value->hard . "</div> </td>";
+        echo "<td> <div >" . $value->author . "</div> </td>";
         echo "<td class='date'> <div>" . $value->date . "</div> </td>";
         echo "<td> <div>" . $value->time . "</div> </td>";
         echo "<td> <div >" . $value->status . "</div> </td>";

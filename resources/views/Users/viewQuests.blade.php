@@ -4,7 +4,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quests</title>
     {{HTML::style('css/User/userViewQuests1.css')}}
-    {{HTML::style('css/User/userViewQuests.css')}}
+    {{HTML::style('css/UserGeneral/headerNav.css')}}
+    {{--{{HTML::style('css/User/userViewQuests.css')}}--}}
     {{HTML::script('js/uilang.js')}}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 @stop
@@ -24,7 +25,7 @@
                         <span class='gallery-hover-3col hidden-phone hidden-tablet'>
                             <span class='gallery-icons'>
                                 <a href='#' class='item-zoom-link lightbox' title='Просмотр' onclick='showDetails(this)' data-rel="{!! $q->name !!}"></a>
-                                <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link' title='Играть'></a>
+                                <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link ' title='Играть'></a>
                             </span>
                         </span>
                         <span class='project-details'><a href='{{route('more', ['id'=>$q->id])}}'>{!! $q->name !!}</a>{!! $q->description !!}<br>{!! $q->date !!}.</span>

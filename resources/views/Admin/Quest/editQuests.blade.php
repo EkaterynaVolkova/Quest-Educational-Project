@@ -16,13 +16,14 @@
     echo "<br>";
     echo Form::label('fullDescription', 'Полное описание') . Form::text('fullDescription', $quest->fullDescription);
     echo "<br>";
+    echo Form::label('date', 'Сложность:') . Form::text('hard', $quest->hard);
+    echo "<br>";
+    echo Form::label('time', 'Автор:') . Form::text('author', $quest->author);
+    echo "<br>";
     echo Form::label('date', 'Дата проведения:') . Form::date('date', $quest->date);
     echo "<br>";
     echo Form::label('time', 'Время начала:') . Form::time('time', $quest->time);
     echo "<br>";
-    echo Form::label('status', 'STATUS:') . Form::text('status', $quest->status);
-    echo "<br>";
-
 
     echo Form::submit('Edit');
 
