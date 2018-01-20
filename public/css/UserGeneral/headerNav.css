@@ -44,14 +44,19 @@
 }
 
 .a1:hover {
-    background: #d8450b;
-    color: #FFF;
+    color: #bf0808;
+    text-decoration: none;
 }
 
 @media screen and (max-width: 500px) {
     .ul1 {
+        width: 100%;
         flex-direction: column !important;
         justify-content: center;
         align-items: flex-end;
+    }
+
+    .nav1{
+        height: auto;
     }
 }

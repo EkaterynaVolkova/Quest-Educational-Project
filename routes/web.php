@@ -22,14 +22,14 @@ Route::get('google/callback', 'Auth\GoogleController@handleProviderCallback');
 
 Route::get('/redirect', ['uses' => 'Auth\SocialAuthFacebookController@redirect', 'as' => 'facebook']);
 Route::get('/callback', 'Auth\SocialAuthFacebookController@callback');
-Route::get('info/{idLink?}', ['uses'=>'HomeController@info', 'as' => 'info']);
+Route::get('/info/{idLink?}', ['uses'=>'HomeController@info', 'as' => 'info']);
 
 Auth::routes();
 
 
 
-Route::get('contact-form', 'Contacts\ContactsController@cf');
-Route::post('contact-form', 'Contacts\ContactsController@cfp')->name('contacts');
+Route::get('/contact-form', 'Contacts\ContactsController@cf')->name('contact-form');
+Route::post('/contact-form', 'Contacts\ContactsController@cfp')->name('contacts');
 
 
 

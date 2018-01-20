@@ -11,13 +11,13 @@
     <div class="cont">
         <header>
             <nav>
-                <a href="" class="active">Home</a>
+                <a href="" class="active">Главная</a>
                 @if (!(Auth::check()))
-                    <a href="/public/login">Login</a>
+                    <a href="/public/login">Вход</a>
                 @else
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"> Logout </a>
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"> Выход </a>
                 @endif
-                <a href="contact-form">Contacts</a>
+                <a href="{{ route('contact-form') }}">Контакты</a>
             </nav>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
             <div class="shadow"></div>
@@ -25,7 +25,7 @@
 
         <main class="cover">
             <p class="lead button">
-                <a href="users/view" class="start-button">GET STARTED</a>
+                <a href="users/view" class="start-button">Далее...</a>
             </p>
         </main>
 
@@ -71,7 +71,7 @@
                     <a href="{{route('info', ['idLink'=> 'nine'])}}" class="footer-link">Lorem ipsum</a>
                 </div>
             </div>
-            <p class="copyrite text-center">C© 2017. Все права защищены</p>
+            <p class="copyrite text-center"><b>C© 2017. Все права защищены</b></p>
         </footer>
     </div>
 

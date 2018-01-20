@@ -8,7 +8,8 @@
 
     <?php
     echo "<br>";
-    echo Form::open(array('url' => route('post'), 'method' => 'post', 'role' => 'form', 'class' => 'form-vertical'));
+    echo Form::open(array('url' => route('post'), 'method' => 'post', 'role' => 'form', 'enctype'=>'multipart/form-data',
+        'class' => 'form-vertical'));
 
     echo Form::label('name', 'Название') . Form::text('name');
     echo "<br>";
@@ -23,6 +24,8 @@
     echo Form::label('date', 'Дата проведения:') . Form::date('date');
     echo "<br>";
     echo Form::label('time', 'Время начала:') . Form::time('time');
+    echo "<br>";
+    echo Form::label('file', 'Аватар квеста :') . Form::file('file');
     echo "<br>";
 
     echo Form::submit('Добавить');

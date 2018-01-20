@@ -21,18 +21,17 @@
                 <div class="moreQuest">
                     <div class="row" id="row">
                         <div class="moreQuestPicture">
-                            <img src="../../../img/moreQuest/cowboy.jpg" class="thum" alt="image">
+                           <img src="{{$q->avatar}}" class="thum" alt="image">
                         </div>
                         <div class="moreQuestInfo">
                                <div class="links">
                                 <a class="icon-arrow-left right" href="#" onclick="play()">Играть</a>
                                 <a href="{{ route('view quest') }}" class=""><i
-                                            class="icon-arrow-left"></i>Back
-                                    to Gallery</a>
+                                            class="icon-arrow-left"></i>Назад в галерею</a>
                                </div>
 
                             <div class="select" id="sel-team">
-                                    <label for="msg"> Выбирите команду: </label>
+                                    <label for="msg"> Выберите команду: </label>
                                     <select id="msg" onchange="getMessage()">;
                                         @foreach($team as $value)
                                             <option name="option" id="option" value="{!! $value->id !!}">
@@ -49,7 +48,7 @@
                                     <li><h6>Дата Старта:</h6> {!! $q->date !!}</li>
                                     <li><h6>Время Старта:</h6> {!! $q->time !!}</li>
                                     <li><h6>Сложность:</h6> {!! $q->hard !!}</li>
-                                    <li><h6>Автор Квеста:</h6> {!! $q->autor !!}</li>
+                                    <li><h6>Автор Квеста:</h6> {!! $q->author !!}</li>
                                     <li><h6>Описание:</h6>{!!$q->fullDescription !!}</li>
                                 </ul>
 

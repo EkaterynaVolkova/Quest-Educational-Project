@@ -3,61 +3,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Quests</title>
-    {{HTML::style('css/User/userViewQuests1.css')}}
+    {{HTML::style('css/User/userViewQuests.css')}}
     {{HTML::style('css/UserGeneral/headerNav.css')}}
-    {{--{{HTML::style('css/User/userViewQuests.css')}}--}}
     {{HTML::script('js/uilang.js')}}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 @stop
 @section('content')
-<header>
-    @include('Users.General.headerNav')
-</header>
+    <header>
+        @include('Users.General.headerNav')
+    </header>
 
-<main>
-    <div class="container-fluid">
-        <ul class="gallery-post-grid holder">
+    <main>
+        <div class="container-fluid">
+            {{--<ul class="gallery-post-grid holder">--}}
             <div class='row'>
 
                 @foreach($quests as $key => $q)
                     @if(count($quests) == 1)
-                        <div class='col-xs-12 col-sm-12 col-md-12 dQ'><li class='quest' data-id='id-<?= $key ?>' data-type='illustration'>
+                        <div class='col-xs-12 col-sm-12 col-md-12 dQ'>
+                            <li class='quest' data-id='id-<?= $key ?>' data-type='illustration'>
                         <span class='gallery-hover-3col hidden-phone hidden-tablet'>
+                            <img src={{$q->avatar}} class="thum" alt="image">
                             <span class='gallery-icons'>
-                                <a href='#' class='item-zoom-link lightbox' title='Просмотр' onclick='showDetails(this)' data-rel="{!! $q->name !!}"></a>
-                                <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link ' title='Играть'></a>
+                                <a href='#' class='item-zoom-link lightbox' title='Просмотр' onclick='showDetails(this)'
+                                   data-rel="{!! $q->name !!}"></a>
+                                <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link '
+                                   title='Играть'></a>
                             </span>
                         </span>
-                        <span class='project-details'><a href='{{route('more', ['id'=>$q->id])}}'>{!! $q->name !!}</a>{!! $q->description !!}<br>{!! $q->date !!}.</span>
-                    </li></div>
+                                <span class='project-details'><a
+                                            href='{{route('more', ['id'=>$q->id])}}'>{!! $q->name !!}</a>{!! $q->description !!}
+                                    <br>{!! $q->date !!}</span>
+                            </li>
+                        </div>
                     @elseif(count($quests) < 3)
-                        <div class='col-xs-12 col-sm-6 col-md-6 dQ'><li class='quest' data-id='id-<?= $key ?>' data-type='illustration'>
+                        <div class='col-xs-12 col-sm-6 col-md-6 dQ'>
+                            <li class='quest' data-id='id-<?= $key ?>' data-type='illustration'>
                         <span class='gallery-hover-3col hidden-phone hidden-tablet'>
+                            <img src={{$q->avatar}} class="thum" alt="image">
                             <span class='gallery-icons'>
-                                <a href='#' class='item-zoom-link lightbox' title='Просмотр' onclick='showDetails(this)' data-rel="{!! $q->name !!}"></a>
-                                <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link' title='Играть'></a>
+                                                             <a href='#' class='item-zoom-link lightbox'
+                                                                title='Просмотр' onclick='showDetails(this)'
+                                                                data-rel="{!! $q->name !!}"></a>
+                                <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link'
+                                   title='Играть'></a>
                             </span>
                         </span>
-                        <span class='project-details'><a href='{{route('more', ['id'=>$q->id])}}'>{!! $q->name !!}</a>{!! $q->description !!}<br>{!! $q->date !!}.</span>
-                    </li></div>
+                                <span class='project-details'><a href='{{route('more', ['id'=>$q->id])}}'
+                                                                 class="name">{!! $q->name !!}</a>{!! $q->description !!}
+                                    <br>{!! $q->date !!}</span>
+                            </li>
+                        </div>
                     @else
-                        <div class='col-xs-12 col-sm-6 col-md-4 dQ'><li class='quest' data-id='id-<?= $key ?>' data-type='illustration'>
+                        <div class='col-xs-12 col-sm-6 col-md-4 dQ'>
+                            <li class='quest' data-id='id-<?= $key ?>' data-type='illustration'>
                             <span class='gallery-hover-3col hidden-phone hidden-tablet'>
-                            <a href='#' class='pp'></a>
+                                <img src={{$q->avatar}} class="thum" alt="image">
+                            <a href='#' class='pp'>  </a>
                                 <span class='gallery-icons'>
-                                    <a href='#' class='item-zoom-link lightbox' title='Просмотр' onclick='showDetails(this)' data-rel="{!! $q->name !!}"></a>
-                                    <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link' title='Играть'></a>
+                                                                      <a href='#' class='item-zoom-link lightbox'
+                                                                         title='Просмотр' onclick='showDetails(this)'
+                                                                         data-rel="{!! $q->name !!}"></a>
+                                    <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link'
+                                       title='Играть'></a>
                                 </span>
                             </span>
-                            <span class='project-details'><a href='{{route('more', ['id'=>$q->id])}}'>{!! $q->name !!}</a>{!! $q->description !!}<br>{!! $q->date !!}.</span>
-                        </li></div>
+                                <span class='project-details'><a
+                                            href='{{route('more', ['id'=>$q->id])}}'>{!! $q->name !!}</a>{!! $q->description !!}
+                                    <br>{!! $q->date !!}</span>
+                            </li>
+                        </div>
                     @endif
                 @endforeach
 
             </div>
-        </ul>
-    </div>
-</main>
+            </ul>
+        </div>
+    </main>
     <footer>
         <div class="position">
             <div class="picture_center ">
@@ -75,7 +97,7 @@
         </div>
         <div class="bg"></div>
         <script>
-               // работает с data type в <a>
+            // работает с data type в <a>
             function showDetails(quest) {
                 var questType = quest.getAttribute("data-rel");
                 $('.questName').html(questType);

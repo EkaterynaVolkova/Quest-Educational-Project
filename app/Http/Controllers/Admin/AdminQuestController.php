@@ -29,11 +29,30 @@ class AdminQuestController extends Controller
         return view('Admin.Quest.createQuest');
     }
 
-    protected function create()
+    protected function create(Request $request)
     {
+        $quest = new Quest;
+        $filename = "";
+        $file ="";
+        if($request->hasFile('file')) {
+           $file = $request->file('file');
+        }
         $data = Input::all();
-        $quest = Quest::create($data);
+        $quest->name = $data['name'];
+        $quest->description = $data['description'];
+        $quest->fullDescription = $data['fullDescription'];
+        $quest->date = $data['date'];
+        $quest->time = $data['time'];
+        $quest->hard = $data['hard'];
+        $quest->author = $data['author'];
         $quest->save();
+        $questLast = Quest::all()->last();
+        $filename = $questLast->id.'.jpg';
+        $file->move(public_path() . '/img',$filename);
+//        $questLast->avatar = 'https://quest.challenge.php.a-level.com.ua/public/img/'.$filename;
+        $questLast->avatar = 'http://quest/public/img/'.$filename;
+        $questLast->save();
+
         return redirect()->action('Admin\AdminQuestController@show');
     }
 

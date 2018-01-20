@@ -12,7 +12,7 @@
         <div class="wrapper">
             <div class="menu-container">
                 <div id="logo-container">
-                    <div id="logo-container-pict"></div>
+                    <img src="{{Auth::user()->avatar}}" class="logo-container-pict">
                 </div>
                 <div class="menu-main-container">
                     <ul class="menu">
@@ -24,11 +24,11 @@
                             </div>
                         </li>
                         <li><a href="#" onclick="openbox('idTQ'); return false">Текущий Квест
-                                <span>Информация о квесте.</span></a></li>
-                        <li><a href="#" onclick="openbox('idFQ'); return false">Грядущий квест
-                                <span>Предстоящие квесты.</span></a></li>
-                        <li><a href="#" onclick="openbox('idLQ'); return false">Архив <span>Архив квестов.</span></a>
-                        </li>
+                            </a></li>
+                        <li><a href="#" onclick="openbox('idFQ'); return false">Предстоящие квесты
+                            </a></li>
+                        <li><a href="#" onclick="openbox('idLQ'); return false">Архив
+                            </a></li>
                     </ul>
                 </div>
             </div>

@@ -1,143 +1,19 @@
 html, body {
     width: 100%;
-    background: black;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px!important;
-    font-family: "Verdana";
-}
-header, main, footer{
-    width: 100%;
-}
-.row {
-    height: 50px;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content:space-between;
-    align-items: center;
-}
-.column {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid white;
-    background: white;
-}
-.row div {
-    width: 25%;
-    text-align: center;
-    color: black;
-    font-size: 18px;
-}
-#id, #id2, #id3
-{
-    display: none;
-}
-.quest button a {
-    border: none;
-    width: 30px;
-    height: 30px;
-}
-/*html, body {*/
-/*width: 100%;*/
-/*background: black;*/
-/*display: flex;*/
-/*flex-direction: column;*/
-/*justify-content: space-between;*/
-/*align-items: center;*/
-/*font-size: 14px!important;*/
-/*}*/
-header, main, footer{
-    width: 100%;
-}
-main{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content:space-between;
-    align-items: stretch;
-}
-main aside {
-    width: 25%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-}
-main section{
-    width: 75%;
-}
-main aside div{
-    height:250px;
-    width: 50%;
-    background: url("http://quest/public/img/user.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-}
-.row {
-    height: 50px;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content:space-between;
-    align-items: center;
-}
-.column {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid white;
-}
-.row div {
-    width: 25%;
-    text-align: center;
-    color: black;
-    font-size: 18px;
-}
-#id, #id2, #id3, #idTQ, #idLQ, #idFQ, .task
-{
-    display: none;
-}
-.quest button a {
-    border: none;
-    width: 30px;
-    height: 30px;
-}
-p.name{
-    text-align: center;
-    width: 100%;
-}
-main button.link a{
-    border: none;
-    font-size: 28px;
-    color: blue;
-    text-decoration: underline;
-}
-#map{
-    height: 600px;
-}
-html, body {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
     font-size: 14px!important;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif!important;
+    font-family: "Oswald",sans-serif!important;
     background: #f9f9f9 url(../../img/page-bg-1.jpg);
 }
+
+header{
+    height: 100px;
+}
+
 header, main, footer{
     width: 100%;
     background: #f9f9f9 url(../../img/page-bg-1.jpg);
@@ -171,6 +47,20 @@ header, main, footer{
 {
     display: none;
 }
+
+#id0, #id1, #id2
+{
+    width: 90%;
+    margin: 0 auto;
+    border: 1px solid #cfc9c9;
+}
+
+#id0>.row, #id1>.row, #id2>.row
+{
+    width: 100%;
+}
+
+
 .quest button a {
     border: none;
     width: 30px;
@@ -211,6 +101,7 @@ main aside div{
     flex-wrap: nowrap;
     justify-content:space-between;
     align-items: center;
+    margin: 0;
 }
 .column {
     width: 100%;
@@ -221,7 +112,14 @@ main aside div{
     align-items: center;
     border: 1px solid white;
 }
+
+.column > .row:first-child{
+    /*     border: 1px solid #b1acac; */
+    background-color: #edf4f1;
+
+}
 .row div {
+    font-size: 14px!important;
     width: 25%;
     text-align: center;
     color: black;
@@ -238,54 +136,49 @@ main button.link a{
     color: blue;
     text-decoration: underline;
 }
-#map{
-    height: 600px;
-}
 
+.about{
+    text-align: center;
+    text-transform:uppercase
+}
 .wrapper {
     margin: 20px auto;
-    width: 1000px;
-    position: relative;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
+    width: 100%;
     background: transparent;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    align-items: flex-start;
 }
 .menu-container {
-    position: absolute;
-    display: inline-block;
-    width: 220px;
-    background: #FFF;
-    z-index: 10;
-    margin: 0;
+    min-width: 200px;
+    width: 15%;
+    background: #ffffff94;
     box-shadow: 1px 1px 1px 1px rgba(5, 5, 5, 0.1);
-    padding: 0;
     border: 0;
     outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
 }
+
+#container{
+    width: 70%;
+    margin-left: 10px;
+}
+
 #logo-container {
-    width: 220px;
-    height: 155px;
     background: linear-gradient(transparent 50%, rgba(255, 255, 255, 0.9) 50%), linear-gradient(90deg, rgba(255, 255, 255, 0.9) 50%, transparent 50%);
     background-size: 4px 4px;
     background-color: #d4d4d4;
     text-align: center;
-    padding: 20px 0 0 0;
+    padding: 0;
     margin: 0;
     border: 0;
     outline: 0;
     font-size: 100%;
     vertical-align: baseline;
+    height: 200px;
 }
-#logo-container-pict {
-    display: inline-block;
-    background-image: url("https://wegraphics.net/demo/item/bello/wp-content/themes/wegraphics_bello/images/bello-logo.png");
-    background-position: center center;
-    background-size: contain;
+
+.logo-container-pict {
     width: 90%;
     height: 100%;
     background-repeat: no-repeat;
@@ -312,9 +205,10 @@ main button.link a{
     font-size: 100%;
 }
 .menu li {
-    width: 170px;
-    min-height: 50px;
-    padding: 5px 10px 15px 0;
+    width: 100%;
+    text-align:center;
+    min-height: 40px;
+    padding: 0;
     border-bottom: 1px solid #c9c9c9;
     position: relative;
     display: list-item;
@@ -323,6 +217,7 @@ main button.link a{
     margin: 0;
 }
 .menu li a {
+    line-height: 40px;
     color: #4e5157;
     text-decoration: none;
     text-transform: uppercase;
@@ -332,49 +227,3 @@ main button.link a{
     height: 40px;
 }
 
-.menu li a:hover {
-    font-weight: 500;
-    text-shadow: 0 0 0 black, 0 0 1em #c9c9c9;
-}
-.menu li:hover {
-    border-bottom: 2px solid #c9c9c9;
-}
-.menu li .about {
-    text-align: center;
-}
-.menu li .about:hover {
-    background: none;
-    text-shadow: none;
-    cursor: default;
-}
-.menu li span {
-    text-transform: none;
-    position: absolute;
-    top: 25px;
-    left: 0;
-    color: #a1a1a1;
-}
-.menu li .about p{
-    margin: 0;
-}
-
-#container {
-    margin: 0 0 0 258px;
-    width: 740px;
-    min-height: 100%;
-    z-index: 9;
-    position: relative;
-    padding: 0;
-    display: inline-block;
-    border: 0;
-    outline: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    background: transparent;
-}
-#main-header {
-    height: 40px;
-    background: #fff;
-    padding: 20px;
-    box-shadow: 1px 1px 1px 1px rgba(5, 5, 5, 0.1);
-}
