@@ -1,13 +1,7 @@
 @extends('layouts.dashboard')
 @section('style')
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>MoreQuests</title>
-    {{HTML::style('css/User/userMoreQuests.css')}}
-    {{HTML::style('css/UserGeneral/headerNav.css')}}
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/User/userMoreQuests.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/UserGeneral/headerNav.css">
 @stop
 @section('content')
     <header>

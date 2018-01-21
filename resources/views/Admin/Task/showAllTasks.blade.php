@@ -1,6 +1,6 @@
 @extends('layouts.adminLayouts')
 @section('style')
-    {{HTML::style('css/Admin/adminViewTask.css')}}
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/Admin/adminViewTask.css">
 @stop
 
 @section('content')

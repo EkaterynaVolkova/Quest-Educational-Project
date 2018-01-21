@@ -1,12 +1,8 @@
 @extends('layouts.dashboard')
 @section('style')
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Quests</title>
-    {{HTML::style('css/User/userViewQuests.css')}}
-    {{HTML::style('css/UserGeneral/headerNav.css')}}
-    {{HTML::script('js/uilang.js')}}
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/User/userViewQuests.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/UserGeneral/headerNav.css">
+    <script type="text/javascript" src="/public/js/uilang.js"></script>
 @stop
 @section('content')
     <header>

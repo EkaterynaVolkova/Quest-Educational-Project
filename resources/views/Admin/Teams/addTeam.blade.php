@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('style')
-    {{HTML::style('css/AdminGeneral/forms.css')}}
-  @stop
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/AdminGeneral/forms.css">
+@stop
 @section('content')
 
     <h2>Новая Команда!</h2>
@@ -16,6 +16,6 @@
 
     echo Form::submit('Add');
 
-    echo  Form::close();
+    echo Form::close();
     ?>
 @stop

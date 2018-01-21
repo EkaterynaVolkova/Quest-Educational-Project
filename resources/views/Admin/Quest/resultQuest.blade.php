@@ -1,21 +1,6 @@
-@extends('layouts.dashboard')
-@section('style')
-    {!!HTML::style('css/Admin/adminViewQuests.css')!!}
-    {!!HTML::style('css/AdminGeneral/tables.css')!!}
-    {!!HTML::style('css/AdminGeneral/adminNav.css')!!}
-    {!!HTML::style('css/AdminGeneral/adminBody.css')!!}
-@stop
+@extends('layouts.adminLayouts')
 @section('content')
-
-    <header>
-        @include('Admin.nav')
-    </header>
-
-    <div class="row">
-
-        @include('Admin.leftNav')
-
-        <main>
+           <main>
             <h1>Результаты</h1>
 
             <button class="btn btn-link"><a
@@ -47,8 +32,4 @@
             ?>
 
         </main>
-    </div>
-    <footer></footer>
-
-
 @stop

@@ -47,8 +47,6 @@ form input:focus {
     color: black;
 }
 
-
-/* Ð¡Ñ‚Ð¸Ð»Ð¸ Ð´Ð»Ñ ÐºÐ½Ð¾Ð¿ÐºÐ¸ */
 input[type=submit] {
     width: 130px;
     height: 40px;

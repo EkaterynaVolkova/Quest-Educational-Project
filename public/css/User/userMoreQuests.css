@@ -2,7 +2,7 @@ html, body {
     font-size: 12px !important;
     line-height: 18px !important;
     font-family: Verdana, Arial, sans-serif;
-    background: #f9f9f9 url(../../img/page-bg-1.jpg);
+    background: #f9f9f9 url(/public/img/page-bg-1.jpg);
 }
 .links {
     display: flex;
@@ -27,10 +27,6 @@ html, body {
     margin-left: auto;
     padding: 0;
 }
-
-/*.moreQuestAbout>h2{*/
-/*padding-left: 10px;*/
-/*}*/
 
 @media only screen and (max-width: 767px) {
     #main-container {
@@ -192,7 +188,6 @@ img {
 }
 .moreQuestAbout h2 {
     text-shadow: 1px 1px 0 #fdfdfd, 2px 2px 0 rgba(81, 81, 81, 0.5), 0 0 1px #fdfdfd;
-    /*font-family: "Oswald", sans-serif;*/
     font-weight: normal;
     text-transform: uppercase;
     font-size: 30px;
@@ -207,7 +202,6 @@ img {
 }
 .description {
     margin-bottom: 20px;
-    margin: 0 0 10px;
     font-size: 12px;
     line-height: 18px;
 }
@@ -227,18 +221,12 @@ img {
 }
 .project-info li h6 {
     display: inline;
-    /*font-family: "Oswald", sans-serif;*/
-    /* font-weight: normal; */
     text-transform: uppercase;
-    /* font-size: 12px; */
     line-height: 20px;
-    /* margin: 10px 0; */
     color: inherit;
-    /* text-rendering: optimizelegibility; */
     margin-right: 5px;
 }
 .moreQuestAbout .pull-left{
-    /*display: inline-block;*/
     float: left;
     margin-bottom: 20px;
     color: #f1ffdd;
@@ -280,7 +268,6 @@ img {
     margin-top: 1px;
     line-height: 14px;
     vertical-align: text-top;
-    background-image: url(../../img/glyphicons-halflings.png);
     background-repeat: no-repeat;
    }
 

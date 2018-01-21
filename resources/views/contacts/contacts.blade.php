@@ -1,9 +1,8 @@
 @extends('layouts.dashboard')
 @section('style')
-    {!!HTML::style('css/User/userContact.css')!!}
-    {!!HTML::style('css/UserGeneral/headerNav.css')!!}
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/User/userContact.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/UserGeneral/headerNav.css">
 @stop
-
 
 @section('content')
     <header>
@@ -26,13 +25,13 @@
         </div>
 
         <div class="form">
-        {{ Form::open(array('url' => 'contact-form')) }}
-            <div claas="label">Email: </div>
-        {{ Form::email('email') }}
-            <div class="label">Cooбщение: </div>
-        {{ Form::textarea('message') }}
-        {{ Form::submit('send') }}
-        {{ Form::close() }}
+            {{ Form::open(array('url' => 'contact-form')) }}
+            <div claas="label">Email:</div>
+            {{ Form::email('email') }}
+            <div class="label">Cooбщение:</div>
+            {{ Form::textarea('message') }}
+            {{ Form::submit('send') }}
+            {{ Form::close() }}
         </div>
 
     </div>

@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 @section('style')
-    {{HTML::style('css/User/userProfile.css')}}
-    {{HTML::style('css/UserGeneral/headerNav.css')}}
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/User/userProfile.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/UserGeneral/headerNav.css">
 @stop
 @section('content')
 
@@ -11,30 +11,23 @@
 
     <main>
         <aside>
-            <div class="avatar"></div>
-            <p class="name">Имя: {{Auth::user()->name}}</p>
-            <p class="name">Возраст: {{Auth::user()->age}}</p>
-            <p class="name">Пол: {{Auth::user()->gender}}</p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <button class="btn btn-link link"><a href="" onclick="openbox('idTQ'); return false">Текущий
-                    квест</a>
-            </button>
-            <button class="btn btn-link link"><a href="" onclick="openbox('idFQ'); return false">Грядущие квесты</a>
-            </button>
-            <button class="btn btn-link link"><a href="" onclick="openbox('idLQ'); return false">Архив</a>
-            </button>
+            <div id="logo-container">
+                <img src="{{Auth::user()->avatar}}" class="logo-container-pict">
+            </div>
+            <div class="bg-white">
+                <p class="name">{{Auth::user()->name}}</p>
+                <p class="name">Возраст: {{Auth::user()->age}}</p>
+                <p class="name">Пол: {{Auth::user()->gender}}</p>
+            </div>
+            <nav class="aside-menu"><a href="{{route('userProfile')}}">Назад</a></nav>
         </aside>
 
         <section class="section">
 
             <div id="section_inner">
 
-                {{--<p onclick="initMap($coord)">xxx</p>--}}
                 <div id="floating-panel">
-                <button id="drop" onclick="drop()">Drop Markers</button>
+                    <button id="drop" onclick="drop()">Drop Markers</button>
                 </div>
                 <div id="map"></div>
 
@@ -73,7 +66,6 @@
             arr = dt.split(',');
 
             b = JSON.parse(a);
-
             map = new google.maps.Map(document.getElementById("map"), {
                 center: {lat: b[0][0], lng: b[0][1]},
                 zoom: 15,
@@ -93,17 +85,19 @@
 
             map = new google.maps.Map(document.getElementById("map"), {
                 center: {lat: b[0][0], lng: b[0][1]},
-                zoom: 15,
+                zoom: 13,
                 mapTypeId: google.maps.MapTypeId.RoadMap
             });
 
             clearMarkers();
             for (var i = 0; i < b.length; i++) {
-                addMarkerWithTimeout(b[i], i*300, arr);
+                addMarkerWithTimeout(b[i], i * 300, arr);
             }
-            window.setTimeout(function () {  getDirections(map, b);}, b.length*300);
+            window.setTimeout(function () {
+                getDirections(map, b);
+            }, b.length * 300);
 
-       }
+        }
 
 
         function addMarkerWithTimeout(position, timeout, arr) {
@@ -133,7 +127,7 @@
 
         function moveMarker(map, marker, latlng) {
             marker.setPosition(latlng);
-            map.panTo(latlng);
+//            map.panTo(latlng);
         }
 
         function autoRefresh(map, pathCoords) {
@@ -197,15 +191,15 @@
                 center.push(new google.maps.LatLng(b[k][0], b[k][1]));
             }
 
-            for (var l=0; l<center.length; l++){
-                pos[l] = { location: center[l], stopover: false};
+            for (var l = 0; l < center.length; l++) {
+                pos[l] = {location: center[l], stopover: false};
             }
             var end = new google.maps.LatLng(b[b.length - 1][0], b[b.length - 1][1]);
             var request = {
                 origin: start,
                 destination: end,
                 travelMode: google.maps.TravelMode.WALKING,
-                waypoints:  pos
+                waypoints: pos
             };
 
             directionsService.route(request, function (result, status) {

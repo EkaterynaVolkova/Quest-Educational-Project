@@ -9,9 +9,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-   /* background: url("../../img/black.jpg") no-repeat;
-    background-size: 100%;*/
-}
+   }
 
 header, footer {
     width: 100%;

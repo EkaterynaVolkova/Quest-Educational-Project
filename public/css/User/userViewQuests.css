@@ -1,6 +1,8 @@
 body{
-    background: #f9f9f9 url(../../img/page-bg-1.jpg);
+    background: #f9f9f9 url(/public/img/page-bg-1.jpg);
     font-family: "Oswald", sans-serif!important;
+    margin: 0;
+    padding: 0;
 }
 .row{
     text-align: center;
@@ -53,8 +55,8 @@ body{
 a.item-zoom-link {
     height: 42px;
     width: 42px;
-    background: #ffffff url(../../img/gallery-item-icons.png) no-repeat;
-    background-position: 0px 0px;
+    background: #ffffff url(/public/img/gallery-item-icons.png) no-repeat;
+    background-position: 0 0;
     position: relative;
     left: 22px;
     top: 2px;
@@ -64,20 +66,20 @@ a.item-zoom-link {
 a.item-details-link {
     height: 42px;
     width: 42px;
-    background: #ffffff url(../../img/gallery-item-icons.png) no-repeat;
-    background-position: -42px 0px;
+    background: #ffffff url(/public/img/gallery-item-icons.png) no-repeat;
+    background-position: -42px 0;
     position: relative;
     left: 25px;
     top: 2px;
     display: inline-block;
 }
 a.item-zoom-link:hover{
-    background: #d8450b url(../../img/gallery-item-icons.png) no-repeat;
-    background-position: 0px 0px;
+    background: #d8450b url(/public/img/gallery-item-icons.png) no-repeat;
+    background-position: 0 0;
 }
 a.item-details-link:hover{
-    background: #d8450b url(../../img/gallery-item-icons.png) no-repeat;
-    background-position: -42px 0px;
+    background: #d8450b url(/public/img/gallery-item-icons.png) no-repeat;
+    background-position: -42px 0;
 }
 
 .project-details {
@@ -128,7 +130,7 @@ a.item-details-link:hover{
     text-align: center;
     border-radius:6px;
     padding: 8px;
-    box-shadow: 0px 0px 5px 5px rgb(47, 47, 47);
+    box-shadow: 0 0 5px 5px rgb(47, 47, 47);
     z-index: 999;
     opacity:0;
 }
@@ -158,12 +160,11 @@ a.item-details-link:hover{
 }
 #top_right_screen:hover{
     color: rgb(48, 48, 83);
-    box-shadow: 0px 0px 5px 1px rgb(48, 48, 83);
+    box-shadow: 0 0 5px 1px rgb(48, 48, 83);
     background: rgb(243, 243, 243);
 }
 
 .bottom_desc{
-    /* border: 1px solid black; */
     margin-top: 12px;
 }
 .questName{
@@ -182,7 +183,7 @@ a.item-details-link:hover{
 }
 #bottom_right_close:hover{
     color: red;
-    box-shadow: 0px 0 5px 2px red;
+    box-shadow: 0 0 5px 2px red;
 }
 
 .bg{

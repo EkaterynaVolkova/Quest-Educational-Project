@@ -50,7 +50,7 @@ header a, nav a {
     }
     
     .leftNav>a:nth-child(3){
-        background: url("http://quest/public/img/right-arrow.jpg") no-repeat;
+        background: url(/public/img/right-arrow.jpg) no-repeat;
         background-size:  30px 30px;
         background-position: center right;
     }
@@ -59,8 +59,6 @@ header a, nav a {
         left: 0;
 
     }
-
-
 }
 
 

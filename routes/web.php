@@ -141,7 +141,7 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'auth']], function ()
     Route::get('qr/{qr?}/{idTask?}', ['uses' => 'Users\UsersQuestController@qrInput', 'as' => 'inputQR']);
    /* Route::get('qr/location/{id?}', ['uses' => 'Users\UsersQuestController@location', 'as' => 'qrLocation']);*/
 
-    Route::post('location/{id?}', ['uses' => 'Users\UsersQuestController@savePosition', 'as' => 'savePosition']);
+    Route::post('/location', ['uses' => 'Users\UsersQuestController@savePosition', 'as' => 'savePosition']);
     Route::get('maps/{idQuest?}', ['uses' => 'Users\UsersQuestController@maps', 'as' => 'maps']);
 
 

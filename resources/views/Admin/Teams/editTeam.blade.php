@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('style')
-    {{HTML::style('css/AdminGeneral/forms.css')}}
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/AdminGeneral/forms.css">
 @stop
 @section('content')
 
@@ -15,7 +15,7 @@
 
     echo Form::submit('Edit');
 
-    echo Form::token().Form::close();
+    echo Form::token() . Form::close();
 
     ?>
 

@@ -1,10 +1,10 @@
 @extends('layouts.dashboard')
 @section('style')
-    {{HTML::style('css/errors.css')}}
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/errors.css">
 @stop
 @section('content')
 
-       <div class="cont">
+    <div class="cont">
         <header>
             <nav>
                 <a href="/public/" class="active">Home</a>
@@ -22,10 +22,10 @@
         </header>
 
         <main class="errors">
-            <h1 class ="errors">OOPS!!! Такой страницы не существует</h1>
+            <h1 class="errors">OOPS!!! Такой страницы не существует</h1>
         </main>
 
 
-      </div>
+    </div>
 
 @stop

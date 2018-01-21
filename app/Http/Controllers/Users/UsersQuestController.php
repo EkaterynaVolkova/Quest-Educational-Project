@@ -39,8 +39,8 @@ class UsersQuestController extends Controller
     public function selectTeam(){
         $data = Input::all();
         $count = count(UserQuest::ofWhereWhere('idQuest', $data['quest'], 'idUser', Auth::user()->id));
-        $ok = UserQuest::updateOrCreate(['idUser' => Auth::user()->id, 'idQuest' => $data['quest']], ['idTeam' => $data['team']]);
-        $ok->save();
+        $team = UserQuest::updateOrCreate(['idUser' => Auth::user()->id, 'idQuest' => $data['quest']], ['idTeam' => $data['team']]);
+        $team->save();
         if($count){
         return response()->json(array('msg'=> "Ваша команда успешно изменена!"), 200);
         }else {
@@ -74,15 +74,6 @@ class UsersQuestController extends Controller
         $userQuest[0]->delete();
         return redirect()->action('Users\UsersQuestController@userProfile');
     }
-
-//    protected function ok($id)
-//    {
-//        $d = Input::all();
-//        $ok = UserQuest::updateOrCreate(['idUser' => Auth::user()->id, 'idQuest' => $id], ['idTeam' => $d['input']]);
-//        $ok->save();
-//        return redirect()->action('Users\UsersQuestController@userProfile');
-//    }
-
 
     protected function userProfile()
     {
@@ -122,7 +113,9 @@ class UsersQuestController extends Controller
                 $teamLast[] = Team::find($idTeam)->name;     // массив названий команд
 
                 $results = Result::ofWhereWhere('idQuest', $idQuest, 'idTeam', $idTeam);
-                $result[] = $results[0]->result;
+                if(count($results)) {
+                    $result[] = $results[0]->result;
+                }
 
                 $t = Quest::find($idQuest)->tasks; // задания для квеста прошедшего
                 if (count($t)) {
@@ -286,21 +279,20 @@ class UsersQuestController extends Controller
             }
         }
 
-        return view('Users.usersLocation')->with(['idExecuteTask' => $idTask]);
+        return view('Users.usersLocation')->with(['idExecuteTask' => $idTask, 'idQuest' => $idQuest]);
     }
 
 
-    public function savePosition($id)
+    public function savePosition()
     {
         $data = Input::all();
-        $execTask = ExecuteTask::find($id);
+        $execTask = ExecuteTask::find($data['idExTask']);
         $execTask->coordX = $data['coordX'];
         $execTask->coordY = $data['coordY'];
         $execTask->date = date("Y-m-d");
         $execTask->time = date("H:i:s");
-        // dd(date("d.m.Y H:i:s"));
         $execTask->save();
-        return redirect()->route('userProfile');
+        return response()->json(array('msg'=> "Продолжим!"), 200);
     }
 
     public function maps($idQuest)
@@ -308,7 +300,6 @@ class UsersQuestController extends Controller
         $coord = array();
         $exTask = array();
         $coord = array();
-
         $idUser = Auth::user()->id;
         $team = User::find($idUser)->teams($idQuest)->get();
         $idTeam = $team[0]->id;
@@ -329,7 +320,6 @@ class UsersQuestController extends Controller
         }
         $datetime = implode(',', $datetime);
         $coord = json_encode($coord);
-
         return view('Users.markers')->with(['coord' => $coord, 'dateTime' => $datetime]);
     }
 

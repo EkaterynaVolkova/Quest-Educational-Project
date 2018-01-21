@@ -1,8 +1,7 @@
 @extends('layouts.dashboard')
 @section('style')
-    {{HTML::style('css/User/userProfile.css')}}
-    {{HTML::style('css/UserGeneral/headerNav.css')}}
-
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/User/userProfile.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/public/css/UserGeneral/headerNav.css">
 @stop
 @section('content')
     <header>

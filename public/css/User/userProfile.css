@@ -7,7 +7,7 @@ html, body {
     align-items: center;
     font-size: 14px!important;
     font-family: "Oswald",sans-serif!important;
-    background: #f9f9f9 url(../../img/page-bg-1.jpg);
+    background: #f9f9f9 url(/public/img/page-bg-1.jpg);
 }
 
 header{
@@ -16,7 +16,7 @@ header{
 
 header, main, footer{
     width: 100%;
-    background: #f9f9f9 url(../../img/page-bg-1.jpg);
+    background: #f9f9f9 url(/public/img/page-bg-1.jpg);
 }
 .row {
     height: 50px;
@@ -47,10 +47,58 @@ header, main, footer{
 {
     display: none;
 }
+.quest button a {
+            border: none;
+            width: 30px;
+            height: 30px;
+        }
+
+
+/*html, body {*/
+/*width: 100%;*/
+/*background: black;*/
+/*display: flex;*/
+/*flex-direction: column;*/
+/*justify-content: space-between;*/
+/*align-items: center;*/
+/*font-size: 14px!important;*/
+/*}*/
+
+header, main, footer{
+    width: 100%;
+}
+main{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content:space-between;
+    align-items: stretch;
+}
+main aside {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+main section{
+    width: 75%;
+}
+main aside div{
+    height:250px;
+    width: 50%;
+    background: url(/public/img/user.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+.row {
+    height: 50px;
+}
 
 #id0, #id1, #id2
 {
-    width: 90%;
+width: 90%;
     margin: 0 auto;
     border: 1px solid #cfc9c9;
 }
@@ -88,10 +136,13 @@ main section{
 main aside div{
     height:250px;
     width: 50%;
-    background: url("http://quest/public/img/user.png");
+    background: url(/public/img/user.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
+}
+#map{
+    min-height: 600px;
 }
 .row {
     height: 50px;
@@ -114,8 +165,7 @@ main aside div{
 }
 
 .column > .row:first-child{
-    /*     border: 1px solid #b1acac; */
-    background-color: #edf4f1;
+     background-color: #edf4f1;
 
 }
 .row div {
@@ -123,8 +173,7 @@ main aside div{
     width: 25%;
     text-align: center;
     color: black;
-    font-size: 18px;
-}
+   }
 
 p.name{
     text-align: center;
@@ -226,4 +275,3 @@ main button.link a{
     width: 190px;
     height: 40px;
 }
-
