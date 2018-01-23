@@ -34,6 +34,7 @@
             <div id="section_inner">
                 <h2>Поздравляем, Вы выполнили задание!</h2>
                 <h2>Подтвердите Ваше местоположение:</h2><br>
+                <div id="#res"></div>
                 <input type="text" id="x" name="coordX">
                 <input type="text" id="y" name="coordY">
                 <button onclick="geoFindMe()">Моё положение</button>
@@ -74,45 +75,36 @@
             function success(position) {
                 var latitude = position.coords.latitude;
                 var longitude = position.coords.longitude;
-
-                //   output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
                 coordX.value = latitude;
                 coordY.value = longitude;
                 posit(idExTask);
-
-                var img = new Image();
-                img.src = "http://maps.googleapis.com/maps/api/staticmap?center=" + latitude + "," + longitude + "&zoom=13&size=300x300&sensor=false";
-                output.appendChild(img);
             }
 
             function error() {
                 output.innerHTML = "Unable to retrieve your location";
-              /*  coordX = document.getElementById("x");
-                coordY = document.getElementById("y");
-                coordX.value = 49.987670699999995;
-                coordY.value = 36.2330605;
-                posit(idExTask);*/
             }
 
             output.innerHTML = "<p>Locating…</p>";
 
             navigator.geolocation.getCurrentPosition(success, error);
 
+           function posit(idExTask) {
 
-            function posit(idExTask) {
-
-                $.ajax({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    type: 'POST',
-                    url: '/public/users/location',
-                    data: {"coordX": $('#x').val(), "coordY": $('#y').val(), "idExTask": idExTask},
-                    success: function (data) {
-                        $("#res").html(data.msg);
-                    }
-                });
-            }
+                    $.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        },
+                        type: 'GET',
+                        url: '/public/users/location',
+                        data: {"coordX": $('#x').val(), "coordY": $('#y').val(), "idExTask": idExTask},
+                        success: function (data) {
+                            $("#res").html(data.msg);
+                        },
+                        error: function (data) {
+                            $("#res").html('OOPS');
+                        }
+                    });
+                }
         }
     </script>
 

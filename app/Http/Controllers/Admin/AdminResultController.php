@@ -52,7 +52,7 @@ class AdminResultController extends Controller
                     $result = 0;
                     foreach ($exTasks as $val) {
                         $weight = Task::find($val)->weight;
-                        $result += 100 * $weight;
+                        $result += $weight;
                     }
 
                     // запись результатов в таблицу results

@@ -38,7 +38,7 @@ class GoogleController extends Controller
             'email' => $SocialUser->email,
             'avatar' => $SocialUser->avatar_original,
             'nickname' => $SocialUser->nickname,
-            'gender' => $SocialUser->user['gender']
+//                'gender' => $SocialUser->user['gender']
         ];
 
         $user = User::where('email', $data['email'])->first();

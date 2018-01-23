@@ -187,12 +187,25 @@ class UsersQuestController extends Controller
 
             $idUQ = UserQuest::ofWhereWhere('idQuest', $idQuest, 'idTeam', $idTeam);
             foreach ($idUQ as $v) {
-                $idUserQuest[] .= $v->id; // массив idUserQuest для всех участников команды
+                $idUserQuest[] .= $v->id; // массив id всех участников команды
             }
 
             if ($statusQuest == 0) {               // если квест активен для команды таблица userQuests
-                // $tasksQuest = Quest::find($idQuest)->tasks()->orderBy('orderBy', 'Asc')->get();
                 $taskQuest = Quest::find($idQuest)->tasks()->get();
+
+                foreach ($taskQuest as $key => $v) {
+                    foreach ($idUserQuest as $val) {
+                        $t = ExecuteTask::ofWhereWhere('idTask', $v->id, 'idUserQuest', $val);
+                        if (count($t)) {
+                            if ($t[0]->status == 1) {
+                                if (($t[0]->coordX == 0) || ($t[0]->coordY == 0)) {
+                                    return view('Users.usersQuestPlay')->with(['task' => $v]); //выводим
+                                }
+                            }
+                        }
+                    }
+                }
+
                 $tasksQuest = $taskQuest->shuffle();
                 $countTasks = count($tasksQuest);
                 $count = 0;
@@ -201,9 +214,7 @@ class UsersQuestController extends Controller
                 foreach ($tasksQuest as $key => $v) {
                     foreach ($idUserQuest as $val) {
                         $t = ExecuteTask::ofWhereWhere('idTask', $v->id, 'idUserQuest', $val);
-                        if (count($t) == 0) {
-                            continue;
-                        } elseif (count($t)) {
+                        if (count($t)) {
                             if ($t[0]->status == 0) {
                                 return view('Users.usersQuestPlay')->with(['task' => $v]); //выводим
                             } elseif ($t[0]->status == 1) {
@@ -219,10 +230,9 @@ class UsersQuestController extends Controller
                     foreach ($uQ as $val) {
                         $val->statusQuest = 1;
                         $val->save();
-                        return redirect()->route('userProfile');
+                       return redirect()->route('userQuestFinish');
                     }
                 }
-
 
 
                 foreach ($tasksQuest as $key => $v) {
@@ -251,12 +261,20 @@ class UsersQuestController extends Controller
         return redirect()->route('userProfile');
     }
 
+    protected  function questFinish(){
+        return view('Users.questFinish');
+    }
+
     protected function qrInput($qr, $idTask)
     {
-        $idUsers = array();
+        $qrCode = "";
         $qrCode = Task::find($idTask)->QR;
         $idQuest = Task::find($idTask)->idQuest;
         $idUser = Auth::user()->id;
+        if (!$qrCode) {
+            return redirect()->action('Users\UsersQuestController@playQuest', ['idQuest' => $idQuest]);
+        }
+
         $idUserQuest = array();
         $execTask = "";
 
@@ -264,39 +282,42 @@ class UsersQuestController extends Controller
         $idTeam = $userQuest[0]->idTeam;
         $idUQ = UserQuest::ofWhereWhere('idQuest', $idQuest, 'idTeam', $idTeam);
         foreach ($idUQ as $v) {
-            $idUserQuest[] .= $v->id; // массив idUserQuest для всех участников команды
+            $idUserQuest[] .= $v->id; // массив id всех участников команды
         }
 
         if ($qr == $qrCode) {
             foreach ($idUserQuest as $v) {
                 $execTask = ExecuteTask::ofWhereWhere('idTask', $idTask, 'idUserQuest', $v);
                 if (count($execTask)) {
-                    $idTask = $execTask[0]->id;
-                    break;
+                    $idExTask = $execTask[0]->id;
+                    if ($execTask[0]->status == 0) {
+                        $execTask[0]->status = 1;
+                        $execTask[0]->save();
+                        return redirect()->route('usersLocation', ['idExecuteTask' => $idExTask, 'idQuest' => $idQuest]);
+                    } elseif ($execTask[0]->status == 1) {
+                        if (($execTask[0]->coordX == 0) || ($execTask[0]->coordY == 0)) {
+                            return redirect()->route('usersLocation', ['idExecuteTask' => $idExTask, 'idQuest' => $idQuest]);
+                        } else {
+                            return redirect()->action('Users\UsersQuestController@playQuest', ['idQuest' => $idQuest]);
+                        }
+                    }
                 } else {
-                    continue;
+                    return redirect()->action('Users\UsersQuestController@playQuest', ['idQuest' => $idQuest]);
                 }
-            }
-
-            if ($execTask[0]->status == 0) {
-                $execTask[0]->status = 1;
-                $execTask[0]->save();
-
-            } elseif (($execTask[0]->status) && ($execTask[0]->coordX != 0) && ($execTask[0]->coordY != 0)) {
-                return redirect()->action('Users\UsersQuestController@playQuest', ['idQuest' => $idQuest]);
             }
         }
 
-        return redirect()->route('usersLocation',['idExecuteTask' => $idTask, 'idQuest' => $idQuest]);
+        return redirect()->action('Users\UsersQuestController@playQuest', ['idQuest' => $idQuest]);
     }
 
 
-    public function usersLocation($idTask, $idQuest){
+    public
+    function usersLocation($idTask, $idQuest)
+    {
         return view('Users.usersLocation')->with(['idExecuteTask' => $idTask, 'idQuest' => $idQuest]);
     }
 
-    public
-    function savePosition()
+    public function savePosition()
     {
         $data = Input::all();
         $execTask = ExecuteTask::find($data['idExTask']);

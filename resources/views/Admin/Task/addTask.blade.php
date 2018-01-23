@@ -15,7 +15,7 @@
     echo "<br>";
     echo Form::label('description', 'Описание') . Form::text('description');
     echo "<br>";
-    echo Form::label('weight', 'Вес задачи:') . Form::number('weight');
+    echo Form::label('weight', 'Вес задачи:') . Form::number('weight', 10, array('min' => 10, 'max'=> 100, 'step' => 10));
     echo "<br>";
     echo Form::submit('Добавить');
     Form::close();

@@ -27,7 +27,7 @@ class AdminQRController extends Controller
         $qr1 = Task::find($idTask)->QR;
         $qr = 'https://quest.challenge.php.a-level.com.ua/public/users/qr/' . $qr1 . '/' . $idTask;
       // $qr = 'http://quest/public/users/qr/' . $qr1 . '/' . $idTask;
-        
+
         return view('Admin.QR.print')->with(['qr' => $qr]);
     }
 

@@ -5,6 +5,9 @@ div.table{
     overflow-x: auto;
     overflow-y: auto;
 }
+tr{
+    max-height: 30px;
+}
 
 table {
     width: 100%;
@@ -28,17 +31,19 @@ th {
 td, th {
     border: 1px solid #ccc;
     text-align: center;
-    max-height: 50px;
+    height: 100%;
     max-width: 100px;
-    min-width: 60px;
+    min-width: 30px;
     overflow-x: auto;
     overflow-y: auto;
 }
 
-td div {
-    width: 100%;
+td>div {
     margin: 0;
+    width: 100%;
     padding: 0;
+    height: 100px;
+    max-height: 40px !important;
 }
 
 

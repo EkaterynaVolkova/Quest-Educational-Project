@@ -48,9 +48,12 @@ class AdminQuestController extends Controller
         $quest->save();
         $questLast = Quest::all()->last();
         $filename = $questLast->id.'.jpg';
-        $file->move(public_path() . '/img',$filename);
-//        $questLast->avatar = 'https://quest.challenge.php.a-level.com.ua/public/img/'.$filename;
-        $questLast->avatar = 'http://quest/public/img/'.$filename;
+        if($file){
+            $file->move(public_path() . '/img',$filename);
+            $questLast->avatar = 'https://quest.challenge.php.a-level.com.ua/public/img/'.$filename;
+
+        }
+//        $questLast->avatar = 'http://quest/public/img/'.$filename;
         $questLast->save();
 
         return redirect()->action('Admin\AdminQuestController@show');

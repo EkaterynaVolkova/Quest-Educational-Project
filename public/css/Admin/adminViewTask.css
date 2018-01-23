@@ -1,9 +1,9 @@
 table div.description {
-    max-width: 200px;
-    width: 200px;
+    max-width: 150px;
+    width: 150px;
 }
 
 table div.name {
-    max-width: 100px;
-    width: 100px;
+    max-width: 70px;
+    width: 70px;
 }

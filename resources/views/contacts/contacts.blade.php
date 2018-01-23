@@ -18,10 +18,10 @@
             <p>г. Харьков пл. Свободы</p>
 
             <h4>Связаться с нами</h4>
-            <p>+38 066 0085535</p>
+            <p>+38 077-777-77-77</p>
 
             <h4>Email</h4>
-            <p>realwindrunner@gmail.com</p>
+            <p>777quest777@gmail.com</p>
         </div>
 
         <div class="form">
