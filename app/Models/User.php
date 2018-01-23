@@ -19,6 +19,13 @@ class User extends Authenticatable
         }
         return false;
     }
+    public function isCreator() // 1 or 2 - для создателей квеста
+    {
+        if ($this->role >= 1) {
+            return true; // поле role в таблице users
+        }
+        return false;
+    }
 
     /**
      * Получить все квесты в которых учавствует пользователь
@@ -51,6 +58,11 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Models\Task', 'executeTasks' , $idUserQuest, 'idTask')->wherePivot('idQuest', $idQuest);
     }
-
+        /*
+        Доверенный пользователь может создавать Квест
+        */
+    public function createQuest(){
+        return $this->hasMany("App\Models\Quest");
+    }
 
 }

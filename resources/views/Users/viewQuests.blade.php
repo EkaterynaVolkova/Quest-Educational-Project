@@ -5,13 +5,20 @@
     <script type="text/javascript" src="/public/js/uilang.js"></script>
 @stop
 @section('content')
-    <header>
-        @include('Users.General.headerNav')
-    </header>
 
-    <main>
-        <div class="container-fluid">
-            {{--<ul class="gallery-post-grid holder">--}}
+<header>
+    @include('Users.General.headerQuestView')
+</header>
+
+@if(session()->has('success'))
+    <div class="alert alert-success">
+        {{ session()->get('success') }}
+    </div>
+@endif
+<main>
+    <div class="container-fluid">
+        <ul class="gallery-post-grid holder">
+
             <div class='row'>
 
                 @foreach($quests as $key => $q)
@@ -22,7 +29,7 @@
                             <img src={{$q->avatar}} class="thum" alt="image">
                             <span class='gallery-icons'>
                                 <a href='#' class='item-zoom-link lightbox' title='Просмотр' onclick='showDetails(this)'
-                                   data-rel="{!! $q->name !!}"></a>
+                                   data-rel="{!! $q->name !!}" data-ava="{!! $q->avatar !!}"></a>
                                 <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link '
                                    title='Играть'></a>
                             </span>
@@ -40,7 +47,7 @@
                             <span class='gallery-icons'>
                                                              <a href='#' class='item-zoom-link lightbox'
                                                                 title='Просмотр' onclick='showDetails(this)'
-                                                                data-rel="{!! $q->name !!}"></a>
+                                                                data-rel="{!! $q->name !!}" data-ava="{!! $q->avatar !!}"></a>
                                 <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link'
                                    title='Играть'></a>
                             </span>
@@ -57,9 +64,11 @@
                                 <img src={{$q->avatar}} class="thum" alt="image">
                             <a href='#' class='pp'>  </a>
                                 <span class='gallery-icons'>
-                                                                      <a href='#' class='item-zoom-link lightbox'
-                                                                         title='Просмотр' onclick='showDetails(this)'
-                                                                         data-rel="{!! $q->name !!}"></a>
+
+                                  <a href='#' class='item-zoom-link lightbox'
+                                     title='Просмотр' onclick='showDetails(this)'
+                                     data-rel="{!! $q->name !!}" data-ava="{!! $q->avatar !!}"></a>
+
                                     <a href='{{route('more', ['id'=>$q->id])}}' class='item-details-link'
                                        title='Играть'></a>
                                 </span>
@@ -80,10 +89,8 @@
         <div class="position">
             <div class="picture_center ">
                 <div class="picture_center_center">
+                    <img alt="" class="active_img">
                     <a href="#" class="glyphicon glyphicon-fullscreen" id="top_right_screen"></a>
-                    <div>
-                        <img src="" alt="">
-                    </div>
                 </div>
                 <div class="bottom_desc">
                     <p class="questName"></p>
@@ -92,11 +99,14 @@
             </div>
         </div>
         <div class="bg"></div>
+
         <script>
             // работает с data type в <a>
             function showDetails(quest) {
                 var questType = quest.getAttribute("data-rel");
                 $('.questName').html(questType);
+                var avatar = quest.getAttribute("data-ava");
+                $('.active_img').css('content', 'url('+ avatar +')');
             }
         </script>
         <code>

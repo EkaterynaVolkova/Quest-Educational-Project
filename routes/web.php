@@ -142,12 +142,28 @@ Route::group(['prefix' => 'users', 'middleware' => ['web', 'auth']], function ()
    /* Route::get('qr/location/{id?}', ['uses' => 'Users\UsersQuestController@location', 'as' => 'qrLocation']);*/
 
     Route::post('/location', ['uses' => 'Users\UsersQuestController@savePosition', 'as' => 'savePosition']);
+    Route::get('/locations/{idTask?}/{idQuest?}', ['uses' => 'Users\UsersQuestController@usersLocation', 'as' => 'usersLocation']);
     Route::get('maps/{idQuest?}', ['uses' => 'Users\UsersQuestController@maps', 'as' => 'maps']);
-
-
 
 
     Route::post('/selectTeam', ['uses' => 'Users\UsersQuestController@selectTeam', 'as' => 'selectTeam']);
 });
+
+
+//Для создателя квеста
+
+Route::group(['prefix' => 'users', 'middleware' => ['web', 'auth', 'creator']], function() {
+    //пользователь владеющий правами создавать квест
+    Route::get('showQuest', ['uses' => 'Creator\CreateController@show', 'as' => 'showQuestCreator']);
+    Route::get('createQuest', ['uses' => 'Creator\CreateController@createQuest', 'as' => 'createQuestCreator']);
+    Route::post('createQuest', ['uses' => 'Creator\CreateController@addQuest', 'as' => 'addQuestCreator']);
+    Route::get('createTasks', ['uses' => 'Creator\CreateController@createTasks', 'as' => 'createTasks']);
+    Route::post('addTasks', ['uses' => 'Creator\CreateController@addTasks', 'as' => 'addTasks']);
+    Route::post('saveTasks', ['uses' => 'Creator\CreateController@saveTasks', 'as' => 'saveTasks']);
+
+});
+    //Форма обратной связи для назначения создателя квеста
+Route::get('users/backwardForm', ['uses' => 'Creator\BackwardFormController@show','as' => 'backwardForm']);
+Route::post('users/backwardForm', ['uses' => 'Creator\BackwardFormController@send','as' => 'backwardForm']);
 
 

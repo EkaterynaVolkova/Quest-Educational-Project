@@ -12,7 +12,9 @@ class Quest extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name', 'description', 'fullDescription', 'hard', 'author', 'avatar', 'date', 'time', 'status'];
+
+    protected $fillable = ['name', 'description', 'fullDescription', 'hard', 'author', 'avatar', 'date', 'time', 'status', 'user_id'];
+
     protected $guarded = ['id'];
 
     /**

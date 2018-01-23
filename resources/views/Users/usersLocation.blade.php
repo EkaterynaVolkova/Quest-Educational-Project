@@ -11,15 +11,24 @@
     </header>
 
     <main>
-        <aside>
-            <div class="avatar"></div>
-            <p class="name">Имя: {{Auth::user()->name}}</p>
-            <p class="name">Возраст: {{Auth::user()->age}}</p>
-            <p class="name">Пол: {{Auth::user()->gender}}</p>
+        <div class="menu-container">
+            <div id="logo-container">
+                <img src="{{Auth::user()->avatar}}" class="logo-container-pict">
+            </div>
+            <div class="menu-main-container">
+                <ul class="menu">
+                    <li>
+                        <div class="about">
+                            <p>{{Auth::user()->name}}</p>
+                            <p>Возраст: {{Auth::user()->age}}</p>
+                            <p> Пол: {{Auth::user()->gender}}</p>
+                        </div>
+                    </li>
+                    <li><a href="{{route('playQuest',['idQuest' => $idQuest])}}">Продолжить</a></li>
+                </ul>
+            </div>
 
-            <button class="btn btn-link link"><a href="{{route('playQuest',['idQuest'=>$idQuest])}}">Продолжить</a>
-            </button>
-        </aside>
+        </div>
 
         <section class="section">
             <div id="section_inner">
@@ -67,8 +76,8 @@
                 var longitude = position.coords.longitude;
 
                 //   output.innerHTML = '<p>Latitude is ' + latitude + '° <br>Longitude is ' + longitude + '°</p>';
-                coordX.value = longitude;
-                coordY.value = latitude;
+                coordX.value = latitude;
+                coordY.value = longitude;
                 posit(idExTask);
 
                 var img = new Image();
@@ -78,11 +87,11 @@
 
             function error() {
                 output.innerHTML = "Unable to retrieve your location";
-                coordX = document.getElementById("x");
+              /*  coordX = document.getElementById("x");
                 coordY = document.getElementById("y");
                 coordX.value = 49.987670699999995;
                 coordY.value = 36.2330605;
-                posit(idExTask);
+                posit(idExTask);*/
             }
 
             output.innerHTML = "<p>Locating…</p>";

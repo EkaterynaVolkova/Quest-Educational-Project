@@ -10,18 +10,24 @@
     </header>
 
     <main>
-        <aside>
-            <div class="avatar"></div>
-            <p class="name">Имя: {{Auth::user()->name}}</p>
-            <p class="name">Возраст: {{Auth::user()->age}}</p>
-            <p class="name">Пол: {{Auth::user()->gender}}</p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+        <div class="menu-container">
+            <div id="logo-container">
+                <img src="{{Auth::user()->avatar}}" class="logo-container-pict">
+            </div>
+            <div class="menu-main-container">
+                <ul class="menu">
+                    <li>
+                        <div class="about">
+                            <p>{{Auth::user()->name}}</p>
+                            <p>Возраст: {{Auth::user()->age}}</p>
+                            <p> Пол: {{Auth::user()->gender}}</p>
+                        </div>
+                    </li>
+                    <li><a href="{{route('userProfile')}}">Назад</a></li>
+                </ul>
+            </div>
 
-            <button class="btn btn-link link"><a href="{{route('userProfile')}}">Назад</a></button>
-        </aside>
+        </div>
 
         <section class="section">
             <div id="section_inner">

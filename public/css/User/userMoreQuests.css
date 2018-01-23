@@ -28,6 +28,9 @@ html, body {
     padding: 0;
 }
 
+.moreQuestInfo{
+    margin-top: 20px;
+}
 @media only screen and (max-width: 767px) {
     #main-container {
         width: auto;
@@ -269,7 +272,7 @@ img {
     line-height: 14px;
     vertical-align: text-top;
     background-repeat: no-repeat;
-   }
+}
 
 .select{
     width: 50%;

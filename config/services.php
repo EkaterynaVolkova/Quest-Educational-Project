@@ -35,9 +35,15 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+//    'google' => [
+//        'client_id' => '11374064133-7e2ue6meuldi9u2b0eodjssfnussg4ka.apps.googleusercontent.com',
+//        'client_secret' => 'if43fpi0KZBI9Rv7r8mWE10E',
+//        'redirect' => 'https://quest.challenge.php.a-level.com.ua/public/google/callback',
+//    ],
+
     'google' => [
-        'client_id' => '11374064133-pk2qugo0khg6s3i6ttmquaqtr25ibiro.apps.googleusercontent.com',
-        'client_secret' => 'R7AgHl0fx3cqoUEx_XVZnZly',
+        'client_id' => '11374064133-7e2ue6meuldi9u2b0eodjssfnussg4ka.apps.googleusercontent.com',
+        'client_secret' => 'if43fpi0KZBI9Rv7r8mWE10E',
         'redirect' => 'http://quest/public/google/callback',
     ],
 

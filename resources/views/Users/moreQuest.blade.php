@@ -5,14 +5,12 @@
 @stop
 @section('content')
     <header>
-        @include('Users.General.headerNav')
+        @include('Users.General.headerNav');
     </header>
     <main>
         <div class="container" id="main-container">
             <div class="row" id="row">
-                <!-- Gallery Items
-                ================================================== -->
-                <div class="moreQuest">
+                              <div class="moreQuest">
                     <div class="row" id="row">
                         <div class="moreQuestPicture">
                            <img src="{{$q->avatar}}" class="thum" alt="image">
@@ -53,7 +51,7 @@
                 </div>
             </div><!-- End gallery-single-->
         </div><!-- End container row -->
-        </div> <!-- End Container -->
+
 
     </main>
     <footer></footer>

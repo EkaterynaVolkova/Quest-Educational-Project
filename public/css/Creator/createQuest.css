@@ -1,0 +1,18 @@
+body{
+    background: #f9f9f9 url(../../../public/img/page-bg-1.jpg);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#modal{
+    border: 3px solid rgb(247, 247, 249);
+    width: 60%;
+    padding: 50px;
+}
+
+#form{
+    margin-top: 20px;
+}
+
+#Add_btn{
+    margin-right: 15px;
+}

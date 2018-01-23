@@ -41,7 +41,7 @@ class GoogleController extends Controller
             'gender' => $SocialUser->user['gender']
         ];
 
-        $user = User::where('social_id', $data['social_id'])->first();
+        $user = User::where('email', $data['email'])->first();
         if (is_null($user)) {
             $user = User::create($data);
             $user->save();

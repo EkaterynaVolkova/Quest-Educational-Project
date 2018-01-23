@@ -23,47 +23,47 @@ class AdminResultController extends Controller
         $idQuest = "";
 
         $quests = Quest::where('status', 1)->get();  // текущий квест
-        if (count($quests)){
-        foreach ($quests as $quest) {
-            // команды учавствующие в квесте
-            $idQuest = $quest->id;
-            $questTeams = Quest::find($idQuest)->teams->unique();
-            foreach ($questTeams as $k) {
-                $idTeams[] .= $k->id;
-            }
-
-            foreach ($idTeams as $team) {                         // для каждой команды:
-                $idUser = array();                                 // участники каждой команды
-                $exTasks = array();
-
-                $userTeams = UserQuest::ofWhereWhere('idQuest', $idQuest, 'idTeam', $team);
-                foreach ($userTeams as $u) {
-                    $idUser[] .= $u->id;
+        if (count($quests)) {
+            foreach ($quests as $quest) {
+                // команды учавствующие в квесте
+                $idQuest = $quest->id;
+                $questTeams = Quest::find($idQuest)->teams->unique();
+                foreach ($questTeams as $k) {
+                    $idTeams[] .= $k->id;
                 }
 
-                foreach ($idUser as $v) {                          // выполненные!!! задания для команды
-                    $exTask = ExecuteTask::ofWhereWhere('idUserQuest', $v, 'status', 1);
 
-                    foreach ($exTask as $e) {
-                        $exTasks[] .= $e->id;
+                foreach ($idTeams as $team) {                         // для каждой команды:
+                    $idUserQ = array();                                 // участники каждой команды
+                    $exTasks = array();
+
+                    $userTeams = UserQuest::ofWhereWhere('idQuest', $idQuest, 'idTeam', $team);
+                    foreach ($userTeams as $u) {
+                        $idUserQ[] .= $u->id;
                     }
+
+                    foreach ($idUserQ as $v) {                          // выполненные!!! задания для команды
+                        $exTask = ExecuteTask::ofWhereWhere('idUserQuest', $v, 'status', 1);
+                        foreach ($exTask as $e) {
+                            $exTasks[] .= $e->idTask;
+                        }
+                    }
+
+                    $result = 0;
+                    foreach ($exTasks as $val) {
+                        $weight = Task::find($val)->weight;
+                        $result += 100 * $weight;
+                    }
+
+                    // запись результатов в таблицу results
+
+                    $results = Result::updateOrCreate(['idQuest' => $quest->id, 'idTeam' => $team], ['result' => $result]);
+                    $results->save();
                 }
 
-                $result = 0;
-                foreach ($exTasks as $val) {
-                    $weight = Task::find($val)->weight;
-                    $result += 100 * $weight;
-                }
-
-                // запись результатов в таблицу results
-
-                $results = Result::updateOrCreate(['idQuest' => $quest->id, 'idTeam' => $team], ['result' => $result]);
-                $results->save();
             }
-
-        }
-        return redirect()->action('Admin\AdminResultController@showResult', ['idQuest' => $idQuest]);
-    } else {
+            return redirect()->action('Admin\AdminResultController@showResult', ['idQuest' => $idQuest]);
+        } else {
             return view('Admin.startAdminka')->with(['msg' => 'Нет новых завершённых квестов']);
         }
 
@@ -75,16 +75,17 @@ class AdminResultController extends Controller
         return view('Admin.Quest.resultQuest')->with(['results' => $resultQuests]);
     }
 
-    protected function selectPosition($idResult){
+    protected function selectPosition($idResult)
+    {
         $res = Result::find($idResult);
-        if($res->position == 0){
+        if ($res->position == 0) {
             $res->position = 1;
-            $res -> save();
+            $res->save();
         } else {
             $res->position = 0;
-            $res -> save();
+            $res->save();
         }
-        return redirect()->action('Admin\AdminResultController@showResult', ['idQuest' =>$res->idQuest]);
+        return redirect()->action('Admin\AdminResultController@showResult', ['idQuest' => $res->idQuest]);
     }
 
 

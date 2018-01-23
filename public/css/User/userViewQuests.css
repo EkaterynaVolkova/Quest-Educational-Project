@@ -147,6 +147,14 @@ a.item-details-link:hover{
 }
 
 
+.active_img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
 #top_right_screen{
     display: block;
     line-height: 25px;
