@@ -29,12 +29,10 @@
 
         </div>
 
-        <section class="section">u7
+        <section class="section">
             <div id="section_inner">
 
-                @if($msg)
-                    <h2>{{$msg}}</h2>
-                @else
+
                     <h1>Задание на выполнение</h1>
                     <div class="column">
                         <div class="row">
@@ -50,7 +48,6 @@
                             <div class="text-center">{!! $task->weight !!}</div>
                         </div>
                     </div>
-                @endif
 
             </div> <!-- div section inner-->
         </section>

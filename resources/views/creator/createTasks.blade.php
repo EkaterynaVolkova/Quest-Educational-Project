@@ -15,6 +15,16 @@
             padding: 20px;
             background: #fcfcfc;
         }
+        #exampleFormControlSelect2{
+            height: 40px;
+        }
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: media-fullscreen-button;
+            width: 10px;
+            height: 15px;
+            padding: 15px;
+            background: grey;
+        }
     </style>
 @stop
 @section('content')
@@ -38,14 +48,15 @@
                 <div class="modal-content" id="modal">
                 <div class="form-group">
                     <div class="form-group">
-                        <label for="number"></label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2" name="number">
-                            <option value="0" selected>1</option>
-                            <option value="1">2</option>
-                            <option value="2">3</option>
-                            <option value="3">4</option>
-                            <option value="4">5</option>
-                        </select>
+                        <label for="number"> (от 1 до 10): </label>
+                        <input type="number" name="number" min="1" max="10" class="form-control" id="exampleFormControlSelect2" value = 1><br>
+                        {{--<select class="form-control" id="exampleFormControlSelect2" name="number">--}}
+                            {{--<option value="0" selected>1</option>--}}
+                            {{--<option value="1">2</option>--}}
+                            {{--<option value="2">3</option>--}}
+                            {{--<option value="3">4</option>--}}
+                            {{--<option value="4">5</option>--}}
+                        {{--</select>--}}
                     </div>
                     {{Form::hidden('author_id', $author_id)}}
                 </div>

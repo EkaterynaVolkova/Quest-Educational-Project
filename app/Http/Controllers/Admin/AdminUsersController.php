@@ -27,7 +27,9 @@ class AdminUsersController extends Controller
         $user = User::find($id);
         if ($user->role == 0) {
             $user->role = 1;
-        } else  $user->role = 0;
+        }elseif($user->role == 1){
+            $user->role = 2;
+    } else  $user->role = 0;
         $user->save();
         return redirect()->action('Admin\AdminUsersController@show');
     }

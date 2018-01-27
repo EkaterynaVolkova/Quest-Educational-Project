@@ -11,11 +11,13 @@
             @if (!(Auth::check()))
                 <a href="/public/login">Вход</a>
             @else
-                <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"> Выход </a>
+                <a href="{{ route('logout') }}"
+                   onclick="event.preventDefault(); document.getElementById('logout-form').submit()"> Выход </a>
             @endif
             <a href="{{ route('contact-form') }}">Контакты</a>
         </nav>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+              style="display: none;">{{ csrf_field() }}</form>
         <div class="shadow"></div>
     </header>
 
@@ -29,9 +31,6 @@
         <div name="two"><h2>Рекомендации игроку</h2>
             <ul>
                 <li>Рекомендуем надевать комфортную одежду и обувь (casual, не маркая, свободная, удобная одежда).</li>
-                <li>На игру необходимо прибыть заранее для прохождения инструктажа. В случае опоздания,
-                    мы будем вынуждены сократить время игры на время опоздания.
-                </li>
                 <li>В момент прохождения квеста командой, нахождение других игроков, зрителей и иных третьих лиц
                     в комнате администратора – ЗАПРЕЩАЕТСЯ.
                 </li>
@@ -41,9 +40,15 @@
                 </li>
             </ul>
         </div>
-        <div name="three"><h2>Lorem ipsum dolor sit amet</h2>
-            <p>consectetur adipisicing elit. Cupiditate tempore perferendis, quo delectus quidem nesciunt praesentium
-                ut sequi reiciendis, laboriosam sit nemo! Alias, maxime, atque! Nam sequi quia saepe cupiditate.</p>
+        <div name="three"><h2>Правила игры в квест</h2>
+            <ul>
+                <li> Все участники квеста (игроки) должны быть на месте за 15 минут до игры.
+                    Время прохождения квестов для опоздавших игроков может быть сокращено.
+                </li>
+                <li> Необходимо предварительное прохождение инструктажа.</li>
+                <li> Телефоны игроков команды должны иметь QR-сканеры и поддерживать ф-цию определения геолокации.</li>
+                <li> Команде необходимо держаться вместе. В один момент возможно выполнение только одного задагия.</li>
+            </ul>
         </div>
         <div name="four"><h2>Что запрещается</h2>
             <ul>
@@ -53,25 +58,28 @@
                     <b>НЕ ТРЕБУЕТСЯ и КАТЕГОРИЧЕСКИ ЗАПРЕЩАЕТСЯ.</b></li>
             </ul>
         </div>
-        <div name="five"><h2>Lorem ipsum dolor sit amet</h2>
-            <p>consectetur adipisicing elit. Cupiditate tempore perferendis, quo delectus quidem nesciunt praesentium
-                ut sequi reiciendis, laboriosam sit nemo! Alias, maxime, atque! Nam sequi quia saepe cupiditate.</p>
+        <div name="five"><h2>QR-код</h2>
+            <p>QR-код (от английского Quick Response). Двумерный штрихкод. Разработан японцами аж в 1994 году, у них же,
+                наверно, и пользуется сейчас наибольшей популярностью. </p>
+            <p>Например, вы видите на заборе аккуратно нарисованный кем-то QR-код, запускаете на своем смартфоне прогу
+                типа Barcode Scanner и читаете все, что вам адресовал неизвестный сочинитель.
+                И тут же, например, можете перейти по ссылке, указанной им в тексте.</p>
         </div>
-        <div name="six"><h2>Lorem ipsum dolor sit amet</h2>
-            <p>consectetur adipisicing elit. Cupiditate tempore perferendis, quo delectus quidem nesciunt praesentium
-                ut sequi reiciendis, laboriosam sit nemo! Alias, maxime, atque! Nam sequi quia saepe cupiditate.</p>
+        <div name="six"><h2>Геолокация</h2>
+            <p>Геолокация – определение географического положения пользователя или вычислительного устройства с помощью
+                разнообразных механизмов сбора данных. Как правило, для определения местоположения большинство служб
+                геолокации используют адреса сетевой маршрутизации или внутренние устройства GPS. Геолокация является
+                API, зависящим от устройства. Это
+                означает, что браузеры или устройства должны поддерживать геолокацию, чтобы использовать её в
+                веб-приложениях.</p>
         </div>
-        <div name="seven"><h2>Lorem ipsum dolor sit amet</h2>
-            <p>consectetur adipisicing elit. Cupiditate tempore perferendis, quo delectus quidem nesciunt praesentium
-                ut sequi reiciendis, laboriosam sit nemo! Alias, maxime, atque! Nam sequi quia saepe cupiditate.</p>
+        <div name="seven"><h2>Добавить квест</h2>
+            <p>Если у Вас есть предложения по созданию квеста - оставьте свою заявку. После рассмотрения её
+                администратором,
+                Вы сможете добавить Ваш квест. Просим указывать корректные данные.</p>
         </div>
-        <div name="eight"><h2>Lorem ipsum dolor sit amet</h2>
-            <p>consectetur adipisicing elit. Cupiditate tempore perferendis, quo delectus quidem nesciunt praesentium
-                ut sequi reiciendis, laboriosam sit nemo! Alias, maxime, atque! Nam sequi quia saepe cupiditate.</p>
-        </div>
-        <div name="nine"><h2>Lorem ipsum dolor sit amet</h2>
-            <p>consectetur adipisicing elit. Cupiditate tempore perferendis, quo delectus quidem nesciunt praesentium
-                ut sequi reiciendis, laboriosam sit nemo! Alias, maxime, atque! Nam sequi quia saepe cupiditate.</p>
+        <div name="eight"><h2>Акции</h2>
+            <p>На данный момент акции отсутствуют.</p>
         </div>
     </main>
 

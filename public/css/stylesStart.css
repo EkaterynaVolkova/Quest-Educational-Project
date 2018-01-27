@@ -226,14 +226,13 @@ footer{
 }
 
 .img3 {
-    background-image: url(/public/img/main2.jpg);
+    background-image: url(/public/img/main2.png);
 }
 
 .rows .desc {
     width: 60%;
     min-width: 300px;
-    height: 80%;
-    display:flex;
+    height: 80%;    display:flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
@@ -287,16 +286,35 @@ footer{
     .splash {
         background: black url(/public/img/start.jpg) no-repeat!important;
         background-position: center center!important;
-        background-size: 150%!important;
+        background-size: 100%!important;
     }
 
     head {
-        min-width: 600px;
+        min-width: 300px;
     }
 
     main, .rows, .footer{
-        min-width: 600px;
+        min-width: 300px;
+    }
+
+    .img2, .img1, .img3 {
+        display: none;
+    }
+
+    .block-link {
+        flex-direction: column;
+    }
+
+    .rows {
+        flex-direction: column;
+        height: auto;
+        margin: 10px;
+        width: 100%;
+        border-bottom: 1px solid lightgrey;
+    }
+
+    .column{
+        width: 100%;
     }
 
 }
-

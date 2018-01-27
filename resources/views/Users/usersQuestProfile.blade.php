@@ -122,7 +122,7 @@
                                         <div class="row">
                                             <div class="text-center">{!! $t->name !!}</div>
                                             <div class="text-center">{!! $t->description !!}</div>
-                                            <div class="text-center">{!! $t->weight*100 !!}</div>
+                                            <div class="text-center">{!! $t->weight !!}</div>
                                             @if($executeTask[$kk][$k])
                                                 <div><input type="checkbox" checked disabled></div>
                                             @else

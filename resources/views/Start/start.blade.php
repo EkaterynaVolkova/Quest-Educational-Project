@@ -15,11 +15,13 @@
                 @if (!(Auth::check()))
                     <a href="/public/login">Вход</a>
                 @else
-                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()"> Выход </a>
+                    <a href="{{ route('logout') }}"
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit()"> Выход </a>
                 @endif
                 <a href="{{ route('contact-form') }}">Контакты</a>
             </nav>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                  style="display: none;">{{ csrf_field() }}</form>
             <div class="shadow"></div>
         </header>
 
@@ -33,15 +35,20 @@
             <div class="footer">
                 <div class="rows">
                     <div class="img img1"></div>
-                    <div class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate tempore
-                        perferendis, quo delectus quidem nesciunt praesentium ut sequi reiciendis, laboriosam sit nemo!
-                        Alias, maxime, atque! Nam sequi quia saepe cupiditate.
+                    <div class="desc">QR-код получил в наши дни широкое распространение за счет того, что информацию,
+                        содержащуюся в нём, легко можно прочесть с помощью камеры мобильного телефона.
+                        Для этого достаточно иметь одну из программ-распознавалок QR-кодов, которых
+                        множество в сети. Поэтому, при создании наших квестов, Мы внедрили возможность подтверждения
+                        прохождения заданий по скану QR.
                     </div>
                 </div>
                 <div class="rows">
-                    <div class="desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione ab error
-                        distinctio nesciunt, id qui laboriosam, quod veritatis nam, repellendus quaerat. Rerum placeat,
-                        illum, iusto eius maiores eos accusantium repellendus!
+                    <div class="desc">Геолокация — это определение реального местоположения электронного устройства,
+                        которым в нашем случае выступает смартфон или телефон. Геолокация не привязана к спутниковым
+                        системам, местоположение может
+                        определяться по расположению станций сотовых сетей. Или, к примеру, с помощью подключения к сети
+                        интернет. Мы используем геолокацию для определения местоположения команды при
+                        выполнении задания.
                     </div>
                     <div class="img img2"></div>
                 </div>
@@ -58,17 +65,17 @@
                 <div class="column">
                     <a href="{{route('info', ['idLink'=> 'one'])}}" class="footer-link">Участие в квесте</a>
                     <a href="{{route('info', ['idLink'=> 'two'])}}" class="footer-link">Рекомендации игроку</a>
-                    <a href="{{route('info', ['idLink'=> 'three'])}}" class="footer-link">Lorem ipsum</a>
+                    <a href="{{route('info', ['idLink'=> 'three'])}}" class="footer-link">Правила игры</a>
                     <a href="{{route('info', ['idLink'=> 'four'])}}" class="footer-link">Что запрещается</a>
                 </div>
                 <div class="column">
-                    <a href="{{route('info', ['idLink'=> 'five'])}}" class="footer-link">Lorem ipsum</a>
-                    <a href="{{route('info', ['idLink'=> 'six'])}}" class="footer-link">Lorem ipsum</a>
-                    <a href="{{route('info', ['idLink'=> 'seven'])}}" class="footer-link">Lorem ipsum</a>
-                    <a href="{{route('info', ['idLink'=> 'eight'])}}" class="footer-link">Lorem ipsum</a>
+                    <a href="{{route('info', ['idLink'=> 'five'])}}" class="footer-link">QR-код</a>
+                    <a href="{{route('info', ['idLink'=> 'six'])}}" class="footer-link">Геолокация</a>
+                    <a href="{{route('info', ['idLink'=> 'seven'])}}" class="footer-link">Добавить квест</a>
+                    <a href="{{route('info', ['idLink'=> 'eight'])}}" class="footer-link">Акции</a>
                 </div>
                 <div class="column">
-                    <a href="{{route('info', ['idLink'=> 'nine'])}}" class="footer-link">Lorem ipsum</a>
+                    <a href="{{route('contact-form')}}" class="footer-link">Контакты</a>
                 </div>
             </div>
             <p class="copyrite text-center"><b>C© 2017. Все права защищены</b></p>
@@ -78,23 +85,23 @@
     </div>
 
     <script>
-        $(document).ready(function() {
-            if($(".splash").is(":visible")) {
-                $(".content").css({"opacity":"0"});
+        $(document).ready(function () {
+            if ($(".splash").is(":visible")) {
+                $(".content").css({"opacity": "0"});
             }
 
-            $(".splash-arrow").click(function() {
-                $(".splash").slideUp("800", function() {
-                    $(".content").delay(100).animate({"opacity":"1.0"},800);
+            $(".splash-arrow").click(function () {
+                $(".splash").slideUp("800", function () {
+                    $(".content").delay(100).animate({"opacity": "1.0"}, 800);
                 });
             });
         });
 
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             $(window).off("scroll");
-            $(".splash").slideUp("800", function() {
-                $("html, body").animate({"scrollTop":"0px"},100);
-                $(".content").delay(100).animate({"opacity":"1.0"},800);
+            $(".splash").slideUp("800", function () {
+                $("html, body").animate({"scrollTop": "0px"}, 100);
+                $(".content").delay(100).animate({"opacity": "1.0"}, 800);
             });
         });
     </script>

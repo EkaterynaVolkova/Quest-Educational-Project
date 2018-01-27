@@ -9,6 +9,17 @@ html, body {
     font-family: "Oswald",sans-serif!important;
     background: #f9f9f9 url(/public/img/page-bg-1.jpg);
 }
+#floating-panel{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    margin-bottom: 15px;
+}
+
+div.team{
+    width: 15%;
+}
 
 header{
     height: 100px;
@@ -229,3 +240,52 @@ main button.link a{
     color: #8f1919;
     text-decoration: none;
 }
+
+@media screen and (max-width: 700px) {
+    #logo-container{
+        display: none;
+    }
+    .menu-container{
+        background-color: transparent;
+        box-shadow: none;
+    }
+    .menu-main-container{
+        position: absolute;
+        z-index: 1;
+        background-color: white;
+        left: -220px;
+        top: 20%;
+        transition: 0.3s;
+        width: 250px!important;
+        max-width: 300px!important;
+        align-items: flex-start;
+
+    }
+
+    .menu-main-container>a{
+        width: 100%;
+        text-align: center;
+    }
+
+    .menu-main-container>a:nth-child(3){
+        background: url(/public/img/right-arrow.jpg) no-repeat;
+        background-size:  30px 30px;
+        background-position: center right;
+    }
+
+    #container{
+        position: absolute;
+        z-index: 0;
+        top: 20%;
+        left: 5%;
+        width: 90%;
+    }
+
+    .menu-main-container:hover{
+        left: 0;
+    }
+
+
+}
+
+

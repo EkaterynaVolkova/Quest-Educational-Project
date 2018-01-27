@@ -42,10 +42,17 @@ class AdminResultController extends Controller
                         $idUserQ[] .= $u->id;
                     }
 
+                    $tasks = Quest::find($idQuest)->tasks();
+
                     foreach ($idUserQ as $v) {                          // выполненные!!! задания для команды
-                        $exTask = ExecuteTask::ofWhereWhere('idUserQuest', $v, 'status', 1);
+
+                        $exTask = ExecuteTask::ofWhereWhere('idUserQuest', $v, 'i', 1);
                         foreach ($exTask as $e) {
-                            $exTasks[] .= $e->idTask;
+                            foreach($tasks as $t) {
+                                if (($t->id) == ($e->idTask)) {
+                                    $exTasks[] .= $e->idTask;
+                                }
+                            }
                         }
                     }
 

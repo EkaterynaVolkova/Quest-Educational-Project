@@ -53,7 +53,7 @@ class CreateController extends Controller
         $number = $request->number;  //количество задач
         $author_id = $request->author_id;
         $author_id*=1;
-        $number++;
+
         return view("creator.addTasks", ["number" => $number, "author_id" => $author_id]);
     }
     //сохранение задач

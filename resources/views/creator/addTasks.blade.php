@@ -9,6 +9,12 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 <link media="all" type="text/css" rel="stylesheet" href="/public/css/Creator/addTask.css">
 <link media="all" type="text/css" rel="stylesheet" href="/public/css/UserGeneral/headerNav.css">
+<style>
+    #description{
+        height: 80px;
+        resize: vertical;
+    }
+</style>
 @stop
 @section('content')
     <header>
@@ -30,7 +36,7 @@
                             for($i = 1; $i <= $number; $i++){
                                 echo Form::label('name'.$i, 'Название '.$i.' задания') . Form::text('name'.$i,'' ,array('required' => 'required', 'class' => 'form-control'));
                                 echo "<br>";
-                                echo Form::label('description'.$i, 'Описание '.$i.' задания') . Form::text('description'.$i, '',array('required' => 'required', 'class' => 'form-control'));
+                                echo Form::label('description'.$i, 'Описание '.$i.' задания') . Form::textarea('description'.$i, '',array('required' => 'required', 'class' => 'form-control', 'id' => 'description'));
                                 echo "<br><hr><br>";
                              }
                         ?>

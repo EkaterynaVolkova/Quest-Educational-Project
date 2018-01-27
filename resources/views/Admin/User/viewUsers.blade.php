@@ -15,12 +15,18 @@
         echo "<td> <div>" . $value->name . "</div> </td>";
         echo "<td> <div>" . $value->nickname . "</div> </td>";
         echo "<td> <div>" . $value->email . "</div> </td>";
-        echo "<td> <div>" . $value->role . "</div> </td>";
-        echo "<td>";
         ?>
-        <submit class="btn btn-default btn-sm"><a
-                    href="{{route('isAdmin', ['id' => $value->id])}}"
-                    class="glyphicon glyphicon-user"></a></submit>
+        @if ($value->role == 0)
+            <?php echo "<td> <div>" . "пользователь" . "</div> </td>"; ?>
+        @elseif ($value->role == 1)
+            <?php echo "<td> <div>" . "админ" . "</div> </td>"; ?>
+        @elseif ($value->role == 2)
+            <?php echo "<td> <div>" . "автор" . "</div> </td>"; ?>
+        @endif
+        <?php echo "<td>";?>
+            <submit class="btn btn-default btn-sm"><a
+                        href="{{route('isAdmin', ['id' => $value->id])}}"
+                        class="glyphicon glyphicon-user"></a></submit>
 
         <?php
         echo " </td>";
